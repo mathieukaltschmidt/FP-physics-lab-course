@@ -1,0 +1,23 @@
+WINMRI parameter file: 21/08/2018 16:55:59
+Measured by Minispec
+TE=10
+TR=0.5
+dim=2
+acq_dir=0 1
+size=64 64 1
+acqp_mode=simultaneous
+domain=spatial spatial spatial
+encoded=1 1 0
+readout_dir=0
+dir_name=top-bottom left-right front-back
+fov_SW=3.2 3.2 1
+origin=0 0 -0.5
+patient_axis=NA NA NA
+complex_comp=COMPLEX
+slice_thick=0.7
+slice_pos=0 
+SW=50000
+K_space_zero_phase_correction_mode=ROTATION
+K_space_zero_pos=32 32
+filter=none
+data_format=floatASCII

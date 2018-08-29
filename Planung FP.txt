@@ -1,0 +1,16 @@
+	VERSUCHE		VETOS				KOMMENTAR		      TERMINVORSCHLAG	BUCHUNG			
+
+	FP1																	
+1. Koinzidenzspektrometer				Termine bald bekannt!		
+2. Elektronik Grundpraktikum				angefragt, warte auf Tutor..		
+3. Mechanik und Vakuum										03.09.2018 	gebucht
+														
+	FP2								
+4.  Raster-Kraft-Mikroskop 									10.09.2018	gebucht					
+5.  Zeeman-Spektroskopie
+6.  Kernresonanzspektroskopie 									20.08.2018	fertig!	
+7.  Zyklotronfrequenz in einer Penningfalle
+8.  Cavity-Enhanced-DOAS (Umwelt)											
+9.  Stellare CCD-Photometrie									27.08.2018	gebucht
+10. STED-Nanoskopie					aktuell nicht möglich..
+11. Transmissionselektronenmikroskopie

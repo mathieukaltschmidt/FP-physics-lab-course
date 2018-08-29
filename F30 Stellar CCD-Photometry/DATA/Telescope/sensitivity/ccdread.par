@@ -1,0 +1,11 @@
+exptime:  0.70
+shutter:  1
+xbin   :  2
+ybin   :  2
+gain   :  5
+xfirst :  1
+xlast  :  2100
+yfirst :  1
+ylast  :  2048
+outname:  sensitivity_I_2_0019.fits
+filemode: basefile : sensitivity_I_2_

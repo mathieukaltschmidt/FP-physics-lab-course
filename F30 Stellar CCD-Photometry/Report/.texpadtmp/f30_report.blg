@@ -1,0 +1,15 @@
+[0] Config.pm:343> INFO - This is Biber 2.5
+[0] Config.pm:346> INFO - Logfile is '/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.blg'
+[46] biber-darwin:290> INFO - === Tue Aug 28, 2018, 10:25:01
+[66] Biber.pm:351> INFO - Reading '/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.bcf'
+[160] Biber.pm:773> INFO - Using all citekeys in bib section 0
+[172] Biber.pm:3493> INFO - Processing section 0
+[187] Biber.pm:3657> INFO - Looking for bibtex format file '/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/bibliography/f30-bib.bib' for section 0
+[189] bibtex.pm:1187> INFO - Decoding LaTeX character macros into UTF-8
+[189] bibtex.pm:1048> INFO - Found BibTeX data source '/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/bibliography/f30-bib.bib'
+[205] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[205] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[205] Biber.pm:3306> INFO - Sorting list 'nty/global/' of type 'entry' with scheme 'nty' and locale 'en-US'
+[205] Biber.pm:3310> INFO - No sort tailoring available for locale 'en-US'
+[208] bbl.pm:526> INFO - Writing '/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.bbl' with encoding 'UTF-8'
+[209] bbl.pm:619> INFO - Output to /Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.bbl

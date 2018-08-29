@@ -1,0 +1,3 @@
+masterflat_b_I.fits
+masterflat_b_R.fits
+masterflat_b_V.fits
