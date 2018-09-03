@@ -1,3 +1,0 @@
-template,s,a,"diff_*.fits",,,"file template"
-sort,b,h,yes,,,"sort file list"
-mode,s,h,"ql",,,
