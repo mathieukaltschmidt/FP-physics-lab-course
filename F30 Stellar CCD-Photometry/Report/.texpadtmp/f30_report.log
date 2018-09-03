@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2017.4.10)  28 AUG 2018 10:25
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2017.4.10)  2 SEP 2018 22:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3073,7 +3073,33 @@ LaTeX Font Info:    Font shape `EU1/Menlo(0)/m/n' will be
 (Font)              scaled to size 17.86964pt on input line 1.
 [3
 
-]) (./content/eval_data_red.tex) (./content/conclusion.tex) [1]
+]
+Package microtype Info: Character `\textservicemark ' is missing
+(microtype)             in font `\EU1/Palatino(0)/bx/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `‐' is missing
+(microtype)             in font `\EU1/Palatino(0)/bx/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\textservicemark ' is missing
+(microtype)             in font `\EU1/Palatino(0)/bx/n/7'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `‐' is missing
+(microtype)             in font `\EU1/Palatino(0)/bx/n/7'.
+(microtype)             Ignoring protrusion settings for this character.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 46.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 46.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 46.
+
+) (./content/eval_data_red.tex) (./content/conclusion.tex) [1]
 Package microtype Info: Character `‐' is missing
 (microtype)             in font `\EU1/Palatino(0)/m/it/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -3101,12 +3127,12 @@ Package logreq Info: Writing requests to 'f30_report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 51917 strings out of 493591
- 1037902 string characters out of 6143546
+ 51923 strings out of 493591
+ 1038078 string characters out of 6143546
  1578835 words of memory out of 5000000
- 54586 multiletter control sequences out of 15000+600000
- 15463 words of font info for 119 fonts, out of 8000000 for 9000
+ 54590 multiletter control sequences out of 15000+600000
+ 15479 words of font info for 121 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
- 76i,14n,105p,10398b,5389s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,13n,105p,10398b,5387s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on /Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.pdf (12 pages).
