@@ -1,0 +1,46 @@
+\chapter{Globular Cluster BS90$^{\mathbf{14}}$}
+In this part of the experiment we are analyzing the properties of the globular cluster BS90$^{14}$. Unfortunately the bad weather conditions during our measurement prevented us from collecting data by ourselves. Instead we are working with images taken by the Hubble Space Telescope (HST). \\
+The goal of this part is to perform PSF fitting for two different filter constellations and match both images and finally plot a Color Magnitude Diagram (CMD) to determine age, distance and metallicity of the cluster after fitting isochrones.
+\section{Zeropoint calibration}
+To calibrate the measured data to a standard scale, which is in this case the apparent magnitude scale, we are comparing the counts of several standard stars with reference values from SIMBAD, an astronomical data base. From these results we can determine the zeropoint $p_0$ using equation (): %TODO label eq for zeropoint calibration 
+	\begin{align}
+		p_0 = m_{\text{CATALOG}} + 2.5\log_{10}(\text{counts})
+	\end{align}
+	We choose ten suitable stars, e.g. stars that are clearly isolated and bright enough but not saturated. The results of our measurement are enlisted in the following table.
+	
+	\begin{table}[H]
+\setlength{\tabcolsep}{2mm}
+\renewcommand{\arraystretch}{1.5}
+\begin{adjustbox}{width=\textwidth, height= .26\textwidth}, 
+\begin{tabular}{|c||c|c|c|c|c||c|c|c|c|c|}
+\hline
+Star & Mag$_{\text{V}}$ & \#$_{\text{V}}$ & $\Delta$\#$_{\text{V}}$ & $p_{0,\text{V}}$ &$\Delta p_{0,\text{V}}$ & Mag$_{\text{I}}$ & \#$_{\text{I}}$ & $\Delta$\#$_{\text{I}}$ & $p_{0,\text{I}}$ &$\Delta p_{0,\text{I}}$\\ \hline \hline
+1 & 17.78 & 908 & 30 & 25.175 & 0.036 & 16.65 & 1881 & 43 & 24.836 & 0.025 \\
+2 & 17.77 & 1371 & 37 & 25.613 & 0.029 & 16.21 & 4274 & 65 & 25.287 & 0.017 \\
+3 & 17.67 & 1345 & 37 & 25.492 & 0.030 & 16.81 & 3994 & 63 & 25.814 & 0.017 \\
+4 & 17.50 & 1052 & 32 & 25.055 & 0.033 & 16.64 & 2281 & 48 & 25.035 & 0.023 \\
+5 & 17.24 & 1511 & 39 & 25.188& 0.028 & 15.79 & 4605 & 68 & 24.948 & 0.016 \\
+6 & 18.45 & 808 & 28 & 25.719 & 0.038 & 17.10 & 1738 & 42 &  25.200 & 0.026 \\
+7 & 18.23 & 885 & 30 & 25.597 & 0.037 & 16.23 & 2073 & 46 &  24.521 & 0.024 \\
+8 & 18.09 & 790 & 28 & 25.334 & 0.038 & 16.93 & 1626 & 40 & 24.958 & 0.027 \\
+9 & 17.97 & 961 & 31 & 25.427 & 0.035 & 16.68 & 1837 & 43 &  24.840 & 0.025 \\
+10 & 17.74 & 764 & 28 & 24.948 & 0.040 & 16.85 &  1694 & 41 & 24.922 & 0.026 \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\caption{\label{tab:2} Zeropoint calibration by comparing ten stars with SIMBAD references}
+\end{table}
+
+	%TODO explanation of the errors
+	
+We take the mean of the calculated zeropoints $p_0$ and compute the standard deviation of our errors and the error progation to get the final results: 
+\begin{align*}
+	p_{0,\text{V}} &= (25.334 \pm 0.004 \pm 0.011) \\
+	p_{0,\text{I}} &= (24.953 \pm 0.004 \pm 0.007)
+\end{align*}
+
+\section{PSF photometry with STARFINDER}
+\blindtext
+
+
+\section{Color Magnitude Diagram for BS90$^{\mathbf{14}}$ }

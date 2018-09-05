@@ -1,0 +1,28 @@
+\makeatletter
+
+\begin{centering}
+\textbf{\Large\@title} \\
+\vspace{.1cm}
+\small\@author \\
+\end{centering}
+
+\makeatother
+
+\vfill
+%Abstract in english language
+ 
+{\let\raggedsection\centering
+\begin{centering}
+\section*{Abstract }
+\blindtext
+\end{centering}
+\vfill
+%Abstract in german language
+\begin{german}
+\section*{Zusammenfassung}
+\begin{centering}
+	\blindtext
+\end{centering}
+\end{german}}
+\vfill
+\blankpage

@@ -1,0 +1,11 @@
+exptime:  0.30
+shutter:  1
+xbin   :  2
+ybin   :  2
+gain   :  5
+xfirst :  1
+xlast  :  2100
+yfirst :  1
+ylast  :  2048
+outname:  flat_I0004.fits
+filemode: basefile : flat_I

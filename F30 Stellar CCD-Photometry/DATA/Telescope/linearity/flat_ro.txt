@@ -1,0 +1,10 @@
+linearity_f_R0000.fits
+linearity_f_R0001.fits
+linearity_f_R0002.fits
+linearity_f_R0003.fits
+linearity_f_R0004.fits
+linearity_f_R0005.fits
+linearity_f_R0006.fits
+linearity_f_R0007.fits
+linearity_f_R0008.fits
+linearity_f_R0009.fits
