@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2017.4.10)  2 SEP 2018 22:38
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2017.4.10)  5 SEP 2018 16:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2043,7 +2043,33 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \sift@deathcycles=\count279
 \@vwid@loff=\dimen294
 \@vwid@roff=\dimen295
-)) (/usr/local/texlive/2016/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+)) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grffile.sty
+Package: grffile 2016/05/16 v1.17 Extended file name support for graphics (HO)
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+ (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+ (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+Package grffile Info: \Gread@QTm patched on input line 253.
+Package grffile Info: \Gread@eps patched on input line 303.
+Package grffile Info: Option `multidot' is set to `true'.
+Package grffile Info: Option `extendedchars' is set to `false'.
+Package grffile Info: Option `space' is set to `true'.
+Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 486.
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2016/04/27 version 3.91 text color boxes
  (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
@@ -2215,24 +2241,7 @@ Package: xfrac 2016/05/18 v6512 L3 Experimental split-level fractions
 Package: biblatex 2016/05/14 v3.4 programmable bibliographies (PK/JW/AB)
  (/usr/local/texlive/2016/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, and LuaTeX
-) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode not found.
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
- (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
- (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-))) (/usr/local/texlive/2016/texmf-dist/tex/latex/logreq/logreq.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
 \lrq@indent=\count288
  (/usr/local/texlive/2016/texmf-dist/tex/latex/logreq/logreq.def
@@ -2476,8 +2485,7 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count414
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 4322.
@@ -2550,7 +2558,7 @@ Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2016/05/14 v3.4 biblatex localization (PK/JW/AB)
-) (/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.aux)
+) (/Users/Mathieu/Documents/GitHub/FP-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.aux)
 \openout1 = `f30_report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
@@ -2715,7 +2723,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'f30_report.bbl' found.
- (/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.bbl)
+ (/Users/Mathieu/Documents/GitHub/FP-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.bbl)
 Package biblatex Info: Reference section=0 on input line 6.
 Package biblatex Info: Reference segment=0 on input line 6.
 \AtBeginShipoutBox=\box83
@@ -2730,7 +2738,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 6.
 LaTeX Info: Redefining \pageref on input line 6.
 LaTeX Info: Redefining \nameref on input line 6.
- (/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.out) (/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.out)
+ (/Users/Mathieu/Documents/GitHub/FP-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.out) (/Users/Mathieu/Documents/GitHub/FP-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.out)
 \@outlinefile=\write8
 \openout8 = `f30_report.out'.
 
@@ -3006,7 +3014,7 @@ Package microtype Info: Character `‐' is missing
 
 ])
 Package tocbasic Info: character protrusion at toc deactivated on input line 12.
- (/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.toc
+ (/Users/Mathieu/Documents/GitHub/FP-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.toc
 Package microtype Info: Character `\textservicemark ' is missing
 (microtype)             in font `\EU1/Palatino(0)/bx/n/8'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -3071,9 +3079,64 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 LaTeX Font Info:    Font shape `EU1/Menlo(0)/m/n' will be
 (Font)              scaled to size 17.86964pt on input line 1.
+File: figures/Exposures/BS90_I.jpeg Graphic file (type QTm)
+<use  "figures/Exposures/BS90_I.jpeg" >
+Overfull \hbox (4.60973pt too wide) in paragraph at lines 6--7
+[][] 
+ []
+
+File: figures/Exposures/BS90_V.jpeg Graphic file (type QTm)
+<use  "figures/Exposures/BS90_V.jpeg" >
+Overfull \hbox (4.60973pt too wide) in paragraph at lines 10--11
+[][] 
+ []
+
 [3
 
 ]
+File: figures/Exposures/PSF_I.png Graphic file (type QTm)
+ <use  "figures/Exposures/PSF_I.png" >
+Overfull \hbox (15.01776pt too wide) in paragraph at lines 62--63
+[][] 
+ []
+
+File: figures/Exposures/psf_noise_I.png Graphic file (type QTm)
+<use  "figures/Exposures/psf_noise_I.png" >
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
+[]
+ []
+
+
+Overfull \hbox (23.827pt too wide) in paragraph at lines 66--68
+[] 
+ []
+
+File: figures/Exposures/PSF_I.png Graphic file (type QTm)
+<use  "figures/Exposures/PSF_I.png" >
+Overfull \hbox (15.01776pt too wide) in paragraph at lines 71--72
+[][] 
+ []
+
+File: figures/Exposures/psf_noise_V.png Graphic file (type QTm)
+<use  "figures/Exposures/psf_noise_V.png" >
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
+[]
+ []
+
+
+Overfull \hbox (23.827pt too wide) in paragraph at lines 75--77
+[] 
+ []
+
+Package microtype Info: Character `\textservicemark ' is missing
+(microtype)             in font `\EU1/Palatino(0)/bx/n/9'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `‐' is missing
+(microtype)             in font `\EU1/Palatino(0)/bx/n/9'.
+(microtype)             Ignoring protrusion settings for this character.
+LaTeX Font Info:    Font shape `EU1/Menlo(0)/m/n' will be
+(Font)              scaled to size 7.75443pt on input line 80.
+[4]
 Package microtype Info: Character `\textservicemark ' is missing
 (microtype)             in font `\EU1/Palatino(0)/bx/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -3089,17 +3152,21 @@ Package microtype Info: Character `‐' is missing
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 46.
+(hyperref)                removing `math shift' on input line 85.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 46.
+(hyperref)                removing `superscript' on input line 85.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 46.
+(hyperref)                removing `math shift' on input line 85.
 
-) (./content/eval_data_red.tex) (./content/conclusion.tex) [1]
+File: figures/Plots /CMD.png Graphic file (type QTm)
+<use  "figures/Plots /CMD.png" >
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]) (./content/eval_data_red.tex) (./content/conclusion.tex) [1]
 Package microtype Info: Character `‐' is missing
 (microtype)             in font `\EU1/Palatino(0)/m/it/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -3107,7 +3174,7 @@ Package microtype Info: Character `‐' is missing
 
 ]
 Package tocbasic Info: character protrusion at lof deactivated on input line 48.
- (/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.lof)
+ (/Users/Mathieu/Documents/GitHub/FP-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.lof)
 \tf@lof=\write10
 \openout10 = `f30_report.lof'.
 
@@ -3119,7 +3186,7 @@ Package tocbasic Info: character protrusion at lof deactivated on input line 48.
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
- (/Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.aux)
+ (/Users/Mathieu/Documents/GitHub/FP-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 51.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 51.
 Package logreq Info: Writing requests to 'f30_report.run.xml'.
@@ -3127,12 +3194,12 @@ Package logreq Info: Writing requests to 'f30_report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 51923 strings out of 493591
- 1038078 string characters out of 6143546
- 1578835 words of memory out of 5000000
- 54590 multiletter control sequences out of 15000+600000
- 15479 words of font info for 121 fonts, out of 8000000 for 9000
+ 52054 strings out of 493591
+ 1040459 string characters out of 6143546
+ 1577810 words of memory out of 5000000
+ 54690 multiletter control sequences out of 15000+600000
+ 17048 words of font info for 130 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
- 76i,13n,105p,10398b,5387s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,14n,105p,10398b,5387s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/Mathieu/Documents/GitHub/fp-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.pdf (12 pages).
+Output written on /Users/Mathieu/Documents/GitHub/FP-physics-lab-course/F30 Stellar CCD-Photometry/Report/.texpadtmp/f30_report.pdf (14 pages).

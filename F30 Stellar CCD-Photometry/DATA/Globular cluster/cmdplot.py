@@ -11,7 +11,7 @@ data = np.loadtxt(_cfg.lst_match, usecols=(4,5), unpack=True)
 V = data[0]
 I = data[1]
 
-get_iso = lambda x, y: ezp.cmd.get_one_isochrone(x, y, phot='acs_wfc') 
+get_iso = lambda x, y: ezp.cmd.get_one_isochrone(x, y, phot='acs_wfc')
 
 #print(r.keys())
 vk = 'F555W'
@@ -31,7 +31,7 @@ for key in _cfg.dct_iso.keys():
                  a=Age_str,
                  b=float(Z))
             )
-    
+
 plt.scatter(V-I, V, s=0.05, color='black')
 plt.gca().invert_yaxis()
 plt.xlim(-0.3, 2)
