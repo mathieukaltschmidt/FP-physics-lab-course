@@ -1,3 +1,0 @@
-template,s,a,"dark_*.fits",,,"file template"
-sort,b,h,yes,,,"sort file list"
-mode,s,h,"ql",,,

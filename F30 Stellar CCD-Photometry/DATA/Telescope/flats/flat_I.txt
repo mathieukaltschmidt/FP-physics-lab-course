@@ -1,5 +1,0 @@
-flat_I0000.fits
-flat_I0001.fits
-flat_I0002.fits
-flat_I0003.fits
-flat_I0004.fits
