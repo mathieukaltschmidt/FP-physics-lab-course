@@ -14,7 +14,7 @@ The advanced lab course covered the following experiments:
 - [ ]
 
 ### Mechanics - Mechanik
-- [ ] F70/71: Mechanics and vacuum technology - Mechanik und Vakuum (3./4.09.2018)
+- [x] F70/71: Mechanics and vacuum technology - Mechanik und Vakuum (3./4.09.2018)
 
 ### Measurement methods - Messmethoden
 - [ ]
@@ -26,7 +26,7 @@ The advanced lab course covered the following experiments:
 - [ ] F29: Atomic Force Microscopy - Rasterkraftmikroskop (10./11.09.2018)
 
 ### Spectroscopy - Spektroskopie
-- [ ] F61/62 Nuclear Magnetic Resonance - Kernresonanzspektroskopie (21./22.08.18)
+- [x] F61/62 Nuclear Magnetic Resonance - Kernresonanzspektroskopie (21./22.08.18)
 - [ ]
 
 
