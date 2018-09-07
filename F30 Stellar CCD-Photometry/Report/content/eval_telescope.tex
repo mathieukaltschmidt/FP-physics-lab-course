@@ -1,0 +1,18 @@
+\chapter{Preparing the telescope}
+Before we were able to start with our measurements we had to prepare the telescope by cooling it down with liquid nitrogen to prevent disturbing effects such as thermal activation of electrons that could effect our measurements. First of all we evacuated the cryostat to protect the chip of damage cause by freeze out. This process took about three hours. Using a Python script, we took test images every thirty seconds to obtain the current temperature and to be able to see the effects of the cooling process to the quality of the images. To demonstrate the impact on the resolution of the exposures we present two images, one taken at the beginning of the cooling process ($T = -4.7 °C$ ) and the other at the end, after reaching the final temperature ($T = -90.3 °C$).
+\begin{figure}[H]
+	\
+\end{figure}
+
+
+With  the temperature data we were able to determine the band gap $E_g$ of the semiconductor by fitting the theoretical curve which describes the dependency of the dark current $I$ from the temperature $T$ using Fermi statistics:
+\begin{align}
+	I = c_0 \cdot T^{\frac{3}{2}}\cdot\exp(-\frac{E_g}{2 k_B T})
+\end{align}
+The Boltzmann constant $k_B$ is given by $k_B = 8.617 \cdot 10^{-5} \ \frac{\text{eV}}{\text{K}}$.
+The result of our measurement is presented in the following diagram.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/Plots /band_gap.pdf}
+\caption{Determination of the band gap of silicon as an important characteristic of the experimental setup.}	
+\end{figure}
