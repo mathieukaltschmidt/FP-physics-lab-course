@@ -1,10 +1,23 @@
-\chapter{Preparing the telescope}
-Before we were able to start with our measurements we had to prepare the telescope by cooling it down with liquid nitrogen to prevent disturbing effects such as thermal activation of electrons that could effect our measurements. First of all we evacuated the cryostat to protect the chip of damage cause by freeze out. This process took about three hours. Using a Python script, we took test images every thirty seconds to obtain the current temperature and to be able to see the effects of the cooling process to the quality of the images. To demonstrate the impact on the resolution of the exposures we present two images, one taken at the beginning of the cooling process ($T = -4.7 °C$ ) and the other at the end, after reaching the final temperature ($T = -90.3 °C$).
-%\begin{figure}[H]
-%	\
-%\end{figure}
+\chapter{Characteristics of the experimental setup}
+In this part we describe how we prepared the telescope and the detector system to be able to take images with a good quality and resolution. \\
+More precisely, we are describing the cooling process, determining the band gap of our detector and we perform flat-field corrections. After that we discuss further details of the properties of the CCD chip which is located inside the detector. 
 
+\section{The cooling process}
 
+Before we were able to start with our measurements we had to prepare the telescope by cooling it down with liquid nitrogen to prevent disturbing effects such as thermal activation of electrons that could effect our measurements. First of all we evacuated the cryostat to protect the chip of damage cause by freeze out. This process took about three hours. Using a Python script, we took test images every thirty seconds to obtain the current temperature and to be able to see the effects of the cooling process to the quality of the images. To demonstrate the impact on the resolution of the exposures we present two images, one taken at the beginning of the cooling process with a temperature of $T_{\text{in}} = -4.7$ °C  and the other at the end, after reaching the final temperature $T_{\text{f}} = -90.3$ °C.
+\begin{figure}[H]
+	\begin{minipage}{0.4\textwidth}
+	\hspace{0.6cm}
+		\includegraphics[scale = 0.17]{figures/Exposures/cooling_start}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+	\hspace{1.5cm}
+		\includegraphics[scale=0.17]{figures/Exposures/cooling_end}
+	\end{minipage}
+	\caption{Visualization of the impact if the cooling process on the quality of the images. On the left we see the picture taken at $T = T_{\text{in}}$ on the right at $T = T_{\text{f}}$.}
+\end{figure} 
+As one can easily see, the quality of the image improved a lot compared to the beginning of the measurement. The structure of the image is now almost homogeneous and we reduced nearly all of the disturbing noise. In addition one can already see some of the dead pixels as small white parts which don't contribute to the measurement. \\
+ 
 With  the temperature data we were able to determine the band gap $E_g$ of the semiconductor by fitting the theoretical curve which describes the dependency of the dark current $I$ from the temperature $T$ using Fermi statistics:
 \begin{align}
 	I = c_0 \cdot T^{\frac{3}{2}}\cdot\exp(-\frac{E_g}{2 k_B T})
@@ -13,6 +26,74 @@ The Boltzmann constant $k_B$ is given by $k_B = 8.617 \cdot 10^{-5} \ \frac{\tex
 The result of our measurement is presented in the following diagram.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/Plots /band_gap.pdf}
+\includegraphics[width=0.8\textwidth]{figures/Plots/band_gap.pdf}
 \caption{Determination of the band gap of silicon as an important characteristic of the experimental setup.}	
 \end{figure}
+As a result of the measurement we determined the band gap for our detector to:
+\begin{align}
+	E_g = (1.259 \pm 0.005) \ \text{eV}
+\end{align}
+The theoretical value for silicon is $E_{g, \text{SI}} = 1.15$ eV and therefore slightly smaller than the value we extracted from our temperature measurement. %TODO explanation
+
+\section{Flat field corrections}
+
+%TODO das macht Q :-)
+
+\section{Linearity and dynamical range of the CCD}
+
+This part of the experiment deals with the limitations of the chip concerning sensitivity to incoming photons, linearity and its dynamical range. \\
+We measured with two different filter constellations, namely the same as in the section before ( R- and I-filter). \\
+By plotting the median of the signal against the adjusted integration time for both flat-field images we want to determine the linear regime of the electronics. \\
+The result of the linear fit can be found in the following figure and is discussed after.
+
+\begin{figure}[H]
+	\begin{minipage}{0.4\textwidth}
+		\includegraphics[scale = 0.2]{figures/Plots/linearityR}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+	\hspace{1.7cm}
+		\includegraphics[scale=0.2]{figures/Plots/linearityI}
+	\end{minipage}
+	\caption{Results of the determination of the linear regime of the experimental setup with different filter constellations.}
+\end{figure} 
+Unfortunately we didn't choose larger integration times to find the domain where the chip is saturated. Therefore we can only conclude which domains are definitely in the linear regime.\\
+Nevertheless we the got the following results:
+\begin{table}[H]
+\setlength{\tabcolsep}{5mm}
+\setlength\extrarowheight{2mm}
+\centering
+\begin{tabular}{c| c c c }
+
+Filter  & Counts$_{\text{min}}$ & Counts$_{\text{max}}$ & gain $\left[\sfrac{\text{counts}}{s}\right]$ \\ \hline 
+
+R & $\sim$ 13000 & $\sim$ 60000 & $(60.12 \pm 0.29)$ \\
+I & $\sim$ 14000 & $\sim$ 48000 & $(66.35 \pm 0.08)$ \\
+
+\end{tabular}
+\caption{Determination of the linear regime of the measuring electronics for both filter constellations.}
+\end{table}
+Now we want to investigate the deviation from a perfectly linear relationship by computing the $R^2$ value for both fits. The $R^2$ value is a statistical measure of how close the data are to the fitted regression line.  \\
+The formal definition is:
+\begin{align}
+	R^2 = 
+\frac{\displaystyle\sum\nolimits \left(\hat{y}_i- \overline{y}\right)^2}{\displaystyle\sum\nolimits \left(y_i - \overline{y}\right)^2} 
+ =1-\frac{\displaystyle\sum\nolimits \left(y_i - \hat{y}_i\right)^2}{\displaystyle\sum\nolimits \left(y_i - \overline{y}\right)^2}
+\end{align}
+where $\hat{y}_i$ are the values predicted by the linear fit and $\overline{y} = \frac{1}{n}\sum_{i} y_i$ is the mean of the measured values.\\
+In our case we got the following results: 
+\begin{table}[H]
+\setlength{\tabcolsep}{5mm}
+\setlength\extrarowheight{2mm}
+\centering
+\begin{tabular}{c| c}
+
+Filter  & $ R^2 $ value \\ \hline 
+
+R & $0.999567242841$ \\
+I & $0.999985446198$ \\
+
+\end{tabular}
+\caption{Corresponding $R^2$ values for our linear fits.}
+\end{table}
+
+This means our results show a pretty much perfect linear relationship as we expected.

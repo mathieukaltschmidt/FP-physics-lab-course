@@ -1,6 +1,6 @@
 \chapter{Globular Cluster BS90$^{\mathbf{14}}$}
 In this part of the experiment we are analyzing the properties of the globular cluster BS90$^{14}$. Unfortunately the bad weather conditions during our measurement prevented us from collecting data by ourselves. Instead we are working with images taken by the Hubble Space Telescope (HST).\\
-The goal of this part is to perform PSF fitting for two different filter constellations and match both images and finally plot a Color Magnitude Diagram (CMD) to determine age and metallicity of the cluster after fitting isochrones.
+The goal of this part is to perform PSF fitting for two different filter constellations, matching both images together and finally plot a Color Magnitude Diagram (CMD) to determine age and metallicity of the cluster after fitting different isochrones by varying both parameters.
 \begin{figure}[H]
 \begin{minipage}{0.49\textwidth}
 	\includegraphics[scale = 0.085]{figures/Exposures/BS90_I}
@@ -19,15 +19,16 @@ To calibrate the measured data to a standard scale, which is in this case the ap
 	\end{align*}
 	We choose ten suitable stars, e.g. stars that are clearly isolated and bright enough but not yet saturated. 
 \newpage
-The results of our measurement are enlisted in the following table.
+The results of our measurement are enlisted in the following tables
+.
 	
 	\begin{table}[H]
 \setlength{\tabcolsep}{2mm}
 \renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth} 
-\begin{tabular}{|c||c c c c c||c c c c c|}
+\begin{tabular}{|c|c c c c c|c c c c c|}
 \hline
-Star & Mag$_{\text{V}}$ & \#$_{\text{V}}$ & $\Delta$\#$_{\text{V}}$ & $p_{0,\text{V}}$ &$\Delta p_{0,\text{V}}$ & Mag$_{\text{I}}$ & \#$_{\text{I}}$ & $\Delta$\#$_{\text{I}}$ & $p_{0,\text{I}}$ &$\Delta p_{0,\text{I}}$\\ \hline \hline
+Star & Mag$_{\text{V}}$ & \#$_{\text{V}}$ & $\Delta$\#$_{\text{V}}$ & $p_{0,\text{V}}$ &$\Delta p_{0,\text{V}}$ & Mag$_{\text{I}}$ & \#$_{\text{I}}$ & $\Delta$\#$_{\text{I}}$ & $p_{0,\text{I}}$ &$\Delta p_{0,\text{I}}$\\ \hline 
 1 & 17.78 & 908 & 30 & 25.175 & 0.036 & 16.65 & 1881 & 43 & 24.836 & 0.025 \\
 2 & 17.77 & 1371 & 37 & 25.613 & 0.029 & 16.21 & 4274 & 65 & 25.287 & 0.017 \\
 3 & 17.67 & 1345 & 37 & 25.492 & 0.030 & 16.81 & 3994 & 63 & 25.814 & 0.017 \\
@@ -41,20 +42,43 @@ Star & Mag$_{\text{V}}$ & \#$_{\text{V}}$ & $\Delta$\#$_{\text{V}}$ & $p_{0,\tex
 \hline
 \end{tabular}
 \end{adjustbox}
-\caption{\label{tab:2} Zeropoint calibration by comparing ten stars with SIMBAD references}
+\caption{\label{tab:2} Zeropoint calibration by comparing ten stars with SIMBAD references. The left part corresponds to the exposure analyzed with the $V$-filter, the right part to the one analyzed with the $I$-filter.}
+\end{table}
+\textbf{Remark:} Due to the limited space we abbreviated counts with $\#$. \\
+	
+We take the mean of the calculated zeropoints $p_0$ and computed the standard deviation as statistical error  and the error propagation as usual to get an estimate of the systematic error. \\
+The final results are the following:
+
+\begin{table}[H]
+\setlength{\tabcolsep}{5mm}
+\setlength\extrarowheight{2mm}
+\centering
+\begin{tabular}{c| c c c}
+
+Filter  & zeropoint $p_0$ & $\Delta p_0$ (syst.) & $\Delta p_0$ (stat.) \\ \hline 
+
+V & 25.334 & 0.004 & 0.011 \\
+I & 24.953 & 0.004 & 0.007 \\
+
+\end{tabular}
+\caption{Results of the zeropoint calibration.}
 \end{table}
 
-	%TODO explanation of the errors
-	
-We take the mean of the calculated zeropoints $p_0$ and compute the standard deviation of our errors and the error progation to get the final results: 
-\begin{align*}
-	p_{0,\text{V}} &= (25.334 \pm 0.004 \pm 0.011) \\
-	p_{0,\text{I}} &= (24.953 \pm 0.004 \pm 0.007)
-\end{align*}
-
 \section{PSF photometry with STARFINDER}
-We are using \texttt{starfinder} to perform statistical PSF fitting, e.g. the IDL takes the positions of about 10 to 30 isolated, unsaturated stars and applies several corrections (subtraction of an average background and normalization of the peak intensities) to both images. Now the software is able to compare the results for all the stars we chose and to determine the final result: an average PSF for the entire image.
-\subsection{Results of the PSF fitting}
+We are using STARFINDER to perform statistical PSF fitting, e.g. the IDL takes the positions of about 10 to 30 isolated, unsaturated stars and applies several corrections (subtraction of an average background and normalization of the peak intensities) to both images. Now the software is able to compare the results for all the stars we chose and to determine the final result: an average PSF for the entire image.
+\subsection{The basic idea of PSF fitting}
+
+The point spread function (PSF) describes the response of an imaging system to a point source or point object which are in our case the stars on the exposures. The degree of blurring  of the point object is a measure for the quality of the image.
+An important characteric is that the imaging of two different objects is independent of each other. This is due to to the non-interacting property of photons. The image of a complex object can then be seen as a convolution of the true object and the PSF.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figures/Introduction/psf}
+	\caption{Visualization of the key idea if PSF fitting}
+\end{figure}
+The radiated field is related to its corresponding source plane distribution via Fourier transform. This is how the algorithm is able to determine the PSF from our exposures. \\
+
+\textbf{Applying this idea to our problem:} \\
+
 We chose about 25 stars and selected the most suitables, e.g. those who were as centered and symmetric as possible for the fitting. 
 \begin{figure}[H]
 
@@ -78,17 +102,40 @@ We chose about 25 stars and selected the most suitables, e.g. those who were as 
 \caption{Results of the PSF fit for the I-filter (left) and the V-filter(right).} 
 \end{figure} 
 
-With this result \texttt{starfinder} is able to detect all potential stars by dividing the image into smaller parts and checking if the analyzed objects are brighter than the estimated threshold. 
-Using this technique the program is only able to determine the instrumental magnitude if the sources. The result from the zeropoint calibration, performed in (\ref{sec:zeropoint}) becomes important now to get the corresponding apparent magnitudes.
-After finishing the iterative process for both images we get a list of all stars which could be detected by \texttt{starfinder}. 
+With these results STARFINDER is able to detect all potential stars by dividing the image into smaller parts and checking if the analyzed objects are brighter than the estimated threshold. 
+Using this technique the program is only able to determine the instrumental magnitude if the sources. The result from the zeropoint calibration performed in (\ref{sec:zeropoint}) becomes important now to get the corresponding apparent magnitudes.
+After finishing the iteration for both images we get a list of all stars which could be detected. \\
+To finally obtain the CMD for our cluster we need to match the stars found in both pictures. This cross matching process is done with the help of the Python script \texttt{matchstars.py} located on our working computer at MPIA. \\ 
 
 \section{Color Magnitude Diagram for BS90$^{\mathbf{14}}$ }
-To finally obtain the CMD for our cluster we need to match the stars found in booth pictures. This cross matching process is done with the help of the Python script \texttt{matchstars.py} located on our working computer. 
-We are now able to plot the CMD (V versus V-I) and fit matching theoretical isochrones by varying different parameters in the script used for plotting (\texttt{cmdplot.py})such as the \textbf{shift} of the image, the \textbf{metallicity} or the \textbf{age} of the cluster. \\
-The result is presented in figure (\ref{fig:CMD}):
+We are now able to plot the CMD (V versus V-I) and fit matching theoretical isochrones by varying different parameters in the script used for plotting (\texttt{cmdplot.py} also available on the working computer) such as the \textbf{shift} of the image, the \textbf{metallicity} or the \textbf{age} of the cluster. \\
+The resulting Color-Magnitude diagram is presented in figure (\ref{fig:CMD}):
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{figures/Plots /CMD.png}
-	\caption{Color Magnitude Diagram with theoretical isochrones for BS90$^{\mathbf{14}}$}\label{fig:CMD}
+	\includegraphics[scale=0.6]{figures/Plots/CMD.png}
+	\caption{Color-Magnitude diagram with theoretical isochrones for BS90$^{\mathbf{14}}$}\label{fig:CMD}
 \end{figure}
 
+We fitted a total of four possible isochrones with different parameters. The quality of our results is discussed subsequently.
+
+\begin{table}[H]
+\setlength{\tabcolsep}{5mm}
+\setlength\extrarowheight{2mm}
+\centering
+\begin{tabular}{c| c c c}
+
+Isochrone [color] & Age [Gyr] & Metallicity $Z$ \\ \hline 
+
+blue & 4.8 & 0.025  \\
+green & 4.5 & 0.007  \\
+magenta & 4.5 & 0.020  \\
+yellow & 5.2 & 0.022  \\
+
+\end{tabular}
+\caption{Fitting of the theoretical isochrones in our CMD.}
+\end{table}
+
+The green isochrone doesn't seem to be a good reference, because one can clearly see that there is a large deviation between the curve and structure of the cluster. \\
+We included it only due to the fact that the parameters chosen for this case match with the literature values.\footnote{Reference values can be found in this paper:
+\url{https://arxiv.org/pdf/0704.2942.pdf}} \\
+For all of the other curves we tried to find the best possible combination of parameters. Nevertheless we recognize a significant difference between the values for the metallicities we found and the value from the paper. Possible reasons for this deviation are discussed in the conclusion.

@@ -101,13 +101,17 @@ If one nevertheless wants to estimate the bolometric magnitude from measurements
 In the following table one of the most commonly used filter systems, the Johnson system is presented. Here $\lambda_0$ describes the respective central wavelength and $\delta\lambda$ the corresponding spectral width.
 \begin{table}[H]
 \centering
-\begin{tabular}{c|| c c l }
-Filter & $\lambda_0$ \ [nm] & $\delta\lambda$ \ [nm] & spectral range \\ \hline \hline 
+\setlength{\tabcolsep}{5mm}
+\setlength\extrarowheight{2mm}
+\begin{tabular}{c| c c l }
+
+Filter & $\lambda_0$ \ [nm] & $\delta\lambda$ \ [nm] & spectral range \\ \hline 
 U & 365 & 66 & ultraviolet  \\
 B & 445 & 94 & blue\\
 V & 551 & 88 & visual (green) \\
 R & 658 & 138 & red \\
 I & 798 & - & infrared \\
+
 \end{tabular}
 \caption{\label{tab:johnson} The spectral setup of the Johnson filter system \cite{Pott2017}}
 \end{table}
@@ -156,12 +160,12 @@ To understand how this is possible, one needs to understand how the luminosity o
 \begin{align}
 	L \sim M^a
 \end{align}
- The exponent $a$ has a mass dependence itself (Here: $a = 3.5 $ for $2M_{\odot} < M < 20M_{\odot}$). \\ One can conclude, that the massive stars on the top left end of the CMD drift to the red giant branch after all their hydrogen has been burned. The older stars with lower masses also start at some time to move into the red giant branch. \\
+ The exponent $a$ has a mass dependence itself ( Here: $a = 3.5 $ for $2M_{\odot} < M < 20M_{\odot}$). \\ One can conclude, that the massive stars on the top left end of the CMD drift to the red giant branch after all their hydrogen has been burned. The older stars with lower masses also start at some time to move into the red giant branch. \\
  The time a star spends on the main sequence is proportional to the ratio $\frac{M}{L}$, e.g.
  \begin{align}
  	\tau_{\text{nuc}} \sim \frac{M}{L} = M^{(1-a)}
  \end{align}
- The shifting points in the sequence are called the \textbf{turn-off points}. From the position of the turning point one can estimate the age of the cluster. This method leads to good results, especially for older populations. In our fits later in the evaluation part we also vary the metallicity to obtain the best possible fit curve. 
+ The shifting points in the sequence are called the \textbf{turn-off points}. From the position of the turn-off point one can estimate the age of the cluster. This method leads to good results, especially for older populations. In our fits later in the evaluation part we also vary the metallicity to obtain the best possible fit curve. 
  \section{Stellar clusters}
  This section mainly deals with the classification and the comparison of the two main groups of stellar clusters: Open clusters and globular clusters (GC).
  \subsection{Open clusters}
