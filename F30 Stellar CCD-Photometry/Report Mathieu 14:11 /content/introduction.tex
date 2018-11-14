@@ -1,0 +1,175 @@
+\chapter{Fundamental principles of astronomical measurements}
+Most of the times we are trying to obtain astronomical data we measure electromagnetic radiation. \\
+Unfortunately there are two basic problems with this approach. On the one hand we are dealing with huge distances in space, which lead to very small intensities and on the other hand we can not achieve any kind of laboratory conditions like in space, due to the mere lack of a laboratory which is large enough.
+
+\section{Detectors in Astronomy}
+
+The evolution of detectors in astronomy started simple, with people locking in the sky. Soon scientists realized that it's more precise and reliable to take pictures which ultimately lead to today's standard, charged couple devices (CCD's). \\
+\begin{figure}[H]
+\vspace{-1cm}
+\begin{minipage}{0.4\textwidth}
+\hspace{0.7cm}
+		\includegraphics[scale = 0.48]{figures/Introduction/ccd1}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\vspace{-1cm}
+%\hspace{120pt}
+		\includegraphics[scale=0.35]{figures/Introduction/ccd2}
+\end{minipage}
+\caption{Image of a CCD chip and a schematic overview of it's functionality.} 
+\end{figure} 
+
+
+ These are semiconductor detectors, that use the inner photoelectric effect to convert incoming radiation into a separated charge, that can be read out. A CCD consists of a two dimensional grid of light sensitive metal oxide semiconductors, that act as capacitors. Incoming photons excite electrons into the conduction band, after which the electrons are trapped in the capacitors potential wells. At this point they can easily be read out and converted into a digital signal. \\
+This technique had such a big impact on astronomy because of the following fundamental advantages compared to other light detectors:
+
+\begin{enumerate}
+	\item[\textbf{1.}]\textbf{high sensitivity:} CCDs archieve a quantum efficiency of up to 90\%.
+	\item[\textbf{2.}]\textbf{high dynamic range:} Dynamic range characterises the "levels of brightness", that can be detected by one device. Therefore a high dynamic range is helpful in astronomy, because we are dealing with stars that are visible with the bear eye, as well as obects we recieve single photons from.
+	\item[\textbf{3.}]\textbf{linearity over almost the entire dynamic range:} The detector signal is to an amazing degree proportional to the incoming photon flux, up until the detector is saturated. This is a helpful property when comparing to object, on the same image as well as on different images. Nevertheless the exposure time should be chosen very carefully, because to make sure to recive a useful signal to noise ratio.
+	\item[\textbf{4.}] \textbf{direct availability for further computer-aided data analysis:} Unlike all analogue forms of photography and photometry the data collected by a CCD is immanently converted into a digital signal, witgout any quality loss or other additional problems. 
+\end{enumerate}
+
+Of course, as always, there are some drawbacks. For on it has to be considered that some pixels are dead (their output has no meanuing). Also, some pixels are activated by cosmic radiation, such as $\gamma$-rays, muons and electrons. These pixels or even the area around them mostly appear to be saturated or to have an unlikely high count.\\
+Both these events can be counteracted by taking multiple measurements with slightly different camera angles. The dead pixels will stay at their exact position, while the pixels activated by other kinds of radiation will randomly change place. Therefore it is possible to get rid of both these errors, he described technique is called "dithering" or "jittering".
+
+\section{Data Reduction}
+
+Imperfections in the manufacturing process of CCDs lead to some variations of the sensitivity of each pixel
+
+
+
+\section{Basics of photometry}
+What we are observing in our measurements is the \textbf{radiation flux $F$} of the stars which is given by
+\begin{align}
+	F = \frac{L}{4\pi d^2}\label{eq1.1}
+\end{align}
+where $d$ is the distance between the observer and the star and $L$ is his luminosity. \\
+To normalize our measured values we are using the sun as reference for the units we choose. For example the luminosity of the sun is 
+	$1 \ L_{\odot} = 3.846 \cdot 10^{26} \ \si{\watt}$. \\	
+The \textbf{Stefan-Boltzmann law} explains the connection between the surface temperature of a star and his flux. It is given by
+\begin{align}
+	F = \sigma \ T_{\text{eff}}^4\label{eq1.2}
+\end{align}
+with the Stefan-Boltzmann constant $\sigma = 5.67 \cdot 10^{-8} \ \si{\watt\meter^{-2}\kelvin^{-4}}$. To understand the meaning of the effective temperature $T_{\text{eff}}$ we need the know what we understand as a black body. A black body is, in theory, an object that absorbs every radiation independent on the corresponding wavelength and does'nt reflect any of it. The effective temperature in (\ref{eq1.2}) is the temperature a black body with the same surface as the star would need to emit the same radiation power. \\
+We already introduced a new quantity, the luminosity of a star which is defined as the surface area $A$ times the flux. From this we can derive a relation between luminosity and temperature using (\ref{eq1.2}):
+\begin{align}
+	L = 4\pi R^2\sigma T_{\text{eff}}^4
+\end{align}
+with the radius $R$ of the star. \\
+Another interesting parameter in astronomical observations are the masses of the observed stars, which determine their  evolution. In particular the initial mass of the star is the parameter that allows us to predict his fate. But unfortunately the determination of star masses from single measurements is not trivial. \\
+As one can conclude from (\ref{eq1.1}), the intensity of the incoming flux of the star, e.g. the number of photons detected decreases with the square of the distance. The problem is that the distance is not directly known for most observations. This and the fact that every instrumental setup is different leads us to the introduction of different magnitude scales to be able to determine luminosities and compare results taken from various observations. \\
+These different scales are explained in the following section.
+
+\section{Magnitudes}
+To solve the problem mentioned above we introduce three different magnitude scales and another scale including the wavelength independency of the observed radiation.
+\subsection{Instrumental Magnitude}
+The instrumental magnitude allows us to compare measurements of different objects within the same measurement or during different sessions at the same instrumental setup under the same conditions. \\
+It is a relative unit, converting the measured counts to a logarithmic scale with an arbitrary zeropoint, e.g.
+\begin{align}
+		m_{\text{instr.}} = \text{zeropoint} - 2.5\log_{10}(\text{counts}) \label{eq1.4}
+	\end{align}
+With the help of so called standard stars whose magnitude is already known and the fitting of a point spread function (PSF), which will be explained in detail later, one can convert the relative instrumental magnitude into the apparent magnitude.
+\subsection{Apparent Magnitude}
+This magnitude scale takes the earth as reference point and measures the brightness of the star as perceived from it's surface, assuming a logarithmic perception of the brightness by the human eye. This scale was already introduced by Hipparch at $\sim$ 150 b.c., then using brightness classes ranging from 1 (brightest stars) to 6 (barely visible). Nowadays a difference of five magnitudes corresponds to a factor of 100.
+With this scaling one finds the following formula for the flux ratio of two stars: 
+\begin{align}
+	\frac{F_2}{F_1} = 100^{\sfrac{(m_1-m_2)}{5}}
+\end{align}
+As before standard stars are used to determine the offset between instrumental and apparent magnitude and thereby calibrating the scale. Now we are able to compare different magnitudes obtained from different measurements and with different circumstances.
+\subsection{Absolute Magnitude}
+Directly resulting from the conceptual idea of the apparent magnitude we finally introduce the absolute magnitude as the apparent magnitude a star would have if they were a distance of 10 pc\footnote{The distance 1 pc $= 3.263 \text{ ly} = 3.086 \cdot 10^{16}$ m.}away. \\
+The distance has been chosen arbitrarily. This allows us to physically compare the absolute brightness of different stars at different distances. One can now calculate the ratio between the actual measured flux (the apparent magnitude $m$) and the hypothetical magnitude of the flux if the star was actually 10 pc away. 
+\begin{align}
+	\frac{F(10 \text{ pc})}{F} = \left( \frac{d}{10 \text{ pc}} \right)^2 = 100^{\sfrac{(m-M)}{5}}
+\end{align}
+In this formula, $m$ represents the apparent magnitude and $M$ the absolute magnitude. Now we are able to compute the absolute brightness of every star, if we know it's distance $d$ and the corresponding apparent magnitude. If the distance is, as usually, not known and other methods lead to a determination of the stars absolute brightness, we are able to use the following formula to find the distance of the observed star:
+\begin{align}
+	d = 10^{\sfrac{(m-M+5)}{5}} \quad [\text{pc}]
+\end{align}
+where the expression $m-M = 5\operatorname{log}_{10} d[\text{pc}] - 5$ is called the distance modulus. \\
+If two stars are located at the same difference from the observer the following relation holds: 
+\begin{align}
+	\frac{F_2}{F_1} = \frac{L_2}{L_1} = 100^{\sfrac{(M_1-M_2)}{5}}
+\end{align}
+As a result, for known luminosity and absolute magnitude of a reference star we can determine the luminosity of any other star at the same distance from it's absolute magnitude.
+\section{Bolometric Magnitude}
+We distinguish wavelength-dependent and bolometric magnitudes, which are integrated over the total wavelength range. \\ 
+Due to limitations in the respective spectral range of the detectors it is often hard to determine the bolometric amplitude $M_{\text{bol}}$. We want our measurements to be as precise as possible. That's the reason why they need to be performed by space observatories to avoid absorption processes due to the earth's atmosphere. \\
+If one nevertheless wants to estimate the bolometric magnitude from measurements from earth, we need to introduce wavelength-dependent magnitudes $M_{\lambda}$ which cover only one part of the total spectral range. \\
+ To realize this, we can use different well-defined filters, which let us concentrate our measurements on specific ranges. \\
+In the following table one of the most commonly used filter systems, the Johnson system is presented. Here $\lambda_0$ describes the respective central wavelength and $\delta\lambda$ the corresponding spectral width.
+\begin{table}[H]
+\centering
+\begin{tabular}{c|| c c l }
+Filter & $\lambda_0$ \ [nm] & $\delta\lambda$ \ [nm] & spectral range \\ \hline \hline 
+U & 365 & 66 & ultraviolet  \\
+B & 445 & 94 & blue\\
+V & 551 & 88 & visual (green) \\
+R & 658 & 138 & red \\
+I & 798 & - & infrared \\
+\end{tabular}
+\caption{\label{tab:johnson} The spectral setup of the Johnson filter system \cite{Pott2017}}
+\end{table}
+
+By measuring different filter constellation one can compute a distance-independent color index
+\begin{align}
+	m_B - m_V = M_B - M_V = B-V
+\end{align}
+which gives us information on the spectral properties of the object. \\
+To correct any fractional deviations from a perfect filter system the following correction formula, including the apparent magnitude $B$ in the Johnson system and the measured instrumental magnitude $b$ is presented: 
+\begin{align}
+	B = b + b_0 + c_B(b-v) + a_b \cdot \text{airmass}
+\end{align}
+The other correction terms have to be computed again by comparison with standard stars. The assumption made to obtain this formula was a slightly different transmission curve for the $B$ filter.
+\section{The Hertzsprung-Russel-Diagram}
+After having classified enough stars trough observation, astronomers were able to perform statistical analysis. \\
+It was noticed, that the spectral classification of the stars was related to some basic parameters such as mass or luminosity. For example the so called $O$ stars which are located at the end of the classification scheme were observed to be young, massive and luminous whereas the $M$ stars on the other side of the scheme have a low mass and are barely visible. \\
+This fundamental relation between the spectral type of a star, which is physically connected to his effective temperature $T_{\text{eff}}$, and his luminosity can be visualized in a \\ \textbf{Hertzsprung-Russel-Diagram} (HRD). 
+
+\begin{figure}[H]
+	\begin{minipage}{0.4 \textwidth}
+		\hspace{1cm}
+		\includegraphics[scale=0.22]{figures/Introduction/HRD2}	
+	\end{minipage}
+	\begin{minipage}{0.4 \textwidth}
+		\hspace{1.5cm}
+		\includegraphics[scale=0.3]{figures/Introduction/hrd}
+	\end{minipage}
+	
+\caption{An observational HRD with 22.000 plotted stars from the Hipparcos catalogue and a schematic picture of a HRD showing some well-known stars in the milky way}
+\end{figure}
+One can easily see, that most stars are located near the so called main sequence, which is characterized by the hydrogen burning phase during the main phase of a star's life. In the other regions in the diagram we can find stars in different stages of their life. \\
+As a conclusion one can remark that the HRD shows the evolutionary history of the population. \\
+It's always hard to compute a HRD because as we have already mentioned above the absolute magnitudes or luminosities are often not accessible. The same holds for the determination of the respective spectral classes. \\
+Instead, astronomers use \textbf{Color-Magnitude-Diagrams} to visualize the evolution of star clusters. Here, the apparent magnitude $V$ is plotted over the color index $B-V$ which is related to $T_{\text{eff}}$. \\
+To obtain the color index, measurements with at least two filters are needed. \\
+In the following we want to discuss how one can access the relevant data such as the distance, the age, or the metallicity of the population from the CMD.
+\subsection{Analysis of a Color Magnitude Diagram}
+First of all we assume that all stars of a cluster are approximately at the same distance, have the same chemical composition and the same age. \\
+By plotting $V$ versus $B-V$ and comparing the position of the main sequence of the cluster with a known cluster, the distance can be estimated. In this approxmation we neglect small effects due to varying metallicities . \\
+The shift that is needed to align the main sequence with the one from the known cluster is proportional to the distance modulus of the cluster. \\
+Alternatively one can always compare the CMD with theoretical models for stellar evolutions which are nowadays broadly known. \\
+What we are doing in our evaluation of the cluster is applying a fitting routine to find the positions of the so called \textbf{isochrones}, e.g. the curves representing the position of the stars of the same age inside the population. \\
+Another assumption, that all stars of the population were  formed approximately at the same time , gives us the possibility to determine the age of the cluster from the CMD. \\
+To understand how this is possible, one needs to understand how the luminosity of stars is dependent on their mass:
+\begin{align}
+	L \sim M^a
+\end{align}
+ The exponent $a$ has a mass dependence itself (Here: $a = 3.5 $ for $2M_{\odot} < M < 20M_{\odot}$). \\ One can conclude, that the massive stars on the top left end of the CMD drift to the red giant branch after all their hydrogen has been burned. The older stars with lower masses also start at some time to move into the red giant branch. \\
+ The time a star spends on the main sequence is proportional to the ratio $\frac{M}{L}$, e.g.
+ \begin{align}
+ 	\tau_{\text{nuc}} \sim \frac{M}{L} = M^{(1-a)}
+ \end{align}
+ The shifting points in the sequence are called the \textbf{turn-off points}. From the position of the turning point one can estimate the age of the cluster. This method leads to good results, especially for older populations. In our fits later in the evaluation part we also vary the metallicity to obtain the best possible fit curve. 
+ \section{Stellar clusters}
+ This section mainly deals with the classification and the comparison of the two main groups of stellar clusters: Open clusters and globular clusters (GC).
+ \subsection{Open clusters}
+An open cluster is a group of up to a few thousand stars that  have roughly the same age. More than 1000 open clusters have been discovered within the Milky Way Galaxy and many more are thought to exist. \\
+  They are weakly bound by gravitational attraction and become disrupted by close encounters with other clusters and clouds of gas as they orbit the galactic center. \\
+  Their lifetime is estimated from a few hundred million years up to a few billion years for the most massive ones. \\
+  The metallicity of stars in an open cluster varies a lot, depending on age and location within the host galaxy. Normally they are distributed in the disc of the galaxy.
+ \subsection{Globular clusters}
+ In this experiment we are dealing with globular clusters, which are in general much older and more massive than the open clusters. They are among the oldest objects in the universe. Other characteristics are that the stars in a GC have a poor metallicity because they consist almost only of hydrogen and helium. This can be explained by the fact, that these were the elements found directly after the big bang. This indicates that the GC must have been formed in the early universe. \\
+ They are spherically symmetric and located in the halo of a galaxy. For the Milky Way, around 150 GCs are known. Because they were formed at the early phase of the galaxy's formation they are good references to study their evolution.
+ In general we can conclude that stellar clusters are well-suited for analysis with HRDs or CMDs because the respective diagrams have characteristic forms and therefore it is relatively easy to locate the stars within the diagrams.
