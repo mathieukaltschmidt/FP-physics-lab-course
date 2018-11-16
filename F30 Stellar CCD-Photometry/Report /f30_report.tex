@@ -1,4 +1,4 @@
-\documentclass[abstracton,11pt]{scrreprt} %use twoside for printing
+\documentclass[abstracton,11pt,twoside]{scrreprt} %use twoside for printing
 
 %Loading Packages and General Settings
 \input{metadata/settings}
@@ -16,9 +16,11 @@
 \pagenumbering{arabic}
 
 %Introduction and Theoretical Background
+\addcontentsline{toc}{part}{\hfill \Large Preface}
 \input{content/introduction}
 
 \newpage
+\addcontentsline{toc}{part}{\hfill \Large Evaluation}
 %Evaluation
 
 %First part: cooling the detector, testing sensitivity and 				 linearity, dome field and bias correction 
@@ -35,7 +37,6 @@
 
 %Discussion and Conclusion
 \input{content/conclusion}
-
 %Including the corresponding Python code
 %\appendix
 %\input{content/appendix}
@@ -45,10 +46,12 @@
 \pagenumbering{Roman}
 \newpage
 \thispagestyle{plain}
+\listoffigures
 \nocite{*}
 \printbibliography[title=References]
-\addcontentsline{toc}{chapter}{List of Figures}	
-\listoffigures
-
-
+\vfill
+\section*{Acknowledgements}
+We want to thank our supervisor Asmita for her constant support during the execution of the measurements and the help with the operation of \texttt{IRAF} with which we had a lot of trouble in the beginning.
+\vfill
 \end{document}
+re 

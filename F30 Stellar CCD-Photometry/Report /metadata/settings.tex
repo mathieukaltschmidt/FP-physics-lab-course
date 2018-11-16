@@ -52,6 +52,7 @@
 %color settings
 \definecolor{myred}{RGB}{196,19,47} 
 \definecolor{myblue}{RGB}{65,105,225}
+\definecolor{mydarkblue}{RGB}{1,1,141}
 \definecolor{mygray}{RGB}{102, 102, 142}
 
 
@@ -66,8 +67,8 @@
 \makeatletter
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE]{\footnotesize\nouppercase{\color{mygray}\leftmark}}
-\fancyhead[RO]{\footnotesize\nouppercase{\color{mygray}\rightmark}}
+\fancyhead[LE]{\footnotesize\nouppercase{\color{mydarkblue}\leftmark}}
+\fancyhead[RO]{\footnotesize\nouppercase{\color{mydarkblue}\rightmark}}
 \fancyfoot[C]{- \thepage\hspace{3pt}-}
 \renewcommand{\headrulewidth}{0.2pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -113,4 +114,4 @@ doi=false
 
 %always use heperref at the end of the preamble!
 \usepackage[colorlinks=True]{hyperref}
-\hypersetup{allcolors=myblue,urlcolor=black}
+\hypersetup{allcolors=mydarkblue,urlcolor=black}

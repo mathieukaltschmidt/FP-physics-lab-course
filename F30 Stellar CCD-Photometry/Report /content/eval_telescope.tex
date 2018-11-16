@@ -6,43 +6,95 @@ More precisely, we are describing the cooling process, determining the band gap 
 
 Before we were able to start with our measurements we had to prepare the telescope by cooling it down with liquid nitrogen to prevent disturbing effects such as thermal activation of electrons that could effect our measurements. First of all we evacuated the cryostat to protect the chip of damage cause by freeze out. This process took about three hours. Using a Python script, we took test images every thirty seconds to obtain the current temperature and to be able to see the effects of the cooling process to the quality of the images. To demonstrate the impact on the resolution of the exposures we present two images, one taken at the beginning of the cooling process with a temperature of $T_{\text{in}} = -4.7$ °C  and the other at the end, after reaching the final temperature $T_{\text{f}} = -90.3$ °C.
 \begin{figure}[H]
-	\begin{minipage}{0.4\textwidth}
-	\hspace{0.6cm}
+	\begin{minipage}{0.35\textwidth}
+	\hspace{0.15\textwidth}
 		\includegraphics[scale = 0.17]{figures/Exposures/cooling_start}
 	\end{minipage}
-	\begin{minipage}{0.4\textwidth}
-	\hspace{1.5cm}
+	\hfill
+	\begin{minipage}{0.35\textwidth}
+		\hspace{-0.4\textwidth}
 		\includegraphics[scale=0.17]{figures/Exposures/cooling_end}
 	\end{minipage}
-	\caption{Visualization of the impact if the cooling process on the quality of the images. On the left we see the picture taken at $T = T_{\text{in}}$ on the right at $T = T_{\text{f}}$.}
+	\caption[Impact of the cooling process]{Visualization of the impact of the cooling process on the quality of the images. On the left one finds the picture taken at $T = T_{\text{in}}$ on the right at $T = T_{\text{f}}$.}
+
 \end{figure} 
 As one can easily see, the quality of the image improved a lot compared to the beginning of the measurement. The structure of the image is now almost homogeneous and we reduced nearly all of the disturbing noise. In addition one can already see some of the dead pixels as small white parts which don't contribute to the measurement. \\
  
 With  the temperature data we were able to determine the band gap $E_g$ of the semiconductor by fitting the theoretical curve which describes the dependency of the dark current $I$ from the temperature $T$ using Fermi statistics:
 \begin{align}
-	I = c_0 \cdot T^{\frac{3}{2}}\cdot\exp(-\frac{E_g}{2 k_B T})
+	I = c_0 \cdot T^{\frac{3}{2}}\cdot\exp(-\frac{E_g}{2 k_B T}) \label{eqn: dark current}
 \end{align}
 The Boltzmann constant $k_B$ is given by $k_B = 8.617 \cdot 10^{-5} \ \frac{\text{eV}}{\text{K}}$.
 The result of our measurement is presented in the following diagram.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/Plots/band_gap.pdf}
-\caption{Determination of the band gap of silicon as an important characteristic of the experimental setup.}	
+\caption[Determination of the band gap of silicon]{Determination of the band gap of silicon as an important characteristic of the experimental setup.}	
 \end{figure}
-As a result of the measurement we determined the band gap for our detector to:
+As a result of the measurement we determined the band gap for our detector:
 \begin{align}
 	E_g = (1.259 \pm 0.005) \ \text{eV}
 \end{align}
-The theoretical value for silicon is $E_{g, \text{SI}} = 1.15$ eV and therefore slightly smaller than the value we extracted from our temperature measurement. %TODO explanation
-
+The theoretical value for silicon is $E_{g, \text{SI}} = 1.15$ eV and therefore slightly smaller than the value we extracted from our temperature measurement. 
+\newpage
 \section{Flat field corrections}
+To account for all variables in our setup we have to do flat field corrections for every filter (V-, I-, R-filter). \\
+For the calculation of a master flat field we took five images with relatively long integration time, that were determined before the measurements.
+It is necessary to take multiple pictures for the master flat field, because some pixels are activated by cosmic background radiation.
+This is also the reason why we take the median of the values and not the mean. 
+The mean will obviously be heavily influenced by a much bigger or smaller value, while the median remains most likely almost the same. \\
+The single images then were combined to the master flat field, which itself was normalized afterwards.\\
+When correcting an image we divide it by the master flat field.
+This is the reason why normalization is important to actually be able to work with the master flat field because we only need relative  and not absolute values. \\
+To visualize the effect of the flat field corrections we performed one on an image we used to calculate the master flat field.\\
+\begin{figure}[H]
+	\hspace{0.05\textwidth}
+	\begin{minipage}{0.4\textwidth}
+		\includegraphics[width = \textwidth]{figures/Exposures/before}
+	\end{minipage}
+	\hspace{0.05\textwidth}
+	\begin{minipage}{0.4\textwidth}
+		\includegraphics[width = \textwidth]{figures/Exposures/correction}
+	\end{minipage}
+	\caption[Impact of the master flat field correction on the quality of the image]{Impact of the master flat field correction on the quality of the image.  \\ The right picture shows the corrected version of the left picture.}
+	\label{fig:ffc}
+\end{figure} 
+Since the picture should only contain an illuminated surface we expect the corrected image to show a nearly homogeneous picture and not any additional noise structures. \\
+This is exactly what we see in figure [\ref{fig:ffc}], where the only visible differences in the corrected image are some errors, 
+while the uncorrected image contains variations in intensity, tiny dust particles and other imperfections. 
+The origin of these errors will be discussed later in the evaluation.\\
 
-%TODO das macht Q :-)
+\begin{figure}[H]
+	
+	\begin{minipage}{\textwidth}
+		\centering
+		\includegraphics[width = 0.8\textwidth]{figures/Plots/histR}
+	\end{minipage}
+	\begin{minipage}{\textwidth}
+		\centering
+		\includegraphics[width = 0.8\textwidth]{figures/Plots/histV}
+	\end{minipage}
+	\begin{minipage}{\textwidth}
+		\centering
+		\includegraphics[width = 0.8\textwidth]{figures/Plots/histI}
+	\end{minipage}
+	\caption{Histograms for the normalized intensity distributions for the three filter constellations.}
+	\label{fig:histograms}
+\end{figure} 
+
+The intensity variations and their distribution are best visible when they are plotted in a histogram, as was done for the master flat fields for each filter in figure
+[\ref{fig:histograms}]. \\
+There is a noticeable peak at 0 on all the histograms, which is very likely caused by the dead pixels of the chip.
+The remaining distribution of counts describes the variations in the CCDs sensitivity, which highlights the importance of the master flat field correction, and is, as expected, centered around 1.\\
+When looking at the histograms one also also see the slight variations in the distribution of the intensities for the different filter constellations. 
+Every filter affects the optical path differently.
+This means it makes sense to obtain a separate master flat field for each filter.\\
+The correction has to be done for every image taken with the CCD, because every image underlies these variations, and every image can be improved this way.
 
 \section{Linearity and dynamical range of the CCD}
 
 This part of the experiment deals with the limitations of the chip concerning sensitivity to incoming photons, linearity and its dynamical range. \\
-We measured with two different filter constellations, namely the same as in the section before ( R- and I-filter). \\
+We measured with the same two different filter constellations  as in the section before ( R- and I-filter). \\
 By plotting the median of the signal against the adjusted integration time for both flat-field images we want to determine the linear regime of the electronics. \\
 The result of the linear fit can be found in the following figure and is discussed after.
 
@@ -54,7 +106,7 @@ The result of the linear fit can be found in the following figure and is discuss
 	\hspace{1.7cm}
 		\includegraphics[scale=0.2]{figures/Plots/linearityI}
 	\end{minipage}
-	\caption{Results of the determination of the linear regime of the experimental setup with different filter constellations.}
+	\caption[Determination of the linear regime]{Results of the determination of the linear regime of the experimental setup with different filter constellations.}
 \end{figure} 
 Unfortunately we didn't choose larger integration times to find the domain where the chip is saturated. Therefore we can only conclude which domains are definitely in the linear regime.\\
 Nevertheless we the got the following results:
@@ -97,3 +149,70 @@ I & $0.999985446198$ \\
 \end{table}
 
 This means our results show a pretty much perfect linear relationship as we expected.
+
+\section{Sensitivity of the detector and noise properties}
+For this part, the dark current was neglected, as described in the introduction.\\
+Experimentally,  we used the I-filter and took 20 pairs of images with increasing integration time.
+
+According to Poisson statistic, the error in each pixel scales with the number of incoming electrons $N_e$ like
+\begin{align}
+\sigma_e^2 = N_e
+\end{align}
+Together with the quantum efficiency $\eta$ and gain $\kappa$ of the CCD 
+we have the following connection between incoming photons and measured electrons
+\begin{align}
+N_e = \frac{\kappa}{\eta} N_{e, d} \l\\
+\sigma_e^2 = \frac{\kappa^2}{\eta^2} \sigma_{e, d}^2
+\end{align}
+The other noise sources are the read-out noise of the gate amplifier $\sigma_R$ and the 
+\textit{Pixel Response Non-Uniformity} (PRNU) noise, $\sigma_{PRNU}$, 
+that is caused by slight variations of the quantum efficiency in each pixel.
+The latter one should increase linearly with the incoming photons
+\begin{align}
+\sigma_{PRNU, e} = N_e f_{PRNU} \label{eq: prnu}
+\end{align}
+with the detector dependent, characteristic factor $f_{PRNU}$.
+Therefore the total error is given by
+\begin{align}
+\sigma_{\text{tot}, d}^2 = \sigma_{e, d}^2 + \sigma_{R, d}^2 + \sigma_{PRNU, d}^2
+\end{align}
+
+Since the PRNU is pixel dependent, we should get rid of it by subtracting two pixels with the same integration time from each other.\\
+This leaves us with a total error of:
+\begin{align}
+\sigma_{\text{diff}, d}^2 &= 2 \left(\sigma_{R, d}^2 + \sigma_{e, d}^2\right)\\
+&= 2 \left(\sigma_{R, d}^2 + \frac{N_{e, d}}{\kappa}\right)\label{eqn: linear error}
+\end{align}
+We started with determining the total noise by calculating the standard deviation of a theoretically homogeneously illuminated area in one pair of images, 
+which turned out to be $\sigma_{\text{tot}} = (232.5 \pm 0.5)$. \\
+
+From the overscan region the read-out nose was determined to $\sigma_{R, d} = 18.9$. \\
+
+With the formulae above this gives us a photon noise of $\sigma_{e, d} = 47, 3$ and a PRNU noise of $\sigma_{PRNU, d} = 226.8$. \\
+
+Clearly the PRNU noise dominates the error. This is explained by equation (\ref{eq: prnu}) and the fact that we are dealing with
+intensities $> 10000$. Together with the estimate of order $f_{PRNU} \sim 0.01$ this is what we expected.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/Plots/gain}	
+	\caption{Determination of the gain factor of the CCD.}
+	\label{fig: gain factor}
+\end{figure}
+
+By fitting the linear part of our data, i.\,e. all the mean values up to 30000 counts, we were able to visualize equation (\ref{eqn: linear error}) in figure [\ref{fig: gain factor}]. \\
+
+This gives us a gain of $\kappa = (2.297 \pm 0.025)$ and a read-out error of 
+$\sigma_R = (9.2 \pm 5.1)$. The two values for our read-out error are therefore within the two sigma level. \\
+At about 30000 mean counts some pixels already start to saturate, which causes the linear part to flatten out and eventually even decrease. \\
+
+Another way to determine the gain is with 
+\begin{align}
+\sigma_{e, d}^2 = \frac{\eta}{\kappa} \label{eqn: kappa}
+\end{align}
+which was derived from the formulae above. This leads to $\kappa = 1.66$, a value that is not within any error margin
+compared to the $\kappa$ from our fit. But since the second $\kappa$ was calculated by a standard deviation it was not possible to 
+calculate its error, so the comparison is not entirely useful.\\
+
+Another result of these calculations is that the read-out error is very small compared to the other errors. The quality of 
+the analogue to digital converter (ADU) is therefore sufficient for our setup.

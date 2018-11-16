@@ -9,7 +9,7 @@ The goal of this part is to perform PSF fitting for two different filter constel
 \begin{minipage}{0.49\textwidth}
 \includegraphics[scale = 0.085]{figures/Exposures/BS90_V}
 \end{minipage}
-\caption{Exposures of the globular cluster BS90$^{\mathbf{14}}$ taken by the Hubble Space Telescope. The image on the left was taken using an I-filter (infrared spectrum), the one on the right using a V-filter (visible spectrum).}
+\caption[Exposures of the globular cluster BS90$^{\mathbf{14}}$]{Exposures of the globular cluster BS90$^{\mathbf{14}}$ taken by the Hubble Space Telescope. The image on the left was taken using an I-filter (infrared spectrum), the one on the right using a V-filter (visible spectrum).}
 \end{figure}
 
 \section{Zeropoint calibration}\label{sec:zeropoint}
@@ -26,8 +26,8 @@ The results of our measurement are enlisted in the following tables
 \setlength{\tabcolsep}{2mm}
 \renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth} 
-\begin{tabular}{|c|c c c c c|c c c c c|}
-\hline
+\begin{tabular}{c|c c c c c|c c c c c}
+
 Star & Mag$_{\text{V}}$ & \#$_{\text{V}}$ & $\Delta$\#$_{\text{V}}$ & $p_{0,\text{V}}$ &$\Delta p_{0,\text{V}}$ & Mag$_{\text{I}}$ & \#$_{\text{I}}$ & $\Delta$\#$_{\text{I}}$ & $p_{0,\text{I}}$ &$\Delta p_{0,\text{I}}$\\ \hline 
 1 & 17.78 & 908 & 30 & 25.175 & 0.036 & 16.65 & 1881 & 43 & 24.836 & 0.025 \\
 2 & 17.77 & 1371 & 37 & 25.613 & 0.029 & 16.21 & 4274 & 65 & 25.287 & 0.017 \\
@@ -39,14 +39,14 @@ Star & Mag$_{\text{V}}$ & \#$_{\text{V}}$ & $\Delta$\#$_{\text{V}}$ & $p_{0,\tex
 8 & 18.09 & 790 & 28 & 25.334 & 0.038 & 16.93 & 1626 & 40 & 24.958 & 0.027 \\
 9 & 17.97 & 961 & 31 & 25.427 & 0.035 & 16.68 & 1837 & 43 &  24.840 & 0.025 \\
 10 & 17.74 & 764 & 28 & 24.948 & 0.040 & 16.85 &  1694 & 41 & 24.922 & 0.026 \\
-\hline
+
 \end{tabular}
 \end{adjustbox}
-\caption{\label{tab:2} Zeropoint calibration by comparing ten stars with SIMBAD references. The left part corresponds to the exposure analyzed with the $V$-filter, the right part to the one analyzed with the $I$-filter.}
+\caption{\label{tab:2} Zeropoint calibration by comparing ten stars with SIMBAD references. The left part corresponds to the exposure analyzed with the V-filter, the right part to the one analyzed with the I-filter.}
 \end{table}
 \textbf{Remark:} Due to the limited space we abbreviated counts with $\#$. \\
 	
-We take the mean of the calculated zeropoints $p_0$ and computed the standard deviation as statistical error  and the error propagation as usual to get an estimate of the systematic error. \\
+We take the mean of the calculated zeropoints $p_0$ and compute the standard deviation as statistical error  and the error propagation as usual to get an estimate of the systematic error. \\
 The final results are the following:
 
 \begin{table}[H]
@@ -64,16 +64,16 @@ I & 24.953 & 0.004 & 0.007 \\
 \caption{Results of the zeropoint calibration.}
 \end{table}
 
-\section{PSF photometry with STARFINDER}
-We are using STARFINDER to perform statistical PSF fitting, e.g. the IDL takes the positions of about 10 to 30 isolated, unsaturated stars and applies several corrections (subtraction of an average background and normalization of the peak intensities) to both images. Now the software is able to compare the results for all the stars we chose and to determine the final result: an average PSF for the entire image.
+\section{PSF photometry with \texttt{STARFINDER}}
+We are using \texttt{STARFINDER} to perform statistical PSF fitting, e.g. the IDL takes the positions of about 10 to 30 isolated, unsaturated stars and applies several corrections (subtraction of an average background and normalization of the peak intensities) to both images. Now the software is able to compare the results for all the stars we chose and to determine the final result: an average PSF for the entire image.
 \subsection{The basic idea of PSF fitting}
 
-The point spread function (PSF) describes the response of an imaging system to a point source or point object which are in our case the stars on the exposures. The degree of blurring  of the point object is a measure for the quality of the image.
-An important characteric is that the imaging of two different objects is independent of each other. This is due to to the non-interacting property of photons. The image of a complex object can then be seen as a convolution of the true object and the PSF.
+The point spread function (PSF) describes the response of an imaging system to point sources or point objects which are in our case the stars on the exposures. The degree of blurring  of the point object is a measure for the quality of the image.
+An important characteric is that the imaging of two different objects is independent of each other. This is due to the non-interacting property of photons. The image of a complex object can then be seen as a convolution of the true object and the PSF.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{figures/Introduction/psf}
-	\caption{Visualization of the key idea if PSF fitting}
+	\caption{Visualization of the key idea of PSF fitting}
 \end{figure}
 The radiated field is related to its corresponding source plane distribution via Fourier transform. This is how the algorithm is able to determine the PSF from our exposures. \\
 
@@ -99,16 +99,16 @@ We chose about 25 stars and selected the most suitables, e.g. those who were as 
 \hspace{15pt}
 		\includegraphics[scale=0.148]{figures/Exposures/psf_noise_V.png}
 \end{minipage}
-\caption{Results of the PSF fit for the I-filter (left) and the V-filter(right).} 
+\caption[Results of the PSF fit]{Results of the PSF fit for the I-filter (left) and the V-filter(right).} 
 \end{figure} 
 
-With these results STARFINDER is able to detect all potential stars by dividing the image into smaller parts and checking if the analyzed objects are brighter than the estimated threshold. 
-Using this technique the program is only able to determine the instrumental magnitude if the sources. The result from the zeropoint calibration performed in (\ref{sec:zeropoint}) becomes important now to get the corresponding apparent magnitudes.
+With these results \texttt{STARFINDER} is able to detect all potential stars by dividing the image into smaller parts and checking if the analyzed objects are brighter than the estimated threshold. 
+Using this technique the program is only able to determine the instrumental magnitude of the sources. The result from the zeropoint calibration performed in (\ref{sec:zeropoint}) becomes important now to get the corresponding apparent magnitudes.
 After finishing the iteration for both images we get a list of all stars which could be detected. \\
 To finally obtain the CMD for our cluster we need to match the stars found in both pictures. This cross matching process is done with the help of the Python script \texttt{matchstars.py} located on our working computer at MPIA. \\ 
 
 \section{Color Magnitude Diagram for BS90$^{\mathbf{14}}$ }
-We are now able to plot the CMD (V versus V-I) and fit matching theoretical isochrones by varying different parameters in the script used for plotting (\texttt{cmdplot.py} also available on the working computer) such as the \textbf{shift} of the image, the \textbf{metallicity} or the \textbf{age} of the cluster. \\
+We are now able to plot the CMD (V versus V-I) and fit matching theoretical isochrones by varying different parameters in the script used for plotting (\texttt{cmdplot.py}, also available on the working computer) such as the shift of the image, the metallicity or the age of the cluster. \\
 The resulting Color-Magnitude diagram is presented in figure (\ref{fig:CMD}):
 \begin{figure}[H]
 	\centering
@@ -133,6 +133,7 @@ yellow & 5.2 & 0.022  \\
 
 \end{tabular}
 \caption{Fitting of the theoretical isochrones in our CMD.}
+\label{tab: CMD}
 \end{table}
 
 The green isochrone doesn't seem to be a good reference, because one can clearly see that there is a large deviation between the curve and structure of the cluster. \\
