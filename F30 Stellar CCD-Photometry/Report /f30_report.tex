@@ -16,11 +16,10 @@
 \pagenumbering{arabic}
 
 %Introduction and Theoretical Background
-\addcontentsline{toc}{part}{\hfill \Large Preface}
+
 \input{content/introduction}
 
 \newpage
-\addcontentsline{toc}{part}{\hfill \Large Evaluation}
 %Evaluation
 
 %First part: cooling the detector, testing sensitivity and 				 linearity, dome field and bias correction 
@@ -41,13 +40,14 @@
 %\appendix
 %\input{content/appendix}
 
-	
+\newpage	
 %References and Figures
-\listoffigures
 \pagenumbering{Roman}
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
 \newpage
 \thispagestyle{plain}
-
+\addcontentsline{toc}{chapter}{References}
 \nocite{*}
 \printbibliography[title=References]
 \vfill

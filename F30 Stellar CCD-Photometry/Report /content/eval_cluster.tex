@@ -1,5 +1,5 @@
 \chapter{Globular Cluster BS90$^{\mathbf{14}}$}
-In this part of the experiment we are analyzing the properties of the globular cluster BS90$^{14}$. Unfortunately the bad weather conditions during our measurement prevented us from collecting data by ourselves. Instead we are working with images taken by the Hubble Space Telescope (HST).\\
+In this part of the experiment we are analyzing the properties of the globular cluster BS90$^{14}$. Unfortunately the bad weather conditions during our measurement prevented us from collecting data  ourselves. Instead we were working with images taken by the Hubble Space Telescope (HST).\\
 The goal of this part is to perform PSF fitting for two different filter constellations, matching both images together and finally plot a Color Magnitude Diagram (CMD) to determine age and metallicity of the cluster after fitting different isochrones by varying both parameters.
 \begin{figure}[H]
 \begin{minipage}{0.49\textwidth}
@@ -17,7 +17,7 @@ To calibrate the measured data to a standard scale, which is in this case the ap
 	\begin{align*}
 		p_0 = m_{\text{CATALOG}} + 2.5\log_{10}(\text{counts})
 	\end{align*}
-	We choose ten suitable stars, e.g. stars that are clearly isolated and bright enough but not yet saturated. 
+	We choose ten suitable stars, i.\,e. stars that are clearly isolated and bright enough but not yet saturated. 
 \newpage
 The results of our measurement are enlisted in the following tables
 .
@@ -66,10 +66,10 @@ I & 24.953 & 0.004 & 0.007 \\
 
 \section{PSF photometry with \texttt{STARFINDER}}
 We are using \texttt{STARFINDER} to perform statistical PSF fitting, e.g. the IDL takes the positions of about 10 to 30 isolated, unsaturated stars and applies several corrections (subtraction of an average background and normalization of the peak intensities) to both images. Now the software is able to compare the results for all the stars we chose and to determine the final result: an average PSF for the entire image.
-\subsection{The basic idea of PSF fitting}
+\subsection*{The basic idea of PSF fitting}
 
 The point spread function (PSF) describes the response of an imaging system to point sources or point objects which are in our case the stars on the exposures. The degree of blurring  of the point object is a measure for the quality of the image.
-An important characteric is that the imaging of two different objects is independent of each other. This is due to the non-interacting property of photons. The image of a complex object can then be seen as a convolution of the true object and the PSF.
+An important characteristic is that the imaging of two different objects is independent of each other. This is due to the non-interacting property of photons. The image of a complex object can then be seen as a convolution of the true object and the PSF.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{figures/Introduction/psf}
@@ -77,34 +77,34 @@ An important characteric is that the imaging of two different objects is indepen
 \end{figure}
 The radiated field is related to its corresponding source plane distribution via Fourier transform. This is how the algorithm is able to determine the PSF from our exposures. \\
 
-\textbf{Applying this idea to our problem:} \\
+\textbf{Applying this idea to our problem:} 
 
-We chose about 25 stars and selected the most suitables, e.g. those who were as centered and symmetric as possible for the fitting. 
+We chose about 25 stars and selected the most suitable, i.\,e. those who were as centered and symmetric as possible for the fitting. 
 \begin{figure}[H]
 
 \begin{minipage}{0.2 \textwidth}
-		\includegraphics[scale = 2]{figures/Exposures/PSF_I}
+		\includegraphics[scale = 1.9]{figures/Exposures/PSF_I}
 \end{minipage}
 \begin{minipage}{0.2 \textwidth}
 \vspace{3pt}
 \hspace{15pt}
-		\includegraphics[scale=0.148]{figures/Exposures/psf_noise_I.png}
+		\includegraphics[scale=0.14]{figures/Exposures/psf_noise_I.png}
 \end{minipage}
 \hspace{50pt}
 \begin{minipage}{0.2 \textwidth}
-		\includegraphics[scale = 2]{figures/Exposures/PSF_I}
+		\includegraphics[scale = 1.9]{figures/Exposures/PSF_I}
 \end{minipage}
 \begin{minipage}{0.2\textwidth}
 \vspace{3pt}
 \hspace{15pt}
-		\includegraphics[scale=0.148]{figures/Exposures/psf_noise_V.png}
+		\includegraphics[scale=0.14]{figures/Exposures/psf_noise_V.png}
 \end{minipage}
 \caption[Results of the PSF fit]{Results of the PSF fit for the I-filter (left) and the V-filter(right).} 
 \end{figure} 
 
-With these results \texttt{STARFINDER} is able to detect all potential stars by dividing the image into smaller parts and checking if the analyzed objects are brighter than the estimated threshold. 
-Using this technique the program is only able to determine the instrumental magnitude of the sources. The result from the zeropoint calibration performed in (\ref{sec:zeropoint}) becomes important now to get the corresponding apparent magnitudes.
-After finishing the iteration for both images we get a list of all stars which could be detected. \\
+With these results, \texttt{STARFINDER} is able to detect all potential stars by dividing the image into smaller parts and checking if the analyzed objects are brighter than the estimated threshold. 
+Using this technique, the program is only able to determine the instrumental magnitude of the sources. The result from the zeropoint calibration performed in (\ref{sec:zeropoint}) becomes important now, to get the corresponding apparent magnitudes.
+After finishing the iteration for both images, we get a list of all stars which could be detected. \\
 To finally obtain the CMD for our cluster we need to match the stars found in both pictures. This cross matching process is done with the help of the Python script \texttt{matchstars.py} located on our working computer at MPIA. \\ 
 
 \section{Color Magnitude Diagram for BS90$^{\mathbf{14}}$ }

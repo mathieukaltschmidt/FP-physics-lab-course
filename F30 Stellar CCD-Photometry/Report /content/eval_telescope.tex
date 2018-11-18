@@ -1,10 +1,10 @@
 \chapter{Characteristics of the experimental setup}
 In this part we describe how we prepared the telescope and the detector system to be able to take images with a good quality and resolution. \\
-More precisely, we are describing the cooling process, determining the band gap of our detector and we perform flat-field corrections. After that we discuss further details of the properties of the CCD chip which is located inside the detector. 
+More precisely, we are describing the cooling process, determining the band gap of our detector and we perform flat-field corrections. After that, we discuss further details of the properties of the CCD which, is located inside the detector. 
 
 \section{The cooling process}
 
-Before we were able to start with our measurements we had to prepare the telescope by cooling it down with liquid nitrogen to prevent disturbing effects such as thermal activation of electrons that could effect our measurements. First of all we evacuated the cryostat to protect the chip of damage cause by freeze out. This process took about three hours. Using a Python script, we took test images every thirty seconds to obtain the current temperature and to be able to see the effects of the cooling process to the quality of the images. To demonstrate the impact on the resolution of the exposures we present two images, one taken at the beginning of the cooling process with a temperature of $T_{\text{in}} = -4.7$ °C  and the other at the end, after reaching the final temperature $T_{\text{f}} = -90.3$ °C.
+Before we were able to start with our measurements, we had to prepare the telescope by cooling it down with liquid nitrogen to prevent disturbing effects such as thermal activation of electrons that could affect our measurements. First of all we evacuated the cryostat to protect the chip of damage cause by freeze out. This process took about three hours. Using a Python script, we took test images every thirty seconds to obtain the current temperature and to see the effects of the cooling process to the quality of the images. To demonstrate the impact on the resolution of the exposures we present two images, one taken at the beginning of the cooling process with a temperature of $T_{\text{in}} = -4.7$ °C  and the other at the end, after reaching the final temperature $T_{\text{f}} = -90.3$ °C.
 \begin{figure}[H]
 	\begin{minipage}{0.35\textwidth}
 	\hspace{0.15\textwidth}
@@ -18,9 +18,9 @@ Before we were able to start with our measurements we had to prepare the telesco
 	\caption[Impact of the cooling process]{Visualization of the impact of the cooling process on the quality of the images. On the left one finds the picture taken at $T = T_{\text{in}}$ on the right at $T = T_{\text{f}}$.}
 
 \end{figure} 
-As one can easily see, the quality of the image improved a lot compared to the beginning of the measurement. The structure of the image is now almost homogeneous and we reduced nearly all of the disturbing noise. In addition one can already see some of the dead pixels as small white parts which don't contribute to the measurement. \\
+As one can easily see, the quality of the image improved a lot compared to the beginning of the measurement. The structure of the image is now almost homogeneous and we eliminated nearly all of the disturbing noise. In addition one can already see some of the dead pixels as small white parts which don't contribute to the measurement. \\
  
-With  the temperature data we were able to determine the band gap $E_g$ of the semiconductor by fitting the theoretical curve which describes the dependency of the dark current $I$ from the temperature $T$ using Fermi statistics:
+With  the temperature data we were able to determine the band gap $E_g$ of the semiconductor by fitting the theoretical curve which describes the dependency on the dark current $I$ from the temperature $T$ using Fermi statistics:
 \begin{align}
 	I = c_0 \cdot T^{\frac{3}{2}}\cdot\exp(-\frac{E_g}{2 k_B T}) \label{eqn: dark current}
 \end{align}
@@ -35,14 +35,29 @@ As a result of the measurement we determined the band gap for our detector:
 \begin{align}
 	E_g = (1.259 \pm 0.005) \ \text{eV}
 \end{align}
-The theoretical value for silicon is $E_{g, \text{SI}} = 1.15$ eV and therefore slightly smaller than the value we extracted from our temperature measurement. 
-\newpage
+The theoretical value for silicon is $E_{g, \text{SI}} = 1.15$ eV and therefore slightly smaller than the value we extracted from our temperature measurement. \\
+For the value of the bias and its scatter we analyzed two pictures, one  at the beginning and one at the end of the cooling process.
+\begin{table}[H]
+\setlength{\tabcolsep}{5mm}
+\setlength\extrarowheight{2mm}
+\centering
+\begin{tabular}{c| c c }
+
+ Temperature $T$ [°C] & bias [\#counts] & scatter [\#counts] \\ \hline 
+
+$-4.7$ & 1376 & 4 \\
+$-90.3$ & 1332 &  2  \\
+
+\end{tabular}
+\caption{Bias and its scatter.}
+\end{table}
+
 \section{Flat field corrections}
-To account for all variables in our setup we have to do flat field corrections for every filter (V-, I-, R-filter). \\
-For the calculation of a master flat field we took five images with relatively long integration time, that were determined before the measurements.
+To account for all variables in our setup we have to do flat field corrections for every filter (V-, I-, R-filter). 
+For the calculation of a master flat field we took five images with relatively long integration time, that was determined experimentally before the measurements. \\
 It is necessary to take multiple pictures for the master flat field, because some pixels are activated by cosmic background radiation.
 This is also the reason why we take the median of the values and not the mean. 
-The mean will obviously be heavily influenced by a much bigger or smaller value, while the median remains most likely almost the same. \\
+The mean will obviously be heavily influenced by a single far off value, while the median most likely remains almost the same. \\
 The single images then were combined to the master flat field, which itself was normalized afterwards.\\
 When correcting an image we divide it by the master flat field.
 This is the reason why normalization is important to actually be able to work with the master flat field because we only need relative  and not absolute values. \\
@@ -59,7 +74,7 @@ To visualize the effect of the flat field corrections we performed one on an ima
 	\caption[Impact of the master flat field correction on the quality of the image]{Impact of the master flat field correction on the quality of the image.  \\ The right picture shows the corrected version of the left picture.}
 	\label{fig:ffc}
 \end{figure} 
-Since the picture should only contain an illuminated surface we expect the corrected image to show a nearly homogeneous picture and not any additional noise structures. \\
+Since the picture should only contain an illuminated surface we expect the corrected image to show a nearly homogeneous picture without any additional structures. \\
 This is exactly what we see in figure [\ref{fig:ffc}], where the only visible differences in the corrected image are some errors, 
 while the uncorrected image contains variations in intensity, tiny dust particles and other imperfections. 
 The origin of these errors will be discussed later in the evaluation.\\
@@ -68,28 +83,28 @@ The origin of these errors will be discussed later in the evaluation.\\
 	
 	\begin{minipage}{\textwidth}
 		\centering
-		\includegraphics[width = 0.8\textwidth]{figures/Plots/histR}
+		\includegraphics[width = 0.85\textwidth]{figures/Plots/histR}
 	\end{minipage}
 	\begin{minipage}{\textwidth}
 		\centering
-		\includegraphics[width = 0.8\textwidth]{figures/Plots/histV}
+		\includegraphics[width = 0.85\textwidth]{figures/Plots/histV}
 	\end{minipage}
 	\begin{minipage}{\textwidth}
 		\centering
-		\includegraphics[width = 0.8\textwidth]{figures/Plots/histI}
+		\includegraphics[width = 0.85\textwidth]{figures/Plots/histI}
 	\end{minipage}
 	\caption{Histograms for the normalized intensity distributions for the three filter constellations.}
 	\label{fig:histograms}
 \end{figure} 
 
-The intensity variations and their distribution are best visible when they are plotted in a histogram, as was done for the master flat fields for each filter in figure
+The intensity variations and their distribution are best visible when they are plotted in a histogram, as was done for for each filters master flat field in figure
 [\ref{fig:histograms}]. \\
-There is a noticeable peak at 0 on all the histograms, which is very likely caused by the dead pixels of the chip.
-The remaining distribution of counts describes the variations in the CCDs sensitivity, which highlights the importance of the master flat field correction, and is, as expected, centered around 1.\\
-When looking at the histograms one also also see the slight variations in the distribution of the intensities for the different filter constellations. 
-Every filter affects the optical path differently.
+There is a noticeable peak at and very closely around zero on all the histograms, which is very likely caused by the dead pixels of the chip.
+The remaining distribution of counts describes the variations in the CCDs sensitivity, which highlights the importance of the master flat field correction, and is, as expected, centered around one. This can be explained by the fact that we chose the median count value as normalization factor. \\
+When looking at the histograms, one also  sees the slight variations in the distribution of the intensities for the different filter constellations. 
+Every filter affects the optical path differently, also different wavelengths may have different quantum efficiencies. 
 This means it makes sense to obtain a separate master flat field for each filter.\\
-The correction has to be done for every image taken with the CCD, because every image underlies these variations, and every image can be improved this way.
+The correction has to be done for every image taken with the CCD, because every image underlies these variations, and every image can be corrected this way.
 
 \section{Linearity and dynamical range of the CCD}
 
@@ -109,7 +124,7 @@ The result of the linear fit can be found in the following figure and is discuss
 	\caption[Determination of the linear regime]{Results of the determination of the linear regime of the experimental setup with different filter constellations.}
 \end{figure} 
 Unfortunately we didn't choose larger integration times to find the domain where the chip is saturated. Therefore we can only conclude which domains are definitely in the linear regime.\\
-Nevertheless we the got the following results:
+Nevertheless, we got the following results:
 \begin{table}[H]
 \setlength{\tabcolsep}{5mm}
 \setlength\extrarowheight{2mm}
@@ -124,7 +139,7 @@ I & $\sim$ 14000 & $\sim$ 48000 & $(66.35 \pm 0.08)$ \\
 \end{tabular}
 \caption{Determination of the linear regime of the measuring electronics for both filter constellations.}
 \end{table}
-Now we want to investigate the deviation from a perfectly linear relationship by computing the $R^2$ value for both fits. The $R^2$ value is a statistical measure of how close the data are to the fitted regression line.  \\
+Now we want to investigate the deviation from a perfectly linear relationship by computing the $R^2$ value for both fits. The $R^2$ value is a statistical measure of how close the data is to the fitted regression line. 
 The formal definition is:
 \begin{align}
 	R^2 = 
@@ -148,13 +163,13 @@ I & $0.999985446198$ \\
 \caption{Corresponding $R^2$ values for our linear fits.}
 \end{table}
 
-This means our results show a pretty much perfect linear relationship as we expected.
+This means our results show a pretty much perfect linear relationship, as we expected.
 
 \section{Sensitivity of the detector and noise properties}
-For this part, the dark current was neglected, as described in the introduction.\\
-Experimentally,  we used the I-filter and took 20 pairs of images with increasing integration time.
+For this part, the dark current was neglected, as described in the introduction.
+During the experiment, we used the I-filter and took 20 pairs of images with increasing integration time.
 
-According to Poisson statistic, the error in each pixel scales with the number of incoming electrons $N_e$ like
+According to Poisson statistics, the error in each pixel scales with the number of incoming electrons $N_e$ like
 \begin{align}
 \sigma_e^2 = N_e
 \end{align}
