@@ -13,11 +13,11 @@ The goal of this part is to perform PSF fitting for two different filter constel
 \end{figure}
 
 \section{Zeropoint calibration}\label{sec:zeropoint}
-To calibrate the measured data to a standard scale, which is in this case the apparent magnitude scale, we are comparing the counts of several standard stars with reference values from SIMBAD, an astronomical data base. From these results we can determine the zeropoint $p_0$ using equation (\ref{eq1.4}): 
+To calibrate the measured data to a standard scale, which in this case is the apparent magnitude scale, we are comparing the counts of several standard stars with reference values from SIMBAD, an astronomical data base. From these results we can determine the zeropoint $p_0$ using equation (\ref{eq1.4}): 
 	\begin{align*}
 		p_0 = m_{\text{CATALOG}} + 2.5\log_{10}(\text{counts})
 	\end{align*}
-	We choose ten suitable stars, i.\,e. stars that are clearly isolated and bright enough but not yet saturated. 
+	We chose ten suitable stars, i.\,e. stars that are clearly isolated and bright enough but not yet saturated. 
 \newpage
 The results of our measurement are enlisted in the following tables
 .
@@ -99,7 +99,7 @@ We chose about 25 stars and selected the most suitable, i.\,e. those who were as
 \hspace{15pt}
 		\includegraphics[scale=0.14]{figures/Exposures/psf_noise_V.png}
 \end{minipage}
-\caption[Results of the PSF fit]{Results of the PSF fit for the I-filter (left) and the V-filter(right).} 
+\caption[Results of the PSF fit]{Results of the PSF fit for the I-filter (left) and the V-filter (right).} 
 \end{figure} 
 
 With these results, \texttt{STARFINDER} is able to detect all potential stars by dividing the image into smaller parts and checking if the analyzed objects are brighter than the estimated threshold. 

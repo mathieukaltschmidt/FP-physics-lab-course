@@ -18,7 +18,7 @@ The evolution of detectors in astronomy started simple, with people looking in t
 \end{minipage}
 \caption[Image of a CCD and a schematic overview of its functionality.]{Image of a CCD chip\footnotemark and a schematic overview of its functionality\footnotemark .} 
 \end{figure} 
-\footnotetext[1]{Photo from Matt Laskowski: \url{https://www.flickr.com/photos/fox-orian/1234526868} \tiny{(16.11.18)}}
+\footnotetext[1]{Photo by Matt Laskowski: \url{https://www.flickr.com/photos/fox-orian/1234526868} \tiny{(16.11.18)}}
 \footnotetext[2]{Taken from: \url{http://hamamatsu.magnet.fsu.edu/articles/ccdanatomy.html} \tiny{(16.11.18)}}
  These are semiconductor detectors, that use the inner photoelectric effect to convert incoming radiation into a separated charge that can be read out. A CCD consists of a two dimensional grid of light sensitive metal oxide semiconductors, that act as capacitors. Incoming photons excite electrons into the conduction band, after which the electrons are trapped in the capacitors potential wells. At this point, they can easily be read out and converted into a digital signal. \\
 This technique had such a big impact on astronomy because of the following fundamental advantages compared to other light detectors:
@@ -26,7 +26,7 @@ This technique had such a big impact on astronomy because of the following funda
 \begin{description}
 	\item[High sensitivity:] CCDs achieve a quantum efficiency of up to 90 \%, meaning the chips are  able to capture almost all of the incoming photons.
 	\item[High dynamic range:] The dynamic range characterises the devices ability to distinguish different brightness levels.  Therefore, a high dynamic range is helpful in astronomy, because we are dealing with stars that are visible with the bear eye, as well as objects we only receive single photons from.
-	\item[Linearity over almost the entire dynamic range:] The detector signal is to an amazing degree proportional to the incoming photon flux, up until the detector is saturated. This is a helpful property when comparing objects on the same as well as on different images. Nevertheless, the exposure time should be chosen very carefully to make sure to get a useful signal to noise ratio.
+	\item[Linearity over almost the entire dynamic range:] The detector signal is to an amazing degree proportional to the incoming photon flux, up until the detector is saturated. This is a helpful property when comparing objects on the same, as well as on different images. Nevertheless, the exposure time should be chosen very carefully to make sure to get a useful signal to noise ratio.
 	\item[Direct availability for further computer-aided data analysis:] Unlike all analogue forms of photography and photometry the data collected by a CCD is immanently converted into a digital signal, without any quality loss or other additional problems. 
 \end{description}
 
@@ -51,14 +51,14 @@ The \textit{Stefan-Boltzmann law} explains the connection between the surface te
 \begin{align}
 	F = \sigma \ T_{\text{eff}}^4\label{eq1.2}
 \end{align}
-with the Stefan-Boltzmann constant $\sigma = 5.67 \cdot 10^{-8} \ \si{\watt\meter^{-2}\kelvin^{-4}}$. To understand the meaning of the effective temperature $T_{\text{eff}}$ we need the know the physical definition of a black body. A black body is, in theory, an object that absorbs every radiation independent of the corresponding wavelength and doesn't reflect any of it. The effective temperature in (\ref{eq1.2}) is the temperature a black body with the same surface area as the star would need to emit the same radiation power. \\
+with the Stefan-Boltzmann constant $\sigma = 5.67 \cdot 10^{-8} \ \si{\watt\meter^{-2}\kelvin^{-4}}$. To understand the meaning of the effective temperature $T_{\text{eff}}$ we need to know the physical definition of a black body. A black body is, in theory, an object that absorbs every radiation independent of the corresponding wavelength and doesn't reflect any of it. The effective temperature in (\ref{eq1.2}) is the temperature a black body with the same surface area as the star would need to emit the same radiation power. \\
 We already introduced a new quantity, the luminosity of a star which is defined as the surface area $A$ times the flux. From this we can derive a relation between luminosity and temperature using (\ref{eq1.2}):
 \begin{align}
 	L = 4\pi R^2\sigma T_{\text{eff}}^4
 \end{align}
 with the stars radius $R$. \\
 Another interesting parameter in astronomical observations is the mass of the observed star, which determines its  evolution. In particular the initial mass of the star is the parameter that allows us to predict his fate, but unfortunately the determination of star masses from single measurements is not trivial. \\
-As one can conclude from (\ref{eq1.1}) the intensity of the incoming flux of the star, i.\,e. the number of photons detected, decreases with the square of the distance. The problem is that the distance is not directly known for most observations. This and the fact that every instrumental setup is different leads us to the introduction of different magnitude scales, to be able to determine luminosities and to compare results taken from various observations. \\
+As one can conclude from (\ref{eq1.1}) the intensity of the incoming flux of the star, i.\,e. the number of photons detected, decreases with the square of the distance. The problem is that the distance is not directly known for most observations. This and the fact that every instrumental setup is different, leads us to the introduction of different magnitude scales, to be able to determine luminosities and to compare results taken from various observations. \\
 These different scales are explained in the following section.
 
 \section{Magnitudes}
@@ -156,7 +156,7 @@ To obtain the color index, measurements with at least two filters are needed. \\
 In the following we want to discuss how one can access the relevant data such as the distance, the age, or the metallicity of the population from the CMD.
 \subsection*{Analysis of a Color Magnitude Diagram}
 First of all we assume that all stars of a cluster are approximately equidistant to earth, have the same chemical composition and the same age. \\
-By plotting $V$ versus $B-V$ and comparing the position of the main sequence of the cluster with a known cluster, the distance can be estimated. In this approxmation we neglect small effects due to varying metallicities . \\
+By plotting $V$ versus $B-V$ and comparing the position of the main sequence of the cluster with a known cluster, the distance can be estimated. In this approxmation we neglect small effects due to varying metallicities. \\
 The shift that is needed to align the main sequence with the one from the known cluster is proportional to the distance modulus of the cluster. \\
 Alternatively one can always compare the CMD with theoretical models for stellar evolutions which are nowadays broadly known. \\
 What we are doing in our evaluation of the cluster is applying a fitting routine to find the positions of the so called \textit{isochrones}, e.g. the curves representing the position of the stars of the same age inside the population. \\
@@ -165,7 +165,7 @@ To understand how this is possible, one needs to know how the luminosity of star
 \begin{align}
 	L \sim M^a
 \end{align}
- The exponent $a$ has a mass dependence itself ( Here: $a = 3.5 $ for $2M_{\odot} < M < 20M_{\odot}$). \\ One can conclude, that the massive stars on the top left end of the CMD drift to the red giant branch after all their hydrogen has been burned. The older stars with lower masses also start at some point to move into the red giant branch. \\
+ The exponent $a$ has a mass dependence itself (Here: $a = 3.5 $ for $2M_{\odot} < M < 20M_{\odot}$). \\ One can conclude, that the massive stars on the top left end of the CMD drift to the red giant branch after all their hydrogen has been burned. The older stars with lower masses also start at some point to move into the red giant branch. \\
  The time a star spends on the main sequence is proportional to the ratio $\frac{M}{L}$, e.g.
  \begin{align}
  	\tau_{\text{nuc}} \sim \frac{M}{L} = M^{(1-a)}
@@ -208,7 +208,7 @@ An open cluster is a group of up to a few thousand stars that  have roughly the 
 \end{figure}  
 
 The telescope has a parallactic mounting. After reflection by the primary mirror, with a diameter of 70 cm and the secondary mirror the light reaches the camera, which is cooled with liquid nitrogen and evacuated to about $p = 10^{-6}$ mbar in order to minimize thermal conduction.  \\
-Our detector is a \texttt{Loral/Lesser n2k2eb Bi} thinned, back illuminated CCD , with a pixel scale of $0.55"/\text{pixel}$. The pixels theoretically saturate at a level of 60000 electrons at a gain value of 5 which will be investigated later in the protocol.\\
+Our detector is a \texttt{Loral/Lesser n2k2eb Bi} thinned, back illuminated CCD, with a pixel scale of $0.55"/\text{pixel}$. The pixels theoretically saturate at a level of 60000 electrons at a gain value of 5 which will be investigated later in the protocol.\\
 In figure [\ref{fig: working station}] on the right side, a schematic overview of our working station at MPIA is presented.
 
 The data analysis part of this experiment was mostly performed on a local computer at MPIA. 
