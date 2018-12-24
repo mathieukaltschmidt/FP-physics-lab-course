@@ -11,7 +11,7 @@ The advanced lab course covered the following experiments:
 - [x] F70/71: Mechanics and vacuum technology - Mechanik und Vakuum (3./4.09.2018)
 
 ### Measurement methods - Messmethoden
-- [ ] F82/83: Coincidence spectrometer - Koinzidenzspektrometer (05./06./07./08.11.2018)
+- [x] F82/83: Coincidence spectrometer - Koinzidenzspektrometer (05./06./07./08.11.2018)
 
 ### Optics - Optik
 - [x] F30/31: Stellar CCD Photometry in modern astronomy - Stellare CCD-Photometrie (27./28.08.2018)
