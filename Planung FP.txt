@@ -1,13 +1,13 @@
 	VERSUCHE			KOMMENTAR		     	 TERMIN		BUCHUNG
 	
 	FP1														
-1. Koinzidenzspektrometer						05.11.2018	fertig!
-2. Computer und Datenverarbeitung	BUCHEN!	  	
-3. Mechanik und Vakuum							03.09.2018 	fertig!
+1. Koinzidenzspektrometer						05.11.2018	
+2. Computer und Datenverarbeitung		  			18.02.2018
+3. Mechanik und Vakuum							03.09.2018 	
 
 	FP2								
-4. Raster-Kraft-Mikroskop 						10.09.2018	fertig!	     
-5. Kernresonanzspektroskopie 						20.08.2018	fertig!	
-6. Stellare CCD-Photometrie		Lange Ausarbeitung!		27.08.2018	fertig!
+4. Raster-Kraft-Mikroskop 						10.09.2018	     
+5. Kernresonanzspektroskopie 						20.08.2018	
+6. Stellare CCD-Photometrie		Lange Ausarbeitung!		27.08.2018	
 7. Neuromorphes Rechnen			BUCHEN!
 8. Z-Boson am LHC			BUCHEN! (kurze Ausarbeitung?)
