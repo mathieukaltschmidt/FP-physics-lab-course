@@ -20,16 +20,16 @@ The advanced lab course covered the following experiments:
 - [x] F61/62 Nuclear Magnetic Resonance - Kernresonanzspektroskopie (21./22.08.2018)
 
 ### Mechanics - Mechanik
-- [x] F70/71: Mechanics and vacuum technology - Mechanik und Vakuum (3./4.09.2018)
+- [x] F70/71: Mechanics and vacuum technology - Mechanik und Vakuum (03./04.09.2018)
 
 ### Data Processing - Datenverarbeitung
 - [ ] F75/76: Computer and Data Processing - Computer und Datenverarbeitung (18./19.03.2019)
 
-### Measurement methods - Messmethoden
+### Measurement Methods - Messmethoden
 - [x] F82/83: Coincidence spectrometer - Koinzidenzspektrometer (05./06./07./08.11.2018)
 
 ### Particle Physics - Teilchenphysik
-- [ ] F91/92: Analysis of the Z-boson with ATLAS at the LHC - Analyse des Z-Bosons mit ATLAS am LHC (???)
+- [ ] F91/92: Analysis of the Z-boson with ATLAS at the LHC - Analyse des Z-Bosons mit ATLAS am LHC (04./05.03.2019)
 
 
 
