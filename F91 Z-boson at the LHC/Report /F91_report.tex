@@ -1,0 +1,123 @@
+\documentclass[twocolumn,
+			   showpacs,%
+               nofootinbib,
+               aps,%
+               eqsecnum,
+               prd,
+               notitlepage,
+               showkeys,
+               10pt]{revtex4-1}
+%Loading my personal settings
+\input{metadata/settings}
+
+
+%bibliography
+\begin{filecontents}{literatur.bib}
+@BOOK{Anleitung,
+	AUTHOR = {Wessels, M.},
+	TITLE = {Studying the $Z$ boson with the ATLAS Detector at the LHC - Manual V0.5},
+	YEAR = {2018},
+	URL = {https://www.physi.uni-heidelberg.de/Einrichtungen/FP/anleitungen/F91.pdf},
+	PUBLISHER = {Heidelberg University},
+}
+
+\end{filecontents}
+
+%main document
+\begin{document}
+
+%Personel data
+\title{F91: Studying the $Z$ boson with the ATLAS Detector at the LHC }
+\author{Mathieu Kaltschmidt \& Quirinus Schwarzenb\"ock}
+\affiliation{Heidelberg University}
+\date{\today}
+
+
+\begin{abstract}
+\blindtext
+\end{abstract}
+
+\maketitle
+
+
+
+\section{Introduction}
+Hallo das ist ein Test!
+\begin{align}
+	E = mc^2 
+\end{align}
+Man, das ist aber eine spannende Formel  .. \\
+Wieso klappt die Reference nicht?
+
+\blindtext
+
+
+
+\section{Theory}
+
+\blindtext
+\subsection{This is a subsection}
+
+\subsubsection{This is a subsubsection}
+
+
+
+
+
+\section{Experiment}
+
+
+
+\subsection{Experimental Setup}
+
+
+\blindtext
+
+
+
+
+\section{Results}
+\blindtext
+
+
+
+\begin{table}[!htbp]
+\centering
+\setlength{\tabcolsep}{2mm}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c||c|c|c|c|}
+\hline
+Test & $x_1$ [AU] & $x_2$ [AU] & $x_3$ [AU] & Quantity \\ \hline \hline
+A & 2,2 & 3,8 & 6,2 & Q1 \\
+\hline
+B & 2,3 & 7,0 & - & Q2 \\
+\hline
+C & 2,1 & 11,6 & - & Q3 \\
+\hline
+D & 3,9 & 6,3 & - & Q4\\
+\hline
+E & 2,2 & 7,0 & - & Q5 \\
+\hline
+\end{tabular}
+\caption{\label{tab:test}This is an example table.}
+\end{table}
+
+
+
+\section{Discussion}
+
+\Blindtext
+
+
+\begin{acknowledgments}
+
+We would like to thank our supervisor Philipp Ott for his guidance throughout the operation of this experiment.
+
+\end{acknowledgments}
+
+
+\bibliographystyle{abbrv}
+\bibliography{literatur}
+\nocite{*}
+
+\end{document}
