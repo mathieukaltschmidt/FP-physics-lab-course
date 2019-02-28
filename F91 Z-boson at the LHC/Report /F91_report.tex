@@ -2,7 +2,7 @@
 			   showpacs,%
                nofootinbib,
                aps,%
-               eqsecnum,
+               %eqsecnum,
                prd,
                notitlepage,
                showkeys,
@@ -14,7 +14,7 @@
 %bibliography
 \begin{filecontents}{literatur.bib}
 @BOOK{Anleitung,
-	AUTHOR = {M. Wessels et al.},
+	AUTHOR = {M. Wessels and others},
 	TITLE = {Studying the $Z$ boson with the ATLAS Detector at the LHC - Manual V0.5},
 	YEAR = {2018},
 	URL = {https://www.physi.uni-heidelberg.de/Einrichtungen/FP/anleitungen/F91.pdf},
@@ -30,15 +30,17 @@
 \title{F91: Studying the $Z$ boson with the ATLAS Detector at the LHC }
 \author{Mathieu Kaltschmidt}
 \email{M.Kaltschmidt@stud.uni-heidelberg.de}
-\affiliation{Heidelberg University}
+\affiliation{Heidelberg University,  D-69117 Heidelberg, Germany}
 \author{Quirinus Schwarzenb\"ock}
 \email{quirin.s@icloud.com}
-\affiliation{Heidelberg University}
+\affiliation{Heidelberg University,  D-69117 Heidelberg, Germany}
 
 \date[Carried out in the week of  ]{March 4$^{\text{th}}$, 2019}
 
 
 \begin{abstract}
+This experiment has been performed as part of the advanced lab course for physics students (FP) at Heidelberg University.
+
 \blindtext
 \end{abstract}
 
@@ -47,15 +49,22 @@
 
 
 \section{Introduction}
-Hallo das ist ein Test!
+Hier schon einmal ein paar wichtige Formeln:
 \begin{align}
-	E = mc^2 
+\mathcal{L} = \frac{N_1N_2f_{\text{rev}}n_b}{4\pi\sigma_x\sigma_y}
 \end{align}
-Man, das ist aber eine spannende Formel  .. \\
-Wieso klappt die Reference nicht?
 
 \blindtext
 
+\begin{align}
+\mathcal{L}_{\text{int}} = \int \mathcal{L} \ \dd t	
+\end{align}
+
+\blindtext
+
+\begin{align}
+N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
+\end{align}
 
 
 \section{Theory}
@@ -64,6 +73,8 @@ Wieso klappt die Reference nicht?
 \subsection{This is a subsection}
 
 \subsubsection{This is a subsubsection}
+
+\blindtext
 
 
 
