@@ -7,22 +7,9 @@
                notitlepage,
                showkeys,
                10pt]{revtex4-1}
+               
 %Loading my personal settings
 \input{metadata/settings}
-
-
-%bibliography
-\begin{filecontents}{literatur.bib}
-@BOOK{Anleitung,
-	AUTHOR = {M. Wessels and others},
-	TITLE = {Studying the $Z$ boson with the ATLAS Detector at the LHC - Manual V0.5},
-	YEAR = {2018},
-	URL = {https://www.physi.uni-heidelberg.de/Einrichtungen/FP/anleitungen/F91.pdf},
-	PUBLISHER = {Heidelberg University},
-}
-
-\end{filecontents}
-
 %main document
 \begin{document}
 
@@ -49,7 +36,32 @@
 
 
 \section{Introduction}
-Hier schon einmal ein paar wichtige Formeln:
+Just wanted to set up the \verb TikZ-feynman \normalfont \ package:
+
+\begin{figure}[H]
+\centering
+	
+\feynmandiagram [small] [layered layout, horizontal = a to b] {
+a  -- [photon, edge label=\(Z^0\)] b ,
+b -- [fermion] f1 [particle=\(l^{-}\)],
+b -- [anti fermion] f2 [particle=\(l^{+}\)],
+};
+\caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
+\end{figure}
+
+Introducing Drell-Yan diagrams:
+\begin{figure}[H]
+\centering
+	
+\feynmandiagram [small] [horizontal' = a to b] {
+i1 [particle=\(d\)] -- [fermion] a  -- [fermion] i2 [particle=\(\overline{d}\)],
+a -- [photon, edge label=\(\gamma / Z^0\)] b ,
+f1 [particle=\(\mu^{+}\)] -- [fermion] b -- [fermion] f2 [particle=\(\mu^{-}\)],
+};
+\caption{A simple Drell-Yan diagram, inspired by \cite{F91manual}}
+\end{figure}
+
+Already implementing the formulas mentioned in the theory part of \cite{F91manual} to speed things up a little.
 \begin{align}
 \mathcal{L} = \frac{N_1N_2f_{\text{rev}}n_b}{4\pi\sigma_x\sigma_y}
 \end{align}
@@ -131,9 +143,8 @@ We would like to thank our supervisor Philipp Ott for his guidance throughout th
 
 \end{acknowledgments}
 
-
 \bibliographystyle{abbrv}
-\bibliography{literatur}
+\bibliography{bibliography/literatur}
 \nocite{*}
 
 \end{document}

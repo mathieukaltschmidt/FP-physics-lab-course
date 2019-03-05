@@ -4,10 +4,7 @@
 \usepackage{physics}
 
 %language settings and microtype
-%\usepackage{fontspec} 
 \usepackage[english]{babel}
-%\setmainlanguage{english}
-%\setotherlanguages{german}
 \usepackage{microtype}
 
 %useful packages
@@ -19,13 +16,33 @@
 \usepackage{blindtext}
 \usepackage{xfrac}
 \usepackage[labelfont=bf]{caption}
-\RequirePackage{filecontents}
+
+
+%feynman diagrams
+\usepackage{tikz}
+\usepackage{tikz-feynman}
+\tikzfeynmanset{compat=1.0.0} 
+
+%loading the `external` library
+\usetikzlibrary{external}   
+%Create directory to store the diagrams and all related files          
+\immediate\write18{mkdir -p feynman-diagrams} 
+% Activate externalization
+\tikzexternalize[
+  %Avoid cluttering the directory                     
+  prefix=feynman-diagrams/, 
+  %Calling lualatex externally
+  system call={             
+    lualatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname="\image" "\texsource"  || rm "\image.pdf"
+  },
+]
 
 %color settings
 \definecolor{mydarkblue}{RGB}{1,1,141}
 
 %correcting parindent
 \setlength{\parindent}{0pt}
+
 
 %always use hyperref at the end of the preamble!
 \usepackage[colorlinks=True]{hyperref}
