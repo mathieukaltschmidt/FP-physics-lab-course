@@ -26,9 +26,8 @@
 
 
 \begin{abstract}
-%This experiment has been performed as part of the advanced lab course for physics students (FP) at Heidelberg University.
-
-\blindtext
+This experiment has been performed as part of the advanced lab course for physics students (FP) at Heidelberg University.
+The goal of this computer-based experiment was to determine the invariant mass spectrum for the $Z$ boson using data acquired by the Large Hadron Collider at CERN in Geneva. For a better c
 \end{abstract}
 
 \maketitle
@@ -36,6 +35,17 @@
 
 
 \section{Introduction}
+Taking the geometric properties into account, it is very easy to see the following connection between momentum and transversal momentum
+\begin{align}
+	p_x &= p_T \cos(\phi)\\
+	p_y &= p_T \sin(\phi)\\
+	p_z \tan(\theta) &= p_T
+\end{align}
+From the definition of the pseudorapidity (eq: \ref{pseudorapidity}) we have $\theta = 2\arctan(e^{-\eta})$. Using the identity $\tan(2\arctan(x)) = \frac{2x}{1 - x^2}$, these equations lead to 
+\begin{align}
+	p_z &= p_T\sinh(\eta)\\
+	\left|\mathbf{p}\right| &= p_T \cosh(\eta)
+\end{align}
 Just wanted to set up the \verb TikZ-feynman \normalfont \ package:
 
 \begin{figure}[H]
@@ -46,6 +56,7 @@ a  -- [photon, edge label=\(Z^0\)] b ,
 b -- [fermion] f1 [particle=\(l^{-}\)],
 b -- [anti fermion] f2 [particle=\(l^{+}\)],
 };
+
 \caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
 \end{figure}
 
@@ -53,11 +64,6 @@ Introducing Drell-Yan diagrams:
 \begin{figure}[H]
 \centering
 	
-\feynmandiagram [small] [horizontal' = a to b] {
-i1 [particle=\(d\)] -- [fermion] a  -- [fermion] i2 [particle=\(\overline{d}\)],
-a -- [photon, edge label=\(\gamma / Z^0\)] b ,
-f1 [particle=\(\mu^{+}\)] -- [fermion] b -- [fermion] f2 [particle=\(\mu^{-}\)],
-};
 \caption{A simple Drell-Yan diagram, inspired by \cite{F91manual}}
 \end{figure}
 
@@ -108,6 +114,11 @@ N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
 \blindtext
 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 0.45\textwidth]{figures/plots/ZMassFitted}
+	\caption{Distribution of the $Z$ masses $M_z$ with Gau\ss, Breit-Wigner and a convoluted fit.}
+\end{figure}
 
 \begin{table}[!htbp]
 \centering
