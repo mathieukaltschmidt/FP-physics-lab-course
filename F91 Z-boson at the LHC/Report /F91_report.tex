@@ -9,8 +9,7 @@
                10pt]{revtex4-1}
                
 %Loading my personal settings
-\input{metadata/settings}
-%main document
+\input{metadata/settings}%main document
 \begin{document}
 
 %Personel data
@@ -27,7 +26,7 @@
 
 \begin{abstract}
 This experiment has been performed as part of the advanced lab course for physics students (FP) at Heidelberg University.
-The goal of this computer-based experiment was to determine the invariant mass spectrum for the $Z$ boson using data acquired by the Large Hadron Collider at CERN in Geneva.
+The goal of this computer-based experiment is to determine the invariant mass spectrum for the $Z$ boson, one of the three massive gauge bosons of the weak interaction, using data acquired by the ATLAS experiment at the Large Hadron Collider (LHC) at CERN in Geneva.  A multi-level filter system is implemented to get a clean mass distribution of the measured $Z$ boson candidates. For data-analysis  and plotting we use \verb|ROOT| and different \verb|Python3| scipts.
 \end{abstract}
 
 \maketitle
@@ -93,7 +92,7 @@ N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
 \begin{figure}[H]
 \centering	
 \begin{tikzpicture}
-\feynmandiagram{
+  \begin{feynman}
     \vertex (a) {\(d\)};
     \vertex [right=of a] (b);
     \vertex [above right=of b] (c);
@@ -114,7 +113,7 @@ N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
       
       (b) -- [edge label' = \(\overline{u}\) ] (e),
 };
-}
+  \end{feynman}
 \end{tikzpicture}
 \caption{3-Lepton final state.}
 \end{figure}
@@ -130,32 +129,51 @@ N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
 
 
 
-
-\blindtext
-
-
-
-
 \section{Results}
-\blindtext
 
-
+We want to use this section to present the final result for the mass distribution of the processes with $Z$-candidates which passed all filter levels. The result is presented in the following in figure (\ref{fig:MassDist}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width = 0.45\textwidth]{figures/plots/ZMassFitted}
-	\caption{Distribution of the $Z$ masses $M_z$ with Gau\ss, Breit-Wigner and a convoluted fit.}
+	\caption{Distribution of the $Z$ masses $M_z$ with Gaussian, Breit-Wigner and a convoluted fit.}
+	\label{fig:MassDist}
 \end{figure}
 
+To obtain a satisfying fitting result one needs to convolute a Breit-Wigner distribution and a Gaussian. This is explained by the fact, that the decay process is in theory perfectly described by a Breit-Wigner distribution, but one needs to take the smearing of the curve due to uncertainties in the measure electronics into account which are approximately described by a Gaussian curve. As one can easily see in figure (\ref{fig:MassDist}), the fits using only one of the two functions did not represent the physical model in an adequate manner.
+The results from the convoluted fit are presented in the following. \\
 
-
+For the mass of the $Z$ boson we found
+\begin{align}
+	M_Z = (90.607 \pm 0.004) \ \text{GeV},
+\end{align} 
+the decay width $\Gamma$ is
+\begin{align}
+\Gamma = (3.517 \pm 0.015) \ \text{GeV},	
+\end{align}
+and the the Gaussian we used to describe the smearing of the distribution due to the measurement process has a standard deviation of 
+\begin{align}
+	\sigma = (1.559 \pm 0.015) \ \text{GeV}.
+\end{align}
+
+\textbf{Theoretical expectations.} \\
+Using data from the \href{http://pdg.lbl.gov}{Particle Data Group}, we compare our results to the officially published values. These are 
+\begin{align}
+	M_{Z,\text{PDG}} = (91.1876 \pm 0.0021) \ \text{GeV},
+\end{align} 
+and
+\begin{align}
+	\Gamma_{\text{PDG}} = (2.4952 \pm 0.0023) \ \text{GeV}.
+\end{align}
+
+%TODO: Abweicung explizit ausrechnen.. bisschen erklären
+
 \section{Discussion}
 
-\Blindtext
+
 
 
 \begin{acknowledgments}
-
 We would like to thank our supervisor Philipp Ott for his guidance throughout the operation of this experiment.
 
 \end{acknowledgments}
