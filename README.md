@@ -7,9 +7,6 @@ Most of the evaluation is done using Python 3 or Wolfram Mathematica. Typesettin
 
 The advanced lab course covered the following experiments:
 
-### Complex Systems - Komplexe Systeme
-- [ ] F09/10: Neuromorphic Computing - Neuromorphes Rechnen (???)
-
 ### Solid State Physics - Festkörperphysik
 - [x] F29: Atomic Force Microscopy - Rasterkraftmikroskop (10./11.09.2018)
 
@@ -18,12 +15,13 @@ The advanced lab course covered the following experiments:
 
 ### Spectroscopy - Spektroskopie
 - [x] F61/62 Nuclear Magnetic Resonance - Kernresonanzspektroskopie (21./22.08.2018)
+- [ ] F44 Zeeman spectroscopy - Zeeman-Spektroskopie (05./07.06.2019)
 
 ### Mechanics - Mechanik
 - [x] F70/71: Mechanics and vacuum technology - Mechanik und Vakuum (03./04.09.2018)
 
 ### Data Processing - Datenverarbeitung
-- [ ] F75/76: Computer and Data Processing - Computer und Datenverarbeitung (18./19.03.2019)
+- [x] F75/76: Computer and Data Processing - Computer und Datenverarbeitung (18./19.03.2019)
 
 ### Measurement Methods - Messmethoden
 - [x] F82/83: Coincidence spectrometer - Koinzidenzspektrometer (05./06./07./08.11.2018)
