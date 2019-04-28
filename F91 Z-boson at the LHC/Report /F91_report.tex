@@ -27,7 +27,7 @@
 
 \begin{abstract}
 This experiment has been performed as part of the advanced lab course for physics students (FP) at Heidelberg University.
-The goal of this computer-based experiment was to determine the invariant mass spectrum for the $Z$ boson using data acquired by the Large Hadron Collider at CERN in Geneva. For a better c
+The goal of this computer-based experiment was to determine the invariant mass spectrum for the $Z$ boson using data acquired by the Large Hadron Collider at CERN in Geneva.
 \end{abstract}
 
 \maketitle
@@ -63,7 +63,7 @@ b -- [anti fermion] f2 [particle=\(l^{+}\)],
 Introducing Drell-Yan diagrams:
 \begin{figure}[H]
 \centering
-	
+\includegraphics{feynman-diagrams/F91_report-figure1}
 \caption{A simple Drell-Yan diagram, inspired by \cite{F91manual}}
 \end{figure}
 
@@ -87,13 +87,44 @@ N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
 
 \section{Theory}
 
-\blindtext
-\subsection{This is a subsection}
 
-\subsubsection{This is a subsubsection}
+\begin{figure}[H]
+\centering
+	
+\feynmandiagram [small] [layered layout, horizontal = a to b] {
+a  -- [photon, edge label=\(Z^0\)] b ,
+b -- [fermion] f1 [particle=\(l^{-}\)],
+b -- [anti fermion] f2 [particle=\(l^{+}\)],
+};
 
-\blindtext
+\caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
+\end{figure}
 
+
+\begin{figure}[H]
+\centering
+	
+\feynmandiagram [small] [layered layout, horizontal = a to b] {
+a  -- [photon, edge label=\(Z^0\)] b ,
+b -- [fermion] f1 [particle=\(l^{-}\)],
+b -- [anti fermion] f2 [particle=\(l^{+}\)],
+};
+
+\caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+	
+\feynmandiagram [small] [layered layout, horizontal = a to b] {
+a  -- [photon, edge label=\(Z^0\)] b ,
+b -- [fermion] f1 [particle=\(l^{-}\)],
+b -- [anti fermion] f2 [particle=\(l^{+}\)],
+};
+
+\caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
+\end{figure}
 
 
 
