@@ -46,26 +46,8 @@ From the definition of the pseudorapidity (eq: \ref{pseudorapidity}) we have $\t
 	p_z &= p_T\sinh(\eta)\\
 	\left|\mathbf{p}\right| &= p_T \cosh(\eta)
 \end{align}
-Just wanted to set up the \verb TikZ-feynman \normalfont \ package:
 
-\begin{figure}[H]
-\centering
-	
-\feynmandiagram [small] [layered layout, horizontal = a to b] {
-a  -- [photon, edge label=\(Z^0\)] b ,
-b -- [fermion] f1 [particle=\(l^{-}\)],
-b -- [anti fermion] f2 [particle=\(l^{+}\)],
-};
 
-\caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
-\end{figure}
-
-Introducing Drell-Yan diagrams:
-\begin{figure}[H]
-\centering
-\includegraphics{feynman-diagrams/F91_report-figure1}
-\caption{A simple Drell-Yan diagram, inspired by \cite{F91manual}}
-\end{figure}
 
 Already implementing the formulas mentioned in the theory part of \cite{F91manual} to speed things up a little.
 \begin{align}
@@ -89,51 +71,64 @@ N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
 
 
 \begin{figure}[H]
-\centering
-	
-\feynmandiagram [small] [layered layout, horizontal = a to b] {
-a  -- [photon, edge label=\(Z^0\)] b ,
-b -- [fermion] f1 [particle=\(l^{-}\)],
-b -- [anti fermion] f2 [particle=\(l^{+}\)],
-};
-
-\caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
+\centering	
+\feynmandiagram [small] [horizontal' = a to b] {
+	i1 [particle=\(\overline{u}\)] -- [fermion] a  -- [fermion] i2 [particle=\(d\)],
+	a -- [photon, edge label=\(W^{-}\)] b ,
+	f1 [particle=\(\nu_{e^{-}}\)] -- [fermion] b -- [fermion] f2 [particle=\(e^{-}\)],
+	};
+\caption{1-Lepton final state.}
 \end{figure}
-
 
 \begin{figure}[H]
-\centering
-	
-\feynmandiagram [small] [layered layout, horizontal = a to b] {
-a  -- [photon, edge label=\(Z^0\)] b ,
-b -- [fermion] f1 [particle=\(l^{-}\)],
-b -- [anti fermion] f2 [particle=\(l^{+}\)],
-};
-
-\caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
+\centering	
+\feynmandiagram [small] [horizontal' = a to b] {
+	i1 [particle=\(q\)] -- [fermion] a  -- [fermion] i2 [particle=\(\overline{q}\)],
+	a -- [photon, edge label=\(\gamma / Z^0\)] b ,
+	f1 [particle=\(e^{+}\)] -- [fermion] b -- [fermion] f2 [particle=\(e^{-}\)],
+	};
+\caption{2-Lepton final state.}
 \end{figure}
-
 
 \begin{figure}[H]
-\centering
-	
-\feynmandiagram [small] [layered layout, horizontal = a to b] {
-a  -- [photon, edge label=\(Z^0\)] b ,
-b -- [fermion] f1 [particle=\(l^{-}\)],
-b -- [anti fermion] f2 [particle=\(l^{+}\)],
+\centering	
+\begin{tikzpicture}
+\feynmandiagram{
+    \vertex (a) {\(d\)};
+    \vertex [right=of a] (b);
+    \vertex [above right=of b] (c);
+    \vertex [above right=of c] (f1) {\(e^{-}\)};
+    \vertex [below right=of c] (f2) {\(\overline{\nu}_{e^{-}}\)};
+    \vertex [below =of a] (d) {\(\overline{u}\)};
+    \vertex [right=of d] (e);
+    \vertex [below right=of e] (f);
+     \vertex [above right=of f] (f3) {\(e^{-}\)};
+    \vertex [below right=of f] (f4) {\(e^{+}\)};
+
+ 
+    \diagram* {
+      (a) -- [fermion] (b) -- [boson, edge label=\(W^{-}\)] (c),
+      (d) -- [anti fermion] (e) -- [boson, edge label'=\(Z^{0}\)] (f),
+      (f1) -- [anti fermion] (c) -- [anti fermion] (f2),
+      (f3) -- [anti fermion] (f) -- [anti fermion] (f4),
+      
+      (b) -- [edge label' = \(\overline{u}\) ] (e),
 };
-
-\caption{Leading order Feynman diagram for the $Z$ boson decay into lepton pairs, inspired by \cite{PPMasterclass}}
+}
+\end{tikzpicture}
+\caption{3-Lepton final state.}
 \end{figure}
-
-
 
 
 \section{Experiment}
-
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.45\textwidth]
+{figures/plots/CutFlow}
+\caption{Cut flow diagram for our event selection algorithm.}	
+\end{figure}
 
 
-\subsection{Experimental Setup}
 
 
 \blindtext
@@ -145,32 +140,12 @@ b -- [anti fermion] f2 [particle=\(l^{+}\)],
 \blindtext
 
 
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width = 0.45\textwidth]{figures/plots/ZMassFitted}
 	\caption{Distribution of the $Z$ masses $M_z$ with Gau\ss, Breit-Wigner and a convoluted fit.}
 \end{figure}
-
-\begin{table}[!htbp]
-\centering
-\setlength{\tabcolsep}{2mm}
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{|c||c|c|c|c|}
-\hline
-Test & $x_1$ [AU] & $x_2$ [AU] & $x_3$ [AU] & Quantity \\ \hline \hline
-A & 2,2 & 3,8 & 6,2 & Q1 \\
-\hline
-B & 2,3 & 7,0 & - & Q2 \\
-\hline
-C & 2,1 & 11,6 & - & Q3 \\
-\hline
-D & 3,9 & 6,3 & - & Q4\\
-\hline
-E & 2,2 & 7,0 & - & Q5 \\
-\hline
-\end{tabular}
-\caption{\label{tab:test}This is an example table.}
-\end{table}
 
 
 
