@@ -13,6 +13,7 @@
 \begin{document}
 
 %Personel data
+{\hypersetup{allcolors=black}
 \title{F91: Studying the $Z$ boson with the ATLAS Detector at the LHC }
 \author{Mathieu Kaltschmidt}
 \email{M.Kaltschmidt@stud.uni-heidelberg.de}
@@ -26,47 +27,129 @@
 
 \begin{abstract}
 This experiment has been performed as part of the advanced lab course for physics students (FP) at Heidelberg University.
-The goal of this computer-based experiment is to determine the invariant mass spectrum for the $Z$ boson, one of the three massive gauge bosons of the weak interaction, using data acquired by the ATLAS experiment at the Large Hadron Collider (LHC) at CERN in Geneva.  A multi-level filter system is implemented to get a clean mass distribution of the measured $Z$ boson candidates. For data-analysis  and plotting we use \verb|ROOT| and different \verb|Python3| scipts.
+The goal of this computer-based experiment is to determine the invariant mass spectrum for the $Z$ boson, one of the three massive gauge bosons of the weak interaction, using data acquired by the ATLAS experiment at the Large Hadron Collider (LHC) at CERN in Geneva.  A multi-level filter system is implemented to get a clean mass distribution of the measured $Z$ boson candidates. For data-analysis  and plotting we use \verb|ROOT| and different \verb|Python| scipts.
 \end{abstract}
 
 \maketitle
 
 
-
+}
 \section{Introduction}
-Taking the geometric properties into account, it is very easy to see the following connection between momentum and transversal momentum
+In this lab course about the $Z$ boson, we want to study its properties and get familiar with modern data analysis tools such as \verb|ROOT| and \verb|Python3|, used in current experimental high-energy physics research. The data we use, is part of the ATLAS Open Data set, published by CERN to provide students a hands-on training experience for data analysis. It features real data from the LHC measured in 2012 and additionally some Monte-Carlo simulations of the same processes for a better comparability with the theoretical predictions.
+
+\subsection{The $Z$ boson}
+In this section, we want to introduce the theoretical properties of the $Z$ boson. The most important are summarized in the following:
+
+\begin{table}[!htbp]
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{c|c|c|c}
+	Charge $Q$ & Spin $S$ & Mass $M_Z$ [GeV] & Decay Width $\Gamma$ [GeV] \\ \hline 
+	 0 & 1 & $(91.1876 \pm 0.0021)$ & $(2.4952 \pm 0.0023)$ \\
+		\end{tabular}
+	\caption{\label{tab:Z_props}The properties of the $Z$ boson.}
+\end{table}
+
+The $Z$ boson is one of the three gauge bosons of the weak interaction. In contrast to, for example, the photon, which mediates the electromagnetic force, or the gluon, the gauge boson of the strong interaction, it is massive. It has two charged "cousins", the $W^+$ and the $W^-$ boson. Postulated by Glashow, Salam and Weinberg in the 1960s as part of the unified electroweak interaction, which earned them a Nobel prize in 1979, it has been directly observed not until 1983, at the SPS collider at CERN, when particle collider were able to reach center-of-mass energies high enough. The detection of the $Z$ earned Carlo Rubbia and Simon van der Meer also a Nobel prize in 1984.   
+
+
+\section{Theoretical Foundations}
+This section introduces the basic knowledge on particle and detector physics needed for a general understanding of the conducted experiment.
+
+\subsection{Drell-Yan processes}
+Hadrons, i.\,e. particles made up of three quarks, scattering at very high energies can decay in so called Drell-Yan processes, which play an important role in high energy particle collisions. These occur, when a quark and its corresponding antiquark annihilate each other via a virtual boson, for example a $Z$, we are interested in in this lab course. A Feynman diagram for a simple Drell-Yan process is depicted in the following in figure (\ref{fig:Drell-Yan}).
+
+\begin{figure}[H]
+\centering
+\feynmandiagram [small] [horizontal' = a to b] {
+	i1 [particle=\(q\)] -- [fermion] a  -- [fermion] i2 [particle=\(\overline{q}\)],
+	a -- [photon, edge label=\(\gamma / Z^0\)] b ,
+	f1 [particle=\(l^{+}\)] -- [fermion] b -- [fermion] f2 [particle=\(l^{-}\)],
+	};
+\caption{A simple Drell-Yan diagram, inspired by \cite{F91manual}}
+\label{fig:Drell-Yan}
+\end{figure}
+	
+To study the properties of the boson involved in these processes one can calculate for example the invariant mass $\sqrt{s}$, using the following formula:
+\begin{align}
+	\sqrt{s} = \sqrt{\left(p_{l^{-}} + p_{l^{+}}\right)^2}
+\end{align}
+We will see later on, how this formula can be used to discard useless data.
+\subsection{Characteristics of Particle Detectors}
+In circular particle colliders such as the LHC, two opposed proton beams, each containing $n_b = 1380$ bunches with approximately $N_i = 1011$ protons are accelerated to almost the speed of light and forced to collide at very high center-of-mass energies, e.\,g. $\sqrt{s} = 8$ TeV in the first run of the LHC. An important characteristic of circular colliders is the \textit{luminosity} $\mathcal{L}$, given by
+
+\begin{align}
+\mathcal{L} = \frac{N_1N_2f_{\text{rev}}n_b}{4\pi\sigma_x\sigma_y}
+\end{align}
+where $f$ describes the orbital frequency of the beams\footnote{In our case $f = 11.2$ kHz.} and the $\sigma_i$ describe the smearing of the beam in the respective direction.\\
+To obtain the entire information content of the events one can integrate the luminosity over time to get the \textit{integrated luminosity}:
+\begin{align}
+\mathcal{L}_{\text{int}} = \int \mathcal{L} \ \dd t.
+\end{align}
+Together with the \textit{total cross section} $\sigma_{pp\rightarrow X}$ one finds the following relation for the rate of events $N$: 
+\begin{align}
+N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}.
+\end{align}
+
+\subsection{Energy distributions}
+
+\blindtext
+
+
+\subsection{The ATLAS Detector at the LHC}
+
+Three major components form the setup of the ATLAS detector, i.\,e. the \textit{Inner Detector}, which aims at reconstructing the tracks of charged particles passing the detector, the \textit{Calorimeter}, where the electromagnetic and hadronic showers are evaluated and the \textit{Muon Spectrometer} in the outer layer, to reconstruct muon tracks, which have in general a free path length much longer than the other charged particles occurring in this processes. Additionally there is complex \textit{Trigger system} to avoid the collection of irrelevant data and the so called \textit{GRID}, a web-based network to make the measured data accessible to the world-wide particle physics community working on ATLAS physics. \\
+A schematic overview is presented in figure (\ref{fig:atlas}) in the following.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.45\textwidth]{figures/introduction/atlas}
+\caption[Schematic picture of the ATLAS detector at the LHC.]{Schematic picture of the ATLAS detector at the Large Hadron Collider\footnotemark.}
+\label{fig:atlas}
+\end{figure}
+\footnotetext{Picture taken from \url{http://www.kip.uni-heidelberg.de/kw/image/f/group/f8/webutils/atlas.jpeg} (\tiny{\today})}
+\subsection{Detector Geometry}
+An important quantity for the understanding the geometry of particle detectors is the \textit{pseudorapidity} $\eta$, which is used to describe polar angle distributions, i.\,e.
+\begin{align}
+\eta = -\ln \tan(\frac{\theta}{2}).	\label{eqn:eta}
+\end{align}
+
+From the geometry of the setup it is easy to find the following relations between the momentum components $p_i$ and transversal momentum $p_T$:
 \begin{align}
 	p_x &= p_T \cos(\phi)\\
 	p_y &= p_T \sin(\phi)\\
 	p_z \tan(\theta) &= p_T
 \end{align}
-From the definition of the pseudorapidity (eq: \ref{pseudorapidity}) we have $\theta = 2\arctan(e^{-\eta})$. Using the identity $\tan(2\arctan(x)) = \frac{2x}{1 - x^2}$, these equations lead to 
+From equation (\ref{eqn:eta}) and with the help of the identity
+\begin{align*}
+\tan(2\arctan(x)) = \frac{2x}{1 - x^2},
+\end{align*} 
+we arrive at the following formulas:
 \begin{align}
 	p_z &= p_T\sinh(\eta)\\
-	\left|\mathbf{p}\right| &= p_T \cosh(\eta)
+	\left|\mathbf{p}\right| &= p_T \cosh(\eta).
 \end{align}
 
 
-
-Already implementing the formulas mentioned in the theory part of \cite{F91manual} to speed things up a little.
+\subsection{Efficiency of the measurements}
+This section describes the so called \textit{tag and probe method}, which allows us to determine the unbiased efficiency of the measurement and filtering process.\\
+One of the two electrons (the \textit{tag} electron) has to pass very strong selection criteria. The next step is to check wether the second electron (the \textit{probe}) passes the slightly less stricter criteria, which are explained in more detail later on, when we discuss the implementation of the multi-level filter system. \\
+Then, the last step is to determine the efficiency $\epsilon$ by calculating the ratio between the successfully passing probe electrons and the total amount of probes.\\
+For the \textit{total efficiency} $\epsilon_{\text{tot}}$ we find 
 \begin{align}
-\mathcal{L} = \frac{N_1N_2f_{\text{rev}}n_b}{4\pi\sigma_x\sigma_y}
+	\epsilon_{\text{tot}} = \epsilon_{\text{reconstr.}} \cdot \epsilon_{\text{ident.}} \cdot \epsilon_{\text{trigger}} \cdot \epsilon_{\text{add.}},
 \end{align}
+ where the additional efficiencies come from the other filter steps, e.\,g. the isolation values. 
 
-\blindtext
+%TODO: Insert efficiency plot already here?
 
-\begin{align}
-\mathcal{L}_{\text{int}} = \int \mathcal{L} \ \dd t	
-\end{align}
+\section{Experiment}
 
-\blindtext
+Having to learn the basics of \verb|ROOT|, we start with a simple plot. It displays the distribution of primary vertices along the $z$-direction after a collision of two bunches. This distribution is due to the bunches being spread along the $z$-axis, which makes it impossible for all collisions to happen at the same $z$-coordinate.
 
-\begin{align}
-N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
-\end{align}
+%TODO: More on statistics and PLOTS!
 
-
-\section{Theory}
+\subsection{Z-Boson-Decay}
+It is very likely for two-quark decay-processes to end up in one-, two- or three-lepton final states. \footnote{Neutrinos are neglected for this consideration, since they are very hard to detect and should have little to no noticeable effect on our results.}  
 
 
 \begin{figure}[H]
@@ -119,13 +202,53 @@ N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}
 \end{figure}
 
 
-\section{Experiment}
-\begin{figure}[H]
+There are no $Z$ bosons involved in the 1-lepton final state decays. We have to take care of this, when setting up our filters later. 
+Next we take a look at the distribution of  the pseudorapidity $\eta$, the transversal momentum $p_T$ and its azimutal angle distribution $\phi$.
+We would expect, by construction, homogeneously distributed dependencies, but this is only true for $\phi$, while for $\eta$ there are obvious deviations from this.
+These can nicely be explained by the geometry of the detector, an explanation that is supported by the symmetry of the stated deviations.
+The distribution of the transversal momentum finally shows an unexpected step at $25$ GeV, caused by the trigger which sorts out all the events where not at least one Lepton has an energy higher than $25$ GeV\footnote{This is useful since there is no way that these events contain a Z-Boson candidates.}.
+
+\subsection{Automating things}
+For the next part we adapt the already partially implemented \verb|python| script \verb|eventloop.py| to our needs. New functions for calculating the invariant mass, using \verb|ROOT|'s inbuilt function \verb|TLorenzVector| on one hand and one by using the theoretical formula $M = \sqrt{E_0^2 - \mathbf{p}^2}$ for the invariant mass on the other hand, are defined. A comparison of both approaches did only show minimal, negligible differences that are probably due to truncation errors.
+
+Plotting the distribution of invariant masses in our dataset we could identify several peaks. Their cause is noted on the adjacent plot.
+
+%TODO: Plot here and more explanations
+
+
+
+
+\subsection{Selecting events}
+To aim for the best possible results, in this part we implemented a series of filters, only leaving the decay processes we could confidently connect to the decay of a Z-Boson.
+The following filters were used:
+\begin{enumerate}
+\item \textbf{Weigths} (for Monte Carlo data only): A measure for the quality of the respective simulation.
+\item \textbf{Trigger}: Criteria judging whether it is likely for an event to involve a $Z$ boson decaying into an $e^{+}e^{-}$- or $\mu^{+}\mu^{-}$-pair.
+\item \textbf{Vertex}: Is there a comprehensible vertex for the event?
+\item \textbf{2 Leptons}: Including only events with exactly two involved leptons.
+\item \textbf{PDGID}: This filter is based on the track reconstruction in the detector, which results in an either \textit{loose, medium} or \textit{tight} prediction of the particle type. Every particle type is identified by an integer number (e.\,g. $e = 11 , \ \mu = 13$ and $\tau = 15$).
+\item \textbf{$p_T$ Cut}: Do the Leptons have a energy high enough to originate possibly in a $Z$ boson decay?
+\item \textbf{Isolation}: Do the Leptons have enough energy to be clearl distingt from the background energy of the detector
+\item \textbf{Tight ID}: Only the particles which are labelled as \textit{tight} are considered for further analysis.
+\item \textbf{$Z$ Mass}: Is the calculated invariant mass anywhere near the theoretical invariant mass of a $Z$ boson?
+\end{enumerate}
+
+Applying all these filters to the experimental data we could see the impact of the filters.
+
+%TODO: Include OUR Cut Flow Diagram
+
+\begin{figure}[H]
 \centering
 \includegraphics[width = 0.45\textwidth]
 {figures/plots/CutFlow}
 \caption{Cut flow diagram for our event selection algorithm.}	
 \end{figure}
+
+As explained in (whatever section explains the importance of Monte Carlo data) we proceeded by applying the same things to the Monte Carlo data and were left with two plots very similar to one another. This results speaks in favor of our theoretical understanding.
+
+\subsection{Fitting the Z-Mass}
+%TODO: What did we do here, explicit plots etc. in results...
+\blindtext
 
 
 
@@ -156,22 +279,13 @@ and the the Gaussian we used to describe the smearing of the distribution due to
 	\sigma = (1.559 \pm 0.015) \ \text{GeV}.
 \end{align}
 
-\textbf{Theoretical expectations.} \\
-Using data from the \href{http://pdg.lbl.gov}{Particle Data Group}, we compare our results to the officially published values. These are 
-\begin{align}
-	M_{Z,\text{PDG}} = (91.1876 \pm 0.0021) \ \text{GeV},
-\end{align} 
-and
-\begin{align}
-	\Gamma_{\text{PDG}} = (2.4952 \pm 0.0023) \ \text{GeV}.
-\end{align}
 
-%TODO: Abweicung explizit ausrechnen.. bisschen erklären
+%TODO: Compare to PDG values, given in table 1
 
-\section{Discussion}
+\section{Critical discussion}
 
 
-
+\Blindtext
 
 \begin{acknowledgments}
 We would like to thank our supervisor Philipp Ott for his guidance throughout the operation of this experiment.
