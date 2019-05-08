@@ -81,7 +81,7 @@ In circular particle colliders such as the LHC, two opposed proton beams, each c
 \begin{align}
 \mathcal{L} = \frac{N_1N_2f_{\text{rev}}n_b}{4\pi\sigma_x\sigma_y}
 \end{align}
-where $f$ describes the orbital frequency of the beams\footnote{In our case $f = 11.2$ kHz.} and the $\sigma_i$ describe the smearing of the beam in the respective direction.\\
+where $f$ describes the orbital frequency of the beams\footnote{In our case $f = 11.2$ kHz.} and the $\sigma_i$ describe the smearing of the beam in the respective direction.\\ %TODO: Include all parameters..
 To obtain the entire information content of the events one can integrate the luminosity over time to get the \textit{integrated luminosity}:
 \begin{align}
 \mathcal{L}_{\text{int}} = \int \mathcal{L} \ \dd t.
@@ -92,13 +92,29 @@ N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}.
 \end{align}
 
 \subsection{Energy distributions}
+\textbf{Gaussian distribution.} Inside the calorimeter, the energies are distributed following a \textit{Gaussian}, i.\,e. 
+\begin{align}
+g(E ; \mu, \sigma)=\frac{\mathcal{N}}{\sqrt{2 \pi} \sigma} \exp \left[-\frac{(E-\mu)^{2}}{2 \sigma^{2}}\right]
+\label{eqn:Gaussian}
+\end{align}
+with an arbitrary normalization constant $\mathcal{N}$. The important parameter in this distribution is the standard deviation $\sigma$ which allows us to estimate the uncertainty of the energy.\\
 
-\blindtext
+\textbf{Breit-Wigner distribution.} The physical decay process is described by the \textit{Relativistic Breit-Wigner distribution}, 
+\begin{align}
+	f(E ; M, \Gamma)=\frac{\mathcal{N} k}{\left(E^{2}-M^{2}\right)^{2}+M^{2} \Gamma^{2}}
+\end{align}
+where $k=\frac{2 \sqrt{2} M \Gamma \gamma}{\pi \sqrt{M^{2}+\gamma}}$ and $\gamma=M \sqrt{M^{2}+\Gamma^{2}}$. The parameter $M$ represents the mass and $\Gamma$ is the decay width of the observed process. For a derivation see for example \cite{BohmSato2004}. \\
 
+In order to describe the real measured process we have to convolute a Breit-Wigner distribution and a Gaussian. This takes the smearing of the curve due to uncertainties in the measure electronics into account which are described by the Gaussian (\ref{eqn:Gaussian}). \\
 
+The convolution of both distributions leads us the so called, \textit{Relativistic Voigt Profile}
+\begin{align}
+	V(E ; M, \Gamma, \sigma)=\int \mathrm{d} E^{\prime} g\left(E^{\prime} ; 0, \sigma\right) f\left(E-E^{\prime} ; M, \Gamma\right).
+\end{align}
+We will use this function later on to fit the filtered data set. A comparison to the fits with the two single distributions is also included. 
 \subsection{The ATLAS Detector at the LHC}
 
-Three major components form the setup of the ATLAS detector, i.\,e. the \textit{Inner Detector}, which aims at reconstructing the tracks of charged particles passing the detector, the \textit{Calorimeter}, where the electromagnetic and hadronic showers are evaluated and the \textit{Muon Spectrometer} in the outer layer, to reconstruct muon tracks, which have in general a free path length much longer than the other charged particles occurring in this processes. Additionally there is complex \textit{Trigger system} to avoid the collection of irrelevant data and the so called \textit{GRID}, a web-based network to make the measured data accessible to the world-wide particle physics community working on ATLAS physics. \\
+Three major components form the setup of the ATLAS detector, i.\,e. the \textit{Inner Detector}, which aims at reconstructing the tracks of charged particles passing the detector, the \textit{Calorimeter}, where the electromagnetic and hadronic showers are evaluated and the \textit{Muon Spectrometer} in the outer layer, to reconstruct muon tracks, which have in general a free path length much longer than the other charged particles occurring in this processes. Additionally there is complex \textit{Trigger System} to avoid the collection of irrelevant data and the so called \textit{GRID}, a web-based network to make the measured data accessible to the world-wide particle physics community working on ATLAS physics. \\
 A schematic overview is presented in figure (\ref{fig:atlas}) in the following.
 \begin{figure}[H]
 \centering
@@ -140,17 +156,22 @@ For the \textit{total efficiency} $\epsilon_{\text{tot}}$ we find
 \end{align}
  where the additional efficiencies come from the other filter steps, e.\,g. the isolation values. 
 
-%TODO: Insert efficiency plot already here?
+\missingfigure{Efficiency}
 
 \section{Experiment}
 
-Having to learn the basics of \verb|ROOT|, we start with a simple plot. It displays the distribution of primary vertices along the $z$-direction after a collision of two bunches. This distribution is due to the bunches being spread along the $z$-axis, which makes it impossible for all collisions to happen at the same $z$-coordinate.
+Having to learn the basics of \verb|ROOT| and to get familiar with the dataset, we start with some simple plots giving us already some information about the most important characteristics of the conducted measurements.\\
 
-%TODO: More on statistics and PLOTS!
+\textbf{Primary Vortices.} The first diagram displays the distribution of the primary vertices along the $z$-direction after a collision of two bunches.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.45\textwidth]{figures/plots/DistPrimVort}
+\caption{Distribution of the primary vortices.}
+\label{fig:vortices}
+\end{figure}
+The distribution depicted in figure (\ref{fig:vortices}) is explained by the fact, that the bunches are spread along the $z$-axis, which makes it impossible for all collisions to happen at the same $z$-coordinate.\\
 
-\subsection{Z-Boson-Decay}
-It is very likely for two-quark decay-processes to end up in one-, two- or three-lepton final states. \footnote{Neutrinos are neglected for this consideration, since they are very hard to detect and should have little to no noticeable effect on our results.}  
-
+\textbf{Lepton Number.} It is very likely for two-quark decay-processes to end up in one-, two- or three-lepton final states. \footnote{Neutrinos are neglected in this consideration, since they are very hard to detect and should have little to no noticeable effect on our results.} The following Feynman diagrams represent some of the constellations mentioned above. 
 
 \begin{figure}[H]
 \centering	
@@ -201,22 +222,48 @@ It is very likely for two-quark decay-processes to end up in one-, two- or three
 \caption{3-Lepton final state.}
 \end{figure}
 
+To check this, we plot counted amount of lepton candidates in the final state for our dataset. The result is presented in the following figure.
 
-There are no $Z$ bosons involved in the 1-lepton final state decays. We have to take care of this, when setting up our filters later. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/plots/NLeptons}
+	\caption{Number of Leptons in the final state.}
+\end{figure}
+%TODO: Fix this plot.. 
+There are no $Z$ bosons involved in the 1-lepton final state decays and in leading order one would expect two leptons in the final state of the decay process. We have to take care of this, when setting up our filters later.\\
+
+\textbf{Angular and Momentum Distributions.}  
 Next we take a look at the distribution of  the pseudorapidity $\eta$, the transversal momentum $p_T$ and its azimutal angle distribution $\phi$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/plots/Pseudorapidity}
+	\caption{Distribution of the Pseudorapidity $\eta$.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/plots/AzimutalAngle}
+	\caption{Distribution of the azimutal angles $\phi$.}
+\end{figure}
+
 We would expect, by construction, homogeneously distributed dependencies, but this is only true for $\phi$, while for $\eta$ there are obvious deviations from this.
-These can nicely be explained by the geometry of the detector, an explanation that is supported by the symmetry of the stated deviations.
-The distribution of the transversal momentum finally shows an unexpected step at $25$ GeV, caused by the trigger which sorts out all the events where not at least one Lepton has an energy higher than $25$ GeV\footnote{This is useful since there is no way that these events contain a Z-Boson candidates.}.
+These can nicely be explained by the geometry of the detector, an explanation that is supported by the symmetry of the stated deviations.\\
+
+The distribution of the transversal momentum finally shows an unexpected step at $25$ GeV, caused by the trigger which sorts out all the events where not at least one Lepton has an energy higher than $25$ GeV\footnote{This is useful since there is no way that these events contain a Z-Boson candidate.}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figures/plots/TransverseMomentum}
+	\caption{Distribution of the transverse momenta $p_T$.}
+\end{figure}
 
 \subsection{Automating things}
-For the next part we adapt the already partially implemented \verb|python| script \verb|eventloop.py| to our needs. New functions for calculating the invariant mass, using \verb|ROOT|'s inbuilt function \verb|TLorenzVector| on one hand and one by using the theoretical formula $M = \sqrt{E_0^2 - \mathbf{p}^2}$ for the invariant mass on the other hand, are defined. A comparison of both approaches did only show minimal, negligible differences that are probably due to truncation errors.
+For the next part we adapt the already partially implemented \verb|python| script \verb|eventloop.py| to our needs. New functions for calculating the invariant mass, using \verb|ROOT|'s inbuilt function \verb|TLorenzVector| on one hand and one by using the theoretical formula $M = \sqrt{E_0^2 - \mathbf{p}^2}$ for the invariant mass on the other hand, are defined. A comparison of both approaches did only show minimal, negligible differences that are probably due to truncation errors.\\
 
-Plotting the distribution of invariant masses in our dataset we could identify several peaks. Their cause is noted on the adjacent plot.
+Plotting the distribution of the invariant masses in our dataset we could identify several peaks. Their cause is noted on the adjacent plot.
 
-%TODO: Plot here and more explanations
-
-
-
+\missingfigure{Invariant massed from measured data and MC.}
+One can clearly see the peak at $90$ GeV, representing the $Z$ boson. There are some other peaks visible in the data, one at $\sim 3$ GeV and the other at $\sim 10$ GeV which correspond to $J/\Psi$ and $\Upsilon$ meson decays. That is the reason why we can't observe such peaks in the Monte Carlo data. Is already mentioned before, there is some sort of peak at around $25$ GeV due to the internal trigger threshold.
 
 \subsection{Selecting events}
 To aim for the best possible results, in this part we implemented a series of filters, only leaving the decay processes we could confidently connect to the decay of a Z-Boson.
@@ -228,15 +275,13 @@ The following filters were used:
 \item \textbf{2 Leptons}: Including only events with exactly two involved leptons.
 \item \textbf{PDGID}: This filter is based on the track reconstruction in the detector, which results in an either \textit{loose, medium} or \textit{tight} prediction of the particle type. Every particle type is identified by an integer number (e.\,g. $e = 11 , \ \mu = 13$ and $\tau = 15$).
 \item \textbf{$p_T$ Cut}: Do the Leptons have a energy high enough to originate possibly in a $Z$ boson decay?
-\item \textbf{Isolation}: Do the Leptons have enough energy to be clearl distingt from the background energy of the detector
+\item \textbf{Isolation}: Do the Leptons have enough energy to be clearly distinguished from the background energy of the detector? 
 \item \textbf{Tight ID}: Only the particles which are labelled as \textit{tight} are considered for further analysis.
 \item \textbf{$Z$ Mass}: Is the calculated invariant mass anywhere near the theoretical invariant mass of a $Z$ boson?
 \end{enumerate}
 
-Applying all these filters to the experimental data we could see the impact of the filters.
-
+After applying all the filters to the data we can plot the amount of measurements that passed the tests until a certain  filter. This kind of diagram is called \textit{Cut Flow diagram}. For our filter setting, the Cut Flow diagram is depicted in the following.
 %TODO: Include OUR Cut Flow Diagram
-
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.45\textwidth]
@@ -244,31 +289,32 @@ Applying all these filters to the experimental data we could see the impact of t
 \caption{Cut flow diagram for our event selection algorithm.}	
 \end{figure}
 
-As explained in (whatever section explains the importance of Monte Carlo data) we proceeded by applying the same things to the Monte Carlo data and were left with two plots very similar to one another. This results speaks in favor of our theoretical understanding.
 
-\subsection{Fitting the Z-Mass}
-%TODO: What did we do here, explicit plots etc. in results...
-\blindtext
+In order to be able to compare the data to the theoretical predictions, we analyze Monte Carlo simulations of $Z$ boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs, represented in the following (stacked) diagram %(\ref{fig:MChisto}) 
 
 
+\missingfigure{Stacked MC data histogram.}\label{fig:MChisto}
 
-\section{Results}
+For a more realistic comparison, we need to rescale the data to match them to the real parameters from the measurements. We use the formula $k = \sfrac{\mathcal{L}\sigma}{w}$, where $w$ represents the MC weight we introduced above. In practice, the scaling is implemented directly in the \verb|Python| script, which means there is no warranty at all that the scaling is set optimally. 
+%TODO: Short comment on the plots..
+
+\section{Fitting the $Z$ mass}
 
 We want to use this section to present the final result for the mass distribution of the processes with $Z$-candidates which passed all filter levels. The result is presented in the following in figure (\ref{fig:MassDist}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width = 0.45\textwidth]{figures/plots/ZMassFitted}
-	\caption{Distribution of the $Z$ masses $M_z$ with Gaussian, Breit-Wigner and a convoluted fit.}
+	\caption{Distribution of the $Z$ masses $M_{\mathrm{Z}}$ with Gaussian, Breit-Wigner and a convoluted fit.}
 	\label{fig:MassDist}
 \end{figure}
 
-To obtain a satisfying fitting result one needs to convolute a Breit-Wigner distribution and a Gaussian. This is explained by the fact, that the decay process is in theory perfectly described by a Breit-Wigner distribution, but one needs to take the smearing of the curve due to uncertainties in the measure electronics into account which are approximately described by a Gaussian curve. As one can easily see in figure (\ref{fig:MassDist}), the fits using only one of the two functions did not represent the physical model in an adequate manner.
-The results from the convoluted fit are presented in the following. \\
+As discussed before, to obtain a satisfying fitting result one needs to convolute a Breit-Wigner distribution and a Gaussian. We can directly see in figure (\ref{fig:MassDist}), that the fits using only one of the two functions did not represent the physical model in an adequate manner.
+The results from the convoluted fit are the following. \\
 
 For the mass of the $Z$ boson we found
 \begin{align}
-	M_Z = (90.607 \pm 0.004) \ \text{GeV},
+	M_{\mathrm{Z}} = (90.607 \pm 0.004) \ \text{GeV},
 \end{align} 
 the decay width $\Gamma$ is
 \begin{align}
@@ -279,17 +325,22 @@ and the the Gaussian we used to describe the smearing of the distribution due to
 	\sigma = (1.559 \pm 0.015) \ \text{GeV}.
 \end{align}
 
-
-%TODO: Compare to PDG values, given in table 1
-
+These results can be compared to the values of the Particle Data Group\footnote{The values can be found here: \url{http://pdg.lbl.gov/2018/listings/rpp2018-list-z-boson.pdf}} (PDG), 
+\begin{align}
+	M_{\mathrm{Z}}&=(91.1876 \pm 0.0021) \ \mathrm{GeV} \\  \nonumber\\ \Gamma&=(2.4952 \pm 0.0023) \ \mathrm{GeV}.
+\end{align} 
+Using Gaussian error propagation one finds for the differences between our final results and the PDG data
+\begin{align}
+	\Delta M_{\mathrm{Z}}&=(0.581 \pm 0.005) \ \mathrm{GeV} \\  \nonumber\\ 
+	\Delta\Gamma&=(1.022 \pm 0.015) \ \mathrm{GeV},
+\end{align} 
+which means the deviations are approximately of order $\sim$ 1 GeV. The errors seem to be very small, which is explained by the fact, that all errors we take into account at the moment only come from the fitting process. This is definitely a highly underestimated treatment of the errors. We'll come back to this during the critical discussion of the results in the next section.
 \section{Critical discussion}
-
-
-\Blindtext
-
+\blindtext\\
+ %TODO: Discussion of errors
+\blindtext %TODO: Summary
 \begin{acknowledgments}
 We would like to thank our supervisor Philipp Ott for his guidance throughout the operation of this experiment.
-
 \end{acknowledgments}
 
 \bibliographystyle{abbrv}
