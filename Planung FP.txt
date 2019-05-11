@@ -1,4 +1,4 @@
-	VERSUCHE			KOMMENTAR		     	 TERMIN		BUCHUNG
+	VERSUCHE			KOMMENTAR		     	 TERMIN	
 	
 	FP1														
 1. Koinzidenzspektrometer						05.11.2018	
@@ -9,5 +9,6 @@
 4. Raster-Kraft-Mikroskop 						10.09.2018	     
 5. Kernresonanzspektroskopie 						20.08.2018	
 6. Stellare CCD-Photometrie		Lange Ausarbeitung!		27.08.2018	
-7. Neuromorphes Rechnen			BUCHEN!
+7. Zeeman Spektroskopie							03.06.2019
 8. Z-Boson am LHC			Kurze Ausarbeitung!		04.03.2019
+					    + Vortrag
