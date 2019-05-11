@@ -81,11 +81,12 @@ In circular particle colliders such as the LHC, two opposed proton beams, each c
 \begin{align}
 \mathcal{L} = \frac{N_1N_2f_{\text{rev}}n_b}{4\pi\sigma_x\sigma_y}
 \end{align}
-where $f$ describes the orbital frequency of the beams\footnote{In our case $f = 11.2$ kHz.} and the $\sigma_i$ describe the smearing of the beam in the respective direction.\\ %TODO: Include all parameters..
+where $f = 11.2$ kHz describes the orbital frequency of the beams and the $\sigma_i$ describe the smearing of the beam in the respective direction. At the LHC, they reach luminosities of $\mathcal{L}=10^{34} \ \mathrm{cm}^{-2} \mathrm{s}^{-1}$.\\
 To obtain the entire information content of the events one can integrate the luminosity over time to get the \textit{integrated luminosity}:
 \begin{align}
 \mathcal{L}_{\text{int}} = \int \mathcal{L} \ \dd t.
 \end{align}
+The data we are analyzing has an integrated luminosity of $\mathcal{L}_{\mathrm{int}}=1 \ \mathrm{fb}^{-1}$.\\
 Together with the \textit{total cross section} $\sigma_{pp\rightarrow X}$ one finds the following relation for the rate of events $N$: 
 \begin{align}
 N = \sigma_{pp\rightarrow X} \cdot \mathcal{L}_{\text{int}}.
@@ -261,8 +262,17 @@ The distribution of the transversal momentum finally shows an unexpected step at
 For the next part we adapt the already partially implemented \verb|python| script \verb|eventloop.py| to our needs. New functions for calculating the invariant mass, using \verb|ROOT|'s inbuilt function \verb|TLorenzVector| on one hand and one by using the theoretical formula $M = \sqrt{E_0^2 - \mathbf{p}^2}$ for the invariant mass on the other hand, are defined. A comparison of both approaches did only show minimal, negligible differences that are probably due to truncation errors.\\
 
 Plotting the distribution of the invariant masses in our dataset we could identify several peaks. Their cause is noted on the adjacent plot.
+\begin{figure}[H]
+	\centering
+	\missingfigure{Z spectrum from data}
+	\caption{Unfiltered spectrum of the invariant mass distribution for the real dataset.}
+\end{figure}
 
-\missingfigure{Invariant massed from measured data and MC.}
+\begin{figure}[H]
+	\centering
+	\missingfigure{Z spectrum from MC.}
+	\caption{Spectrum of the invariant mass distribution for the Monte Carlo distributions.}
+\end{figure}
 One can clearly see the peak at $90$ GeV, representing the $Z$ boson. There are some other peaks visible in the data, one at $\sim 3$ GeV and the other at $\sim 10$ GeV which correspond to $J/\Psi$ and $\Upsilon$ meson decays. That is the reason why we can't observe such peaks in the Monte Carlo data. Is already mentioned before, there is some sort of peak at around $25$ GeV due to the internal trigger threshold.
 
 \subsection{Selecting events}
@@ -292,12 +302,17 @@ After applying all the filters to the data we can plot the amount of measurement
 
 In order to be able to compare the data to the theoretical predictions, we analyze Monte Carlo simulations of $Z$ boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs, represented in the following (stacked) diagram %(\ref{fig:MChisto}) 
 
+\begin{figure}[H]
+	\centering
+	\missingfigure{Stacked MC data histogram.}
+	\caption{Results for Monte Carlo simulations of $Z$-boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs.}
+	\label{fig:MChisto}
+\end{figure}
 
-\missingfigure{Stacked MC data histogram.}\label{fig:MChisto}
+For a more realistic comparison, we need to rescale the data to match them to the real parameters from the measurements. We use the formula $k = \sfrac{\mathcal{L}\sigma}{w}$, where $w$ represents the MC weight we introduced above. In practice, the scaling is implemented directly in the \verb|Python| script, which means there is no warranty at all that the scaling is set optimally. \\
 
-For a more realistic comparison, we need to rescale the data to match them to the real parameters from the measurements. We use the formula $k = \sfrac{\mathcal{L}\sigma}{w}$, where $w$ represents the MC weight we introduced above. In practice, the scaling is implemented directly in the \verb|Python| script, which means there is no warranty at all that the scaling is set optimally. 
 %TODO: Short comment on the plots..
-
+\blindtext
 \section{Fitting the $Z$ mass}
 
 We want to use this section to present the final result for the mass distribution of the processes with $Z$-candidates which passed all filter levels. The result is presented in the following in figure (\ref{fig:MassDist}).
@@ -336,9 +351,15 @@ Using Gaussian error propagation one finds for the differences between our final
 \end{align} 
 which means the deviations are approximately of order $\sim$ 1 GeV. The errors seem to be very small, which is explained by the fact, that all errors we take into account at the moment only come from the fitting process. This is definitely a highly underestimated treatment of the errors. We'll come back to this during the critical discussion of the results in the next section.
 \section{Critical discussion}
-\blindtext\\
- %TODO: Discussion of errors
-\blindtext %TODO: Summary
+In this section we want to discuss the role of the systematic and statistical errors and their possible influence on our results.\\
+
+The data set we analyzed is very large, this means we had enough measurements to reduce statistical uncertainties to a negligible minimum. We know from Poisson statistics, that the significance of the corresponding errors can be estimated using the inverse square root of the amount of data. In total this means that it should hold, that $\Delta_{\mathrm{stat.}} \ll \Delta_{\mathrm{syst.}}$. \\
+A measure for the possible influence of the systematical uncertainties is given by the standard deviation \\ $\sigma = (1.559 \pm 0.015) \ \text{GeV}$ we concluded from the convoluted fit. It clearly shows that one has to keep in mind that the energy resolution inside the calorimeter is not perfect. In general one has to think about the treshold values for the filter system. When we would have had additional time, we could have tested the impact of changes in the different steps of the implemented filter.
+%TODO: Some more on syst. errors?
+
+\section{Conclusion}
+After some preparation time to be able to understand the underlaying structure of the analyzed dataset, the main goal of this lab course was to get familiar with modern data analysis tools such as \verb|ROOT| and \verb|Python| and to handle a large amount of data, by implementing our own multi-level filter system, to be able to distinguish possible $Z$ boson candidates from other measurements. We also had the chance to compare the data to theoretical predictions by analyzing some Monte Carlo simulations. Our final result for the $Z$ mass and its decay width $\Gamma$ seem to fit to the values provided by the PDG. Only the treatment of, especially the systematic error sources,  has to  be questioned, as we did in the previous section. Nevertheless we can conclude, that the obtained results are compatible with the expectations.\\
+We can remark, that we learned a lot about data-analysis in particle and we had a lot of fun implementing the filters.  
 \begin{acknowledgments}
 We would like to thank our supervisor Philipp Ott for his guidance throughout the operation of this experiment.
 \end{acknowledgments}
