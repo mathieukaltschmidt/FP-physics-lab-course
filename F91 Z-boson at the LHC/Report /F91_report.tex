@@ -26,8 +26,8 @@
 
 
 \begin{abstract}
-This experiment has been performed as part of the advanced lab course for physics students (FP) at Heidelberg University.
-The goal of this computer-based experiment is to determine the invariant mass spectrum for the $Z$ boson, one of the three massive gauge bosons of the weak interaction, using data acquired by the ATLAS experiment at the Large Hadron Collider (LHC) at CERN in Geneva.  A multi-level filter system is implemented to get a clean mass distribution of the measured $Z$ boson candidates. For data-analysis  and plotting we use \verb|ROOT| and different \verb|Python| scipts.
+This experiment was performed as part of the advanced lab course for physics students (FP) at Heidelberg University.
+The goal of this computer-based experiment is to determine the invariant mass spectrum for the $Z$ boson, one of the three massive gauge bosons of the weak interaction, using data acquired by the ATLAS experiment at the Large Hadron Collider (LHC) at CERN in Geneva. For data-analysis  and plotting we used \verb|ROOT| and different \verb|Python| scripts.
 \end{abstract}
 
 \maketitle
@@ -35,7 +35,7 @@ The goal of this computer-based experiment is to determine the invariant mass sp
 
 }
 \section{Introduction}
-In this lab course about the $Z$ boson, we want to study its properties and get familiar with modern data analysis tools such as \verb|ROOT| and \verb|Python3|, used in current experimental high-energy physics research. The data we use, is part of the ATLAS Open Data set, published by CERN to provide students a hands-on training experience for data analysis. It features real data from the LHC measured in 2012 and additionally some Monte-Carlo simulations of the same processes for a better comparability with the theoretical predictions.
+In this lab course about the $Z$ boson, we want to study its properties and get familiar with modern data analysis tools such as \verb|ROOT| and \verb|Python3|, used in current experimental high-energy physics research. The data we used, is part of the ATLAS Open Data set, published by CERN to provide students a hands-on training experience for data analysis. It features real data from the LHC measured in 2012 and additionally some Monte-Carlo simulations of the same processes for a better comparability with the theoretical predictions.
 
 \subsection{The $Z$ boson}
 In this section, we want to introduce the theoretical properties of the $Z$ boson. The most important are summarized in the following:
@@ -50,7 +50,7 @@ In this section, we want to introduce the theoretical properties of the $Z$ boso
 	\caption{\label{tab:Z_props}The properties of the $Z$ boson.}
 \end{table}
 
-The $Z$ boson is one of the three gauge bosons of the weak interaction. In contrast to, for example, the photon, which mediates the electromagnetic force, or the gluon, the gauge boson of the strong interaction, it is massive. It has two charged "cousins", the $W^+$ and the $W^-$ boson. Postulated by Glashow, Salam and Weinberg in the 1960s as part of the unified electroweak interaction, which earned them a Nobel prize in 1979, it has been directly observed not until 1983, at the SPS collider at CERN, when particle collider were able to reach center-of-mass energies high enough. The detection of the $Z$ earned Carlo Rubbia and Simon van der Meer also a Nobel prize in 1984.   
+The $Z$ boson is one of the three gauge bosons of the weak interaction. In contrast to photons, which mediate the electromagnetic force, or gluons, the gauge bosons of the strong interaction, it is massive. It has two charged "cousins", the $W^+$ and the $W^-$ boson. Postulated by Glashow, Salam and Weinberg in the 1960s as part of the unified electroweak interaction, which earned them a Nobel prize in 1979, it has not been directly observed until 1983, at the SPS collider at CERN, when particle colliders were able to reach center-of-mass energies high enough. The detection of the $Z$ earned Carlo Rubbia and Simon van der Meer also a Nobel prize in 1984.   
 
 
 \section{Theoretical Foundations}
@@ -149,16 +149,20 @@ we arrive at the following formulas:
 
 \subsection{Efficiency of the measurements}
 This section describes the so called \textit{tag and probe method}, which allows us to determine the unbiased efficiency of the measurement and filtering process.\\
-One of the two electrons (the \textit{tag} electron) has to pass very strong selection criteria. The next step is to check wether the second electron (the \textit{probe}) passes the slightly less stricter criteria, which are explained in more detail later on, when we discuss the implementation of the multi-level filter system. \\
-Then, the last step is to determine the efficiency $\epsilon$ by calculating the ratio between the successfully passing probe electrons and the total amount of probes.\\
+One of the two electrons (the \textit{tag} electron) has to pass very strong selection criteria. The next step is to check wether the second electron (the \textit{probe}) passes the slightly less strict criteria, which are explained in more detail later on, when we discuss the implementation of the multi-level filter system. \\
+Then, the last step is to determine the efficiency $\epsilon$ by calculating the ratio between the successful passing probe electrons and the total amount of probes.\\
 For the \textit{total efficiency} $\epsilon_{\text{tot}}$ we find 
 \begin{align}
 	\epsilon_{\text{tot}} = \epsilon_{\text{reconstr.}} \cdot \epsilon_{\text{ident.}} \cdot \epsilon_{\text{trigger}} \cdot \epsilon_{\text{add.}},
 \end{align}
  where the additional efficiencies come from the other filter steps, e.\,g. the isolation values. 
 
-\missingfigure{Efficiency}
-
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.45\textwidth]{figures/plots/efficiency}
+\caption{Efficiency measurement for the real data (red) and the MC simulations (blue).}
+\end{figure}
+%TODO: Rot=exp , Blau=MC
 \section{Experiment}
 
 Having to learn the basics of \verb|ROOT| and to get familiar with the dataset, we start with some simple plots giving us already some information about the most important characteristics of the conducted measurements.\\
@@ -223,15 +227,15 @@ The distribution depicted in figure (\ref{fig:vortices}) is explained by the fac
 \caption{3-Lepton final state.}
 \end{figure}
 
-To check this, we plot counted amount of lepton candidates in the final state for our dataset. The result is presented in the following figure.
+To check this, we plot the amount of lepton candidates in the final state for our dataset. The result is presented in the following figure.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figures/plots/NLeptons}
+	\includegraphics[width=0.45\textwidth]{figures/plots/lep_n_Muons}
 	\caption{Number of Leptons in the final state.}
 \end{figure}
 %TODO: Fix this plot.. 
-There are no $Z$ bosons involved in the 1-lepton final state decays and in leading order one would expect two leptons in the final state of the decay process. We have to take care of this, when setting up our filters later.\\
+There are no $Z$ bosons involved in the 1-lepton final state decays and in leading order one would expect two leptons in the final state of the decay process. We are going to take this into account, when setting up our filters.\\
 
 \textbf{Angular and Momentum Distributions.}  
 Next we take a look at the distribution of  the pseudorapidity $\eta$, the transversal momentum $p_T$ and its azimutal angle distribution $\phi$.
@@ -251,7 +255,7 @@ Next we take a look at the distribution of  the pseudorapidity $\eta$, the trans
 We would expect, by construction, homogeneously distributed dependencies, but this is only true for $\phi$, while for $\eta$ there are obvious deviations from this.
 These can nicely be explained by the geometry of the detector, an explanation that is supported by the symmetry of the stated deviations.\\
 
-The distribution of the transversal momentum finally shows an unexpected step at $25$ GeV, caused by the trigger which sorts out all the events where not at least one Lepton has an energy higher than $25$ GeV\footnote{This is useful since there is no way that these events contain a Z-Boson candidate.}.
+The distribution of the transversal momentum shows an unexpected step at about $20$ GeV, caused by the trigger which sorts out all the events where not at least one Lepton has an energy higher than $25$ GeV\footnote{This is useful since there is no way that these events contain a Z-Boson candidate.}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figures/plots/TransverseMomentum}
@@ -259,7 +263,7 @@ The distribution of the transversal momentum finally shows an unexpected step at
 \end{figure}
 
 \subsection{Automating things}
-For the next part we adapt the already partially implemented \verb|python| script \verb|eventloop.py| to our needs. New functions for calculating the invariant mass, using \verb|ROOT|'s inbuilt function \verb|TLorenzVector| on one hand and one by using the theoretical formula $M = \sqrt{E_0^2 - \mathbf{p}^2}$ for the invariant mass on the other hand, are defined. A comparison of both approaches did only show minimal, negligible differences that are probably due to truncation errors.\\
+For the next part we adapt the already partially implemented \verb|python| script \verb|eventloop.py| to our needs. New functions for calculating the invariant mass, using \verb|ROOT|'s inbuilt function \verb|TLorenzVector| on the one hand and one by using the theoretical formula $M = \sqrt{E_0^2 - \mathbf{p}^2}$ for the invariant mass on the other hand, are defined. A comparison of both approaches did only show negligible differences that are probably due to truncation errors.\\
 
 Plotting the distribution of the invariant masses in our dataset we could identify several peaks. Their cause is noted on the adjacent plot.
 \begin{figure}[H]
@@ -284,9 +288,9 @@ The following filters were used:
 \item \textbf{Vertex}: Is there a comprehensible vertex for the event?
 \item \textbf{2 Leptons}: Including only events with exactly two involved leptons.
 \item \textbf{PDGID}: This filter is based on the track reconstruction in the detector, which results in an either \textit{loose, medium} or \textit{tight} prediction of the particle type. Every particle type is identified by an integer number (e.\,g. $e = 11 , \ \mu = 13$ and $\tau = 15$).
-\item \textbf{$p_T$ Cut}: Do the Leptons have a energy high enough to originate possibly in a $Z$ boson decay?
-\item \textbf{Isolation}: Do the Leptons have enough energy to be clearly distinguished from the background energy of the detector? 
-\item \textbf{Tight ID}: Only the particles which are labelled as \textit{tight} are considered for further analysis.
+\item \textbf{$p_T$ Cut}: Do the Leptons have a energy high enough to possibly originate in a $Z$ boson decay?
+\item \textbf{Isolation}: Do the Leptons have enough energy to be clearly distinguishable from the background energy of the detector? 
+\item \textbf{Tight ID}: Only the particles labelled as \textit{tight} are considered for further analysis.
 \item \textbf{$Z$ Mass}: Is the calculated invariant mass anywhere near the theoretical invariant mass of a $Z$ boson?
 \end{enumerate}
 
@@ -294,13 +298,13 @@ After applying all the filters to the data we can plot the amount of measurement
 %TODO: Include OUR Cut Flow Diagram
 \begin{figure}[H]
 \centering
-\includegraphics[width = 0.45\textwidth]
-{figures/plots/CutFlow}
-\caption{Cut flow diagram for our event selection algorithm.}	
+\includegraphics[width = 0.5\textwidth]
+{figures/plots/CutFlowEGamma}
+\caption{Cut flow diagram for our event selection algorithm applied to the EGamma dataset.}	
 \end{figure}
 
 
-In order to be able to compare the data to the theoretical predictions, we analyze Monte Carlo simulations of $Z$ boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs, represented in the following (stacked) diagram %(\ref{fig:MChisto}) 
+In order to be able to compare the data to the theoretical predictions, we analyze Monte Carlo simulations of $Z$ boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs, represented in the following (stacked) diagram: %(\ref{fig:MChisto}) 
 
 \begin{figure}[H]
 	\centering
@@ -324,7 +328,7 @@ We want to use this section to present the final result for the mass distributio
 	\label{fig:MassDist}
 \end{figure}
 
-As discussed before, to obtain a satisfying fitting result one needs to convolute a Breit-Wigner distribution and a Gaussian. We can directly see in figure (\ref{fig:MassDist}), that the fits using only one of the two functions did not represent the physical model in an adequate manner.
+As discussed before, to obtain a satisfying fitting result one needs to convolute a Breit-Wigner distribution and a Gaussian. We can directly see in figure (\ref{fig:MassDist}), that the fits using the two functions separately did not represent the physical model in an adequate manner.
 The results from the convoluted fit are the following. \\
 
 For the mass of the $Z$ boson we found
@@ -349,7 +353,7 @@ Using Gaussian error propagation one finds for the differences between our final
 	\Delta M_{\mathrm{Z}}&=(0.581 \pm 0.005) \ \mathrm{GeV} \\  \nonumber\\ 
 	\Delta\Gamma&=(1.022 \pm 0.015) \ \mathrm{GeV},
 \end{align} 
-which means the deviations are approximately of order $\sim$ 1 GeV. The errors seem to be very small, which is explained by the fact, that all errors we take into account at the moment only come from the fitting process. This is definitely a highly underestimated treatment of the errors. We'll come back to this during the critical discussion of the results in the next section.
+which means the deviations are approximately of order $\sim$ 1 GeV. The errors seem to be very small, which is explained by the fact, that all errors we take into account at the moment only come from the fitting process. This is presumeably a highly underestimating treatment of errors. We'll come back to this during the critical discussion of the results in the next section.
 \section{Critical discussion}
 In this section we want to discuss the role of the systematic and statistical errors and their possible influence on our results.\\
 
