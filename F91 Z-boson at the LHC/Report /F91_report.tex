@@ -35,7 +35,7 @@ The goal of this computer-based experiment is to determine the invariant mass sp
 
 }
 \section{Introduction}
-In this lab course about the $Z$ boson, we want to study its properties and get familiar with modern data analysis tools such as \verb|ROOT| and \verb|Python3|, used in current experimental high-energy physics research. The data we used, is part of the ATLAS Open Data set, published by CERN to provide students a hands-on training experience for data analysis. It features real data from the LHC measured in 2012 and additionally some Monte-Carlo simulations of the same processes for a better comparability with the theoretical predictions.
+In this lab course about the $Z$ boson, we want to study its properties and get familiar with modern data analysis tools such as \verb|ROOT| and \verb|Python3|, used in current experimental high-energy physics research. The data we used, is part of the ATLAS Open Data set \cite{DATA}, published by CERN to provide students a hands-on training experience for data analysis. It features real data from the LHC measured in 2012 and additionally some Monte-Carlo simulations of the same processes for a better comparability with the theoretical predictions.
 
 \subsection{The $Z$ boson}
 In this section, we want to introduce the theoretical properties of the $Z$ boson. The most important are summarized in the following:
@@ -70,7 +70,7 @@ Hadrons, i.\,e. particles made up of three quarks, scattering at very high energ
 \label{fig:Drell-Yan}
 \end{figure}
 	
-To study the properties of the boson involved in these processes one can calculate for example the invariant mass $\sqrt{s}$, using the following formula:
+To study the properties of the gauge boson involved in these processes one can calculate for example the invariant mass $\sqrt{s}$, using the following formula:
 \begin{align}
 	\sqrt{s} = \sqrt{\left(p_{l^{-}} + p_{l^{+}}\right)^2}
 \end{align}
@@ -81,7 +81,7 @@ In circular particle colliders such as the LHC, two opposed proton beams, each c
 \begin{align}
 \mathcal{L} = \frac{N_1N_2f_{\text{rev}}n_b}{4\pi\sigma_x\sigma_y}
 \end{align}
-where $f = 11.2$ kHz describes the orbital frequency of the beams and the $\sigma_i$ describe the smearing of the beam in the respective direction. At the LHC, they reach luminosities of $\mathcal{L}=10^{34} \ \mathrm{cm}^{-2} \mathrm{s}^{-1}$.\\
+where $f = 11.2$ kHz describes the orbital frequency of the beams and the $\sigma_i$ describe the smearing of the beam in the respective direction. At the LHC, luminosities of $\mathcal{L}=10^{34} \ \mathrm{cm}^{-2} \mathrm{s}^{-1}$ can be reached.\\
 To obtain the entire information content of the events one can integrate the luminosity over time to get the \textit{integrated luminosity}:
 \begin{align}
 \mathcal{L}_{\text{int}} = \int \mathcal{L} \ \dd t.
@@ -108,22 +108,22 @@ where $k=\frac{2 \sqrt{2} M \Gamma \gamma}{\pi \sqrt{M^{2}+\gamma}}$ and $\gamma
 
 In order to describe the real measured process we have to convolute a Breit-Wigner distribution and a Gaussian. This takes the smearing of the curve due to uncertainties in the measure electronics into account which are described by the Gaussian (\ref{eqn:Gaussian}). \\
 
-The convolution of both distributions leads us the so called, \textit{Relativistic Voigt Profile}
+The convolution of both distributions leads us the so called \textit{Relativistic Voigt Profile}
 \begin{align}
 	V(E ; M, \Gamma, \sigma)=\int \mathrm{d} E^{\prime} g\left(E^{\prime} ; 0, \sigma\right) f\left(E-E^{\prime} ; M, \Gamma\right).
 \end{align}
 We will use this function later on to fit the filtered data set. A comparison to the fits with the two single distributions is also included. 
 \subsection{The ATLAS Detector at the LHC}
 
-Three major components form the setup of the ATLAS detector, i.\,e. the \textit{Inner Detector}, which aims at reconstructing the tracks of charged particles passing the detector, the \textit{Calorimeter}, where the electromagnetic and hadronic showers are evaluated and the \textit{Muon Spectrometer} in the outer layer, to reconstruct muon tracks, which have in general a free path length much longer than the other charged particles occurring in this processes. Additionally there is complex \textit{Trigger System} to avoid the collection of irrelevant data and the so called \textit{GRID}, a web-based network to make the measured data accessible to the world-wide particle physics community working on ATLAS physics. \\
+Three major components form the setup of the ATLAS detector, i.\,e. the \textit{Inner Detector}, which aims at reconstructing the tracks of charged particles passing the detector, the \textit{Calorimeter}, where the electromagnetic and hadronic showers are evaluated and the \textit{Muon Spectrometer} in the outer layer, to reconstruct muon tracks, which have in general a free path length much longer than the other charged particles occurring in these processes. Additionally there is complex \textit{Trigger System} to avoid the collection of irrelevant data and the so called \textit{GRID}, a web-based network to make the measured data accessible to the world-wide particle physics community working on ATLAS physics. \\
 A schematic overview is presented in figure (\ref{fig:atlas}) in the following.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{figures/introduction/atlas}
-\caption[Schematic picture of the ATLAS detector at the LHC.]{Schematic picture of the ATLAS detector at the Large Hadron Collider\footnotemark.}
+\caption[Schematic picture of the ATLAS detector at the LHC.]{Schematic picture of the ATLAS detector at the Large Hadron Collider \cite{ATLAS}.}
 \label{fig:atlas}
 \end{figure}
-\footnotetext{Picture taken from \url{http://www.kip.uni-heidelberg.de/kw/image/f/group/f8/webutils/atlas.jpeg} (\tiny{\today})}
+
 \subsection{Detector Geometry}
 An important quantity for the understanding the geometry of particle detectors is the \textit{pseudorapidity} $\eta$, which is used to describe polar angle distributions, i.\,e.
 \begin{align}
@@ -147,7 +147,7 @@ we arrive at the following formulas:
 \end{align}
 
 
-\subsection{Efficiency of the measurements}
+\subsection{Efficiency of the $e^-$ detection.}
 This section describes the so called \textit{tag and probe method}, which allows us to determine the unbiased efficiency of the measurement and filtering process.\\
 One of the two electrons (the \textit{tag} electron) has to pass very strong selection criteria. The next step is to check wether the second electron (the \textit{probe}) passes the slightly less strict criteria, which are explained in more detail later on, when we discuss the implementation of the multi-level filter system. \\
 Then, the last step is to determine the efficiency $\epsilon$ by calculating the ratio between the successful passing probe electrons and the total amount of probes.\\
@@ -155,14 +155,18 @@ For the \textit{total efficiency} $\epsilon_{\text{tot}}$ we find
 \begin{align}
 	\epsilon_{\text{tot}} = \epsilon_{\text{reconstr.}} \cdot \epsilon_{\text{ident.}} \cdot \epsilon_{\text{trigger}} \cdot \epsilon_{\text{add.}},
 \end{align}
- where the additional efficiencies come from the other filter steps, e.\,g. the isolation values. 
+ where the additional efficiencies come from the other filter steps, e.\,g. the isolation values. \\
+ 
+ We performed the tag and probe method using the real data and one of the Monte-Carlo simulations. The result is depicted below.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{figures/plots/efficiency}
+\includegraphics[width=0.45\textwidth]{figures/plots/Efficiency_corr}
 \caption{Efficiency measurement for the real data (red) and the MC simulations (blue).}
+\label{fig:eff}
 \end{figure}
-%TODO: Rot=exp , Blau=MC
+In figure (\ref{fig:eff}) we can see, that there is a very high efficiency of $\sim$ 0.9 or even higher over almost the entire momentum range.
+
 \section{Experiment}
 
 Having to learn the basics of \verb|ROOT| and to get familiar with the dataset, we start with some simple plots giving us already some information about the most important characteristics of the conducted measurements.\\
@@ -170,8 +174,8 @@ Having to learn the basics of \verb|ROOT| and to get familiar with the dataset, 
 \textbf{Primary Vortices.} The first diagram displays the distribution of the primary vertices along the $z$-direction after a collision of two bunches.
 \begin{figure}[H]
 \centering
-\includegraphics[width = 0.45\textwidth]{figures/plots/DistPrimVort}
-\caption{Distribution of the primary vortices.}
+\includegraphics[width = 0.45\textwidth]{figures/plots/DistPrimVort_corr}
+\caption{Distribution of the primary vortices along the $z$-axis.}
 \label{fig:vortices}
 \end{figure}
 The distribution depicted in figure (\ref{fig:vortices}) is explained by the fact, that the bunches are spread along the $z$-axis, which makes it impossible for all collisions to happen at the same $z$-coordinate.\\
@@ -231,24 +235,25 @@ To check this, we plot the amount of lepton candidates in the final state for ou
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figures/plots/lep_n_Muons}
+	\includegraphics[width=0.45\textwidth]{figures/plots/lep_n_corr}
 	\caption{Number of Leptons in the final state.}
+	\label{fig:lep_n}
 \end{figure}
-%TODO: Fix this plot.. 
+
 There are no $Z$ bosons involved in the 1-lepton final state decays and in leading order one would expect two leptons in the final state of the decay process. We are going to take this into account, when setting up our filters.\\
 
 \textbf{Angular and Momentum Distributions.}  
-Next we take a look at the distribution of  the pseudorapidity $\eta$, the transversal momentum $p_T$ and its azimutal angle distribution $\phi$.
+Next we take a look at the distribution of  the pseudorapidity $\eta$, the transversal momentum $p_T$ and the azimutal angle distribution $\phi$.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figures/plots/Pseudorapidity}
+	\includegraphics[width=0.45\textwidth]{figures/plots/Pseudorapidity_corr}
 	\caption{Distribution of the Pseudorapidity $\eta$.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figures/plots/AzimutalAngle}
+	\includegraphics[width=0.45\textwidth]{figures/plots/AzimutalAngle_corr}
 	\caption{Distribution of the azimutal angles $\phi$.}
 \end{figure}
 
@@ -258,7 +263,7 @@ These can nicely be explained by the geometry of the detector, an explanation th
 The distribution of the transversal momentum shows an unexpected step at about $20$ GeV, caused by the trigger which sorts out all the events where not at least one Lepton has an energy higher than $25$ GeV\footnote{This is useful since there is no way that these events contain a Z-Boson candidate.}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figures/plots/TransverseMomentum}
+	\includegraphics[width=0.45\textwidth]{figures/plots/TransverseMomentum_corr}
 	\caption{Distribution of the transverse momenta $p_T$.}
 \end{figure}
 
@@ -268,16 +273,11 @@ For the next part we adapt the already partially implemented \verb|python| scrip
 Plotting the distribution of the invariant masses in our dataset we could identify several peaks. Their cause is noted on the adjacent plot.
 \begin{figure}[H]
 	\centering
-	\missingfigure{Z spectrum from data}
+	\includegraphics[width=0.45\textwidth]{figures/plots/MassDist_Data_corr}
 	\caption{Unfiltered spectrum of the invariant mass distribution for the real dataset.}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\missingfigure{Z spectrum from MC.}
-	\caption{Spectrum of the invariant mass distribution for the Monte Carlo distributions.}
-\end{figure}
-One can clearly see the peak at $90$ GeV, representing the $Z$ boson. There are some other peaks visible in the data, one at $\sim 3$ GeV and the other at $\sim 10$ GeV which correspond to $J/\Psi$ and $\Upsilon$ meson decays. That is the reason why we can't observe such peaks in the Monte Carlo data. Is already mentioned before, there is some sort of peak at around $25$ GeV due to the internal trigger threshold.
+One can clearly see the peak at about $90$ GeV, representing the $Z$ boson. There are some other peaks visible in the data, one at $\sim 3$ GeV and the other at $\sim 10$ GeV which correspond to $J/\Psi$ and $\Upsilon$ meson decays. That is the reason why we can't observe such peaks in the Monte Carlo data. Is already mentioned before, there is some sort of peak at around $25$ GeV due to the internal trigger threshold.
 
 \subsection{Selecting events}
 To aim for the best possible results, in this part we implemented a series of filters, only leaving the decay processes we could confidently connect to the decay of a Z-Boson.
@@ -289,41 +289,38 @@ The following filters were used:
 \item \textbf{2 Leptons}: Including only events with exactly two involved leptons.
 \item \textbf{PDGID}: This filter is based on the track reconstruction in the detector, which results in an either \textit{loose, medium} or \textit{tight} prediction of the particle type. Every particle type is identified by an integer number (e.\,g. $e = 11 , \ \mu = 13$ and $\tau = 15$).
 \item \textbf{$p_T$ Cut}: Do the Leptons have a energy high enough to possibly originate in a $Z$ boson decay?
-\item \textbf{Isolation}: Do the Leptons have enough energy to be clearly distinguishable from the background energy of the detector? 
+\item \textbf{Isolation}: Do the Leptons have enough energy to be clearly distinguishable from the background energy of the detector? This filter is applied to separate the lepton candidates we are interested in from those produced in QCD underground processes involving jets.  
 \item \textbf{Tight ID}: Only the particles labelled as \textit{tight} are considered for further analysis.
 \item \textbf{$Z$ Mass}: Is the calculated invariant mass anywhere near the theoretical invariant mass of a $Z$ boson?
 \end{enumerate}
 
 After applying all the filters to the data we can plot the amount of measurements that passed the tests until a certain  filter. This kind of diagram is called \textit{Cut Flow diagram}. For our filter setting, the Cut Flow diagram is depicted in the following.
-%TODO: Include OUR Cut Flow Diagram
+
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.5\textwidth]
-{figures/plots/CutFlowEGamma}
+{figures/plots/CutFlowEGamma_corr}
 \caption{Cut flow diagram for our event selection algorithm applied to the EGamma dataset.}	
 \end{figure}
+As one can clearly see, the most data is discarded after testing if there are exactly 2 Lepton candidates detected in an event. This is in accordance with the result from figure (\ref{fig:lep_n})
 
-
-In order to be able to compare the data to the theoretical predictions, we analyze Monte Carlo simulations of $Z$ boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs, represented in the following (stacked) diagram: %(\ref{fig:MChisto}) 
-
+In order to be able to compare the data to the theoretical predictions, we analyze Monte Carlo simulations of $Z$ boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs. \\
+For a more realistic comparison, we need to rescale the data to match them to the real parameters from the measurements. We use the formula $k = \sfrac{\mathcal{L}\sigma}{w}$, where $w$ represents the MC weight we introduced above. In practice, the scaling is implemented directly in the \verb|Python| script, which means there is no warranty at all that the scaling is set optimally. \\
 \begin{figure}[H]
 	\centering
-	\missingfigure{Stacked MC data histogram.}
-	\caption{Results for Monte Carlo simulations of $Z$-boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs.}
+	\includegraphics[width=0.45\textwidth]{figures/plots/HistoMCData_corr}
+	\caption{Results of the Monte-Carlo simulations of $Z$-boson decays into $e^+e^-$-, $\mu^+\mu^-$- and $\tau^+\tau^-$-pairs, compared to the real data.}
 	\label{fig:MChisto}
 \end{figure}
+The histogram in figure (\ref{fig:MChisto}) shows, that the results from the simulations, especially those from the $Z\rightarrow \mu^+\mu^-$ decays, are in agreement with the real data. The $Z\rightarrow \tau^+\tau^-$ peak is almost invisible. This can be explained by the fact, that the $\tau$'s usually decay into electrons or muons (and the respective neutrinos + a $\tau$-neutrino) subsequently.
 
-For a more realistic comparison, we need to rescale the data to match them to the real parameters from the measurements. We use the formula $k = \sfrac{\mathcal{L}\sigma}{w}$, where $w$ represents the MC weight we introduced above. In practice, the scaling is implemented directly in the \verb|Python| script, which means there is no warranty at all that the scaling is set optimally. \\
-
-%TODO: Short comment on the plots..
-\blindtext
 \section{Fitting the $Z$ mass}
 
 We want to use this section to present the final result for the mass distribution of the processes with $Z$-candidates which passed all filter levels. The result is presented in the following in figure (\ref{fig:MassDist}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width = 0.45\textwidth]{figures/plots/ZMassFitted}
+	\includegraphics[width = 0.45\textwidth]{figures/plots/ZMass_corr}
 	\caption{Distribution of the $Z$ masses $M_{\mathrm{Z}}$ with Gaussian, Breit-Wigner and a convoluted fit.}
 	\label{fig:MassDist}
 \end{figure}
@@ -356,20 +353,23 @@ Using Gaussian error propagation one finds for the differences between our final
 which means the deviations are approximately of order $\sim$ 1 GeV. The errors seem to be very small, which is explained by the fact, that all errors we take into account at the moment only come from the fitting process. This is presumeably a highly underestimating treatment of errors. We'll come back to this during the critical discussion of the results in the next section.
 \section{Critical discussion}
 In this section we want to discuss the role of the systematic and statistical errors and their possible influence on our results.\\
-
 The data set we analyzed is very large, this means we had enough measurements to reduce statistical uncertainties to a negligible minimum. We know from Poisson statistics, that the significance of the corresponding errors can be estimated using the inverse square root of the amount of data. In total this means that it should hold, that $\Delta_{\mathrm{stat.}} \ll \Delta_{\mathrm{syst.}}$. \\
-A measure for the possible influence of the systematical uncertainties is given by the standard deviation \\ $\sigma = (1.559 \pm 0.015) \ \text{GeV}$ we concluded from the convoluted fit. It clearly shows that one has to keep in mind that the energy resolution inside the calorimeter is not perfect. In general one has to think about the treshold values for the filter system. When we would have had additional time, we could have tested the impact of changes in the different steps of the implemented filter.
-%TODO: Some more on syst. errors?
+A measure for the possible influence of the systematical uncertainties is given by the standard deviation \\ $\sigma = (1.559 \pm 0.015) \ \text{GeV}$ we concluded from the convoluted fit. It clearly shows that one has to keep in mind that the energy resolution inside the calorimeter lacks on precision. This could hopefully be improved in the next years, when upgrading the hardware of the detector little by little.  In general one has to think about the threshold values for the filter system. When we would have had additional time, we could have tested the impact of changes in the different steps of the implemented filter. \\
+Another way of dealing with possible error sources from various background processes would be to include some Monte-Carlo simulations of these processes (e.\,g. for the QCD processes or the decays including $\Upsilon$'s or $J/\Psi$'s we could observe in the mass spectrum), to once again improve the understanding of the different residuals in the recorded data. This could also be helpful for the choice of the limits for the different selection criterions. \\
+We can conclude, that it is pretty hard to estimate the errors arising on the one hand from the analysis of the data and on the other hand from the complex processes taking place during such high-energy particle collisions. The better one understands the (sub-)structures of the data, the easier it is to test the results using i.\,e. theoretical predictions via simulations or to find weak spots in the hardware of the detector.
 
 \section{Conclusion}
-After some preparation time to be able to understand the underlaying structure of the analyzed dataset, the main goal of this lab course was to get familiar with modern data analysis tools such as \verb|ROOT| and \verb|Python| and to handle a large amount of data, by implementing our own multi-level filter system, to be able to distinguish possible $Z$ boson candidates from other measurements. We also had the chance to compare the data to theoretical predictions by analyzing some Monte Carlo simulations. Our final result for the $Z$ mass and its decay width $\Gamma$ seem to fit to the values provided by the PDG. Only the treatment of, especially the systematic error sources,  has to  be questioned, as we did in the previous section. Nevertheless we can conclude, that the obtained results are compatible with the expectations.\\
-We can remark, that we learned a lot about data-analysis in particle and we had a lot of fun implementing the filters.  
+After some preparation time to be able to understand the underlaying structure of the analyzed dataset, the main goal of this lab course was to get familiar with modern data analysis tools such as \verb|ROOT| and \verb|Python| and to handle a large amount of data by implementing our own multi-level filter system, to be able to distinguish possible $Z$ boson candidates from other measurements. We also had the chance to compare the data to theoretical predictions by analyzing some Monte-Carlo simulations. Our final result for the $Z$ mass and its decay width $\Gamma$ seem to be in accordance with the values provided by the PDG. Only the treatment of, especially the systematic error sources,  has to  be questioned, as we did in the previous section. Nevertheless we can conclude, that the obtained results are compatible with the expectations.\\
+We also measured the efficiency of the electron detection using the tag and probe method, which allowed us to estimate the systemic errors due to uncertainties in the measure electronics, especially inside the calorimeter.\\
+
+At the end we can remark that we learned a lot about data-analysis in particle physics and that we had a lot of fun working on the implementation and improvement of the different scripts.
+
+ 
 \begin{acknowledgments}
 We would like to thank our supervisor Philipp Ott for his guidance throughout the operation of this experiment.
 \end{acknowledgments}
 
 \bibliographystyle{abbrv}
-\bibliography{bibliography/literatur}
-\nocite{*}
+\bibliography{bibliography/literatur}\nocite{*}
 
 \end{document}
