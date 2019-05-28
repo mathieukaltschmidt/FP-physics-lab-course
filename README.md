@@ -27,7 +27,7 @@ The advanced lab course covered the following experiments:
 - [x] F82/83: Coincidence spectrometer - Koinzidenzspektrometer (05./06./07./08.11.2018)
 
 ### Particle Physics - Teilchenphysik
-- [ ] F91/92: Analysis of the Z-boson with ATLAS at the LHC - Analyse des Z-Bosons mit ATLAS am LHC (04./05.03.2019)
+- [x] F91/92: Analysis of the Z-boson with ATLAS at the LHC - Analyse des Z-Bosons mit ATLAS am LHC (04./05.03.2019)
 
 
 
